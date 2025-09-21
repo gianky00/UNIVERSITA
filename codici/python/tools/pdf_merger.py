@@ -3,11 +3,13 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 from PyPDF2 import PdfMerger
 
-class PdfMergerApp(tk.Tk):
-    def __init__(self):
-        super().__init__()
+class PdfMergerApp(tk.Toplevel):
+    def __init__(self, parent):
+        super().__init__(parent)
         self.title("Unificatore PDF per Materie")
         self.geometry("450x300")
+        self.transient(parent)
+        self.grab_set()
 
         # --- Dati per i menu a discesa ---
         self.materie_per_anno = {
@@ -127,10 +129,18 @@ class PdfMergerApp(tk.Tk):
         except Exception as e:
             messagebox.showerror("Errore", f"Si è verificato un errore: {e}", parent=self)
 
-def main():
-    """Initializes and runs the PDF Merger application window."""
-    app = PdfMergerApp()
-    app.mainloop()
+def main(parent):
+    """Initializes the PDF Merger application window as a Toplevel window."""
+    app = PdfMergerApp(parent)
+    app.focus_set()
 
 if __name__ == "__main__":
-    main()
+    # This block allows the script to be run standalone for testing.
+    root = tk.Tk()
+    root.title("Main App")
+
+    def launch_tool():
+        main(root)
+
+    tk.Button(root, text="Launch PDF Merger", command=launch_tool).pack(padx=50, pady=50)
+    root.mainloop()
