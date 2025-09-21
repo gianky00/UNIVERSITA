@@ -20,12 +20,14 @@ class MainView(ThemedTk):
 
     def _configure_styles(self):
         style = ttk.Style(self)
+        BG_COLOR = "#ECECEC"
+        style.configure("TFrame", background=BG_COLOR)
+        style.configure("TLabel", background=BG_COLOR)
         style.configure("Accent.TButton", font=("Helvetica", 11, "bold"))
-        style.configure("Dashboard.TFrame", background="#ECECEC")
-        style.configure("Stats.TLabelFrame", padding=15)
-        style.configure("Stats.TLabelFrame.Label", font=("Helvetica", 12, "bold"))
-        style.configure("StatValue.TLabel", font=("Helvetica", 18, "bold"), foreground="#007BFF")
-        style.configure("Suggestion.TLabel", font=("Helvetica", 10, "italic"))
+        style.configure("TLabelFrame", padding=15, background=BG_COLOR)
+        style.configure("TLabelFrame.Label", font=("Helvetica", 12, "bold"), background=BG_COLOR)
+        style.configure("StatValue.TLabel", font=("Helvetica", 18, "bold"), foreground="#007BFF", background=BG_COLOR)
+        style.configure("Suggestion.TLabel", font=("Helvetica", 10, "italic"), background=BG_COLOR)
 
     def _create_menubar(self, tools_callbacks: dict):
         menubar = tk.Menu(self)
@@ -38,7 +40,7 @@ class MainView(ThemedTk):
         tools_menu.add_command(label="Crea Ritagli Immagine...", command=tools_callbacks['image_snipper'])
 
     def _create_widgets(self):
-        main_frame = ttk.Frame(self, padding=20, style="Dashboard.TFrame")
+        main_frame = ttk.Frame(self, padding=20)
         main_frame.pack(expand=True, fill='both')
         main_frame.rowconfigure(1, weight=1)
         main_frame.columnconfigure(0, weight=1)
@@ -48,12 +50,12 @@ class MainView(ThemedTk):
         ttk.Label(main_frame, text="Dashboard di Studio", font=("Helvetica", 18, "bold")).grid(row=0, column=0, columnspan=2, pady=(0, 20))
 
         # --- Pannello Sinistro: Statistiche e Suggerimenti ---
-        left_panel = ttk.Frame(main_frame, style="Dashboard.TFrame")
+        left_panel = ttk.Frame(main_frame)
         left_panel.grid(row=1, column=0, sticky="nswe", padx=(0, 10))
         left_panel.rowconfigure(1, weight=1)
 
         # Statistiche
-        stats_frame = ttk.LabelFrame(left_panel, text="Le tue Statistiche", style="Stats.TLabelFrame")
+        stats_frame = ttk.LabelFrame(left_panel, text="Le tue Statistiche")
         stats_frame.pack(fill="x", expand=True)
         self.streak_var = tk.StringVar(value="0 giorni")
         self.retention_var = tk.StringVar(value="N/D")
@@ -63,17 +65,17 @@ class MainView(ThemedTk):
         ttk.Label(stats_frame, textvariable=self.retention_var, style="StatValue.TLabel").pack(anchor="w", padx=5)
 
         # Suggerimenti
-        suggestion_frame = ttk.LabelFrame(left_panel, text="Suggerimenti", style="Stats.TLabelFrame")
+        suggestion_frame = ttk.LabelFrame(left_panel, text="Suggerimenti")
         suggestion_frame.pack(fill="x", expand=True, pady=(20, 0))
         self.suggestion_var = tk.StringVar(value="Inizia una sessione di ripasso per vedere i suggerimenti.")
         ttk.Label(suggestion_frame, textvariable=self.suggestion_var, wraplength=250, justify="left", style="Suggestion.TLabel").pack(padx=5, pady=5)
 
         # --- Pannello Destro: Azioni ---
-        right_panel = ttk.Frame(main_frame, style="Dashboard.TFrame")
+        right_panel = ttk.Frame(main_frame)
         right_panel.grid(row=1, column=1, sticky="nswe", padx=(10, 0))
         right_panel.rowconfigure(3, weight=1)
 
-        actions_frame = ttk.LabelFrame(right_panel, text="Sessioni di Studio", style="Stats.TLabelFrame")
+        actions_frame = ttk.LabelFrame(right_panel, text="Sessioni di Studio")
         actions_frame.pack(fill="both", expand=True)
 
         self.review_button = ttk.Button(actions_frame, text="Studio SRS", command=lambda: self.start_callback('review'), style="Accent.TButton", state='disabled')
@@ -86,7 +88,7 @@ class MainView(ThemedTk):
         self.practice_button.pack(expand=True, fill="both", ipady=15, padx=10, pady=10)
 
         # --- Pulsanti in basso ---
-        bottom_frame = ttk.Frame(main_frame, style="Dashboard.TFrame")
+        bottom_frame = ttk.Frame(main_frame)
         bottom_frame.grid(row=2, column=0, columnspan=2, sticky='ew', pady=(20,0))
         bottom_frame.columnconfigure(0, weight=1)
         bottom_frame.columnconfigure(1, weight=1)
