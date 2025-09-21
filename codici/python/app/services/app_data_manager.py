@@ -6,7 +6,7 @@ from pathlib import Path
 from app.services.settings_manager import SettingsManager
 
 # Costruisce un percorso assoluto alla directory 'json'
-JSON_DIR = Path(__file__).resolve().parent.parent.parent / "json"
+JSON_DIR = Path(__file__).resolve().parent.parent.parent.parent / "json"
 
 class AppDataManager:
     def __init__(self, settings_manager: SettingsManager):

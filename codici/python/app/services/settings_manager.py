@@ -4,7 +4,7 @@ from typing import List, Dict, Optional, Any
 
 # Costruisce un percorso assoluto alla directory 'json'
 # Questo rende l'app indipendente dalla directory di lavoro corrente
-JSON_DIR = Path(__file__).resolve().parent.parent.parent / "json"
+JSON_DIR = Path(__file__).resolve().parent.parent.parent.parent / "json"
 
 class SettingsManager:
     """Gestisce caricamento/salvataggio dei percorsi e metadati per materia e impostazioni globali."""
