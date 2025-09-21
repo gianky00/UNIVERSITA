@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, Toplevel
 from typing import List, Dict, Optional, Any, Callable
 from PIL import Image, ImageTk
 
