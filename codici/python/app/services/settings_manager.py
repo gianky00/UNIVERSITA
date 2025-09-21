@@ -2,10 +2,14 @@ import json
 from pathlib import Path
 from typing import List, Dict, Optional, Any
 
+# Costruisce un percorso assoluto alla directory 'json'
+# Questo rende l'app indipendente dalla directory di lavoro corrente
+JSON_DIR = Path(__file__).resolve().parent.parent.parent / "json"
+
 class SettingsManager:
     """Gestisce caricamento/salvataggio dei percorsi e metadati per materia e impostazioni globali."""
-    def __init__(self, filename="codici/json/quiz_settings.json"):
-        self.filepath = Path(filename)
+    def __init__(self):
+        self.filepath = JSON_DIR / "quiz_settings.json"
         self.settings = self._load()
 
     def _get_default_settings(self) -> Dict:

@@ -9,6 +9,8 @@ from app.models.srs_model import SRSItem
 from app.services.app_data_manager import AppDataManager
 from app.services.settings_manager import SettingsManager
 
+# Costruisce un percorso assoluto alla directory 'json'
+JSON_DIR = Path(__file__).resolve().parent.parent.parent / "json"
 
 class SRSManager:
     """Gestisce la logica del deck di studio SRS, con calibrazione dinamica e analisi di interferenza."""
@@ -17,7 +19,7 @@ class SRSManager:
 
     def __init__(self, subject: str, exam_date: Optional[datetime.date], interval_modifier: float, app_data_manager: AppDataManager, settings_manager: SettingsManager):
         self.subject = subject
-        self.filepath = Path(f"codici/json/{self.subject.replace(' ', '_').lower()}_srs_deck.json")
+        self.filepath = JSON_DIR / f"{self.subject.replace(' ', '_').lower()}_srs_deck.json"
         self.deck: Dict[str, SRSItem] = self._load()
         self.exam_date = exam_date
         self.interval_modifier = interval_modifier

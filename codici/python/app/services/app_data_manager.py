@@ -1,12 +1,16 @@
 import json
 import datetime
 from typing import Dict, Any, List
+from pathlib import Path
 
 from app.services.settings_manager import SettingsManager
 
+# Costruisce un percorso assoluto alla directory 'json'
+JSON_DIR = Path(__file__).resolve().parent.parent.parent / "json"
+
 class AppDataManager:
-    def __init__(self, settings_manager: SettingsManager, file_path: str = "codici/json/app_data.json"):
-        self.file_path = file_path
+    def __init__(self, settings_manager: SettingsManager):
+        self.filepath = JSON_DIR / "app_data.json"
         self.settings_manager = settings_manager
         self.data = self._load_data()
 
