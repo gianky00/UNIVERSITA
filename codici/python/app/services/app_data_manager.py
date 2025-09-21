@@ -17,14 +17,14 @@ class AppDataManager:
     def _load_data(self) -> Dict[str, Any]:
         """Carica i dati dal file JSON."""
         try:
-            with open(self.file_path, 'r', encoding='utf-8') as f:
+            with open(self.filepath, 'r', encoding='utf-8') as f:
                 return json.load(f)
         except (FileNotFoundError, json.JSONDecodeError):
             return {"user_stats": {"current_streak": 0, "last_study_date": None}, "review_log": []}
 
     def _save_data(self):
         """Salva i dati correnti nel file JSON."""
-        with open(self.file_path, 'w', encoding='utf-8') as f:
+        with open(self.filepath, 'w', encoding='utf-8') as f:
             json.dump(self.data, f, indent=2, ensure_ascii=False)
 
     def log_review(self, subject: str, is_correct: bool):
