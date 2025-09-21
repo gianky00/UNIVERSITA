@@ -1,4 +1,14 @@
 {
+  "global_settings": {
+    "retention_period_days": 7,
+    "srs_intervals": {
+      "again": 10,
+      "hard": 120,
+      "good": 1440,
+      "easy": 4320
+    },
+    "new_cards_per_day": 20
+  },
   "ELETTROTECNICA": {
     "txt_path": "G:/Il mio Drive/UNIVERSITA_ AGGIORNATA/Elettrotecnica/domande chiuse ELETTROTECNICA.txt",
     "img_path": "G:/Il mio Drive/UNIVERSITA_ AGGIORNATA/Elettrotecnica/immagini_estratte_domande_chiuse",
