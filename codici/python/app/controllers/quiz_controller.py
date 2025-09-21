@@ -13,40 +13,75 @@ from PIL import Image, ImageTk
 from app.models.question_model import Question
 from app.services.settings_manager import SettingsManager
 from app.services.srs_manager import SRSManager
+from app.services.app_data_manager import AppDataManager
 from app.services.text_processing import TextFileParser, SimilarityAnalyser
 from app.views.main_view import MainView
 from app.views.practice_view import PracticeView
 from app.views.results_view import ResultsView
 from app.views.dialogs import SubjectSelectionDialog, LoadingView
 from app.views.settings_view import SettingsView
+from app.views.analysis_view import AnalysisView
 from tools import image_snipper, text_formatter, pdf_merger
 
 
 class QuizController:
     def __init__(self, root: MainView, settings_manager: SettingsManager):
-        self.root = root; self.settings_manager = settings_manager; self.srs_manager: Optional[SRSManager] = None
-        self.current_subject = ""; self.all_questions: List[Question] = []; self.active_questions: List[Question] = []
-        self.image_base_path: Optional[Path] = None; self.current_question_index = 0
-        self.image_cache: Dict[Path, Image.Image] = {}; self.timer_id: Optional[str] = None; self.current_mode = ""
-        self.practice_view: Optional[PracticeView] = None; self.results_view: Optional[ResultsView] = None
-        self.question_start_time = 0.0; self.srs_session_results: List[bool] = []
+        self.root = root
+        self.settings_manager = settings_manager
+        self.app_data_manager = AppDataManager(self.settings_manager)
+        self.srs_manager: Optional[SRSManager] = None
+        self.current_subject = ""
+        self.all_questions: List[Question] = []
+        self.active_questions: List[Question] = []
+        self.image_base_path: Optional[Path] = None
+        self.current_question_index = 0
+        self.image_cache: Dict[Path, Image.Image] = {}
+        self.timer_id: Optional[str] = None
+        self.current_mode = ""
+        self.practice_view: Optional[PracticeView] = None
+        self.results_view: Optional[ResultsView] = None
+        self.question_start_time = 0.0
+        self.question_start_time = 0.0
+        self.srs_session_results: List[bool] = []
 
-    def check_srs_availability(self):
-        subjects = self.settings_manager.get_subjects(status_filter="In Corso"); total_due = 0; next_exam_date = None; next_exam_subj = ""
+    def update_dashboard_and_srs_status(self):
+        """Aggiorna la dashboard con statistiche fresche e lo stato dei ripassi."""
+        subjects = self.settings_manager.get_subjects(status_filter="In Corso")
+        total_due = 0
+        next_exam_date = None
+        next_exam_subj = ""
+
         for subject in subjects:
             data = self.settings_manager.get_subject_data(subject)
             try:
                 exam_date = datetime.datetime.strptime(data.get("exam_date", ""), '%d/%m/%Y').date()
-                if not next_exam_date or exam_date < next_exam_date: next_exam_date = exam_date; next_exam_subj = subject
-            except ValueError: pass
-            srs_manager = SRSManager(subject, None, 1.0); total_due += len(srs_manager.get_due_questions())
-        info = "Seleziona una modalità per iniziare:"
-        if next_exam_date:
-            days_left = (next_exam_date - datetime.date.today()).days
-            info = f"Prossimo esame: {next_exam_subj} in {days_left} giorni." if days_left >= 0 else f"Esame di {next_exam_subj} era {abs(days_left)} giorni fa."
-        self.root.update_review_button(total_due, info)
+                if not next_exam_date or exam_date < next_exam_date:
+                    next_exam_date = exam_date
+                    next_exam_subj = subject
+            except (ValueError, TypeError):
+                pass
+            srs_manager = SRSManager(subject, None, 1.0, self.app_data_manager, self.settings_manager)
+            total_due += len(srs_manager.get_due_questions())
 
-    def open_settings(self): SettingsView(self.root, self.settings_manager); self.check_srs_availability()
+        suggestion = f"Prossimo esame: {next_exam_subj}." if next_exam_subj else "Nessun esame imminente. Ottimo per un ripasso generale!"
+        if total_due > 0:
+            suggestion += f"\nCi sono {total_due} carte da ripassare."
+
+        stats = {
+            "review_count": total_due,
+            "streak": self.app_data_manager.get_current_streak(),
+            "retention_rate": self.app_data_manager.get_retention_rate(),
+            "suggestion": suggestion
+        }
+        self.root.update_dashboard(stats)
+
+    def open_settings(self):
+        SettingsView(self.root, self.settings_manager)
+        self.update_dashboard_and_srs_status()
+
+    def open_analysis(self):
+        stats = self.app_data_manager.get_overall_stats()
+        AnalysisView(self.root, stats)
 
     # --- Tool Launchers ---
     def launch_pdf_merger(self):
@@ -94,7 +129,7 @@ class QuizController:
         try: exam_date = datetime.datetime.strptime(data.get("exam_date", ""), '%d/%m/%Y').date()
         except ValueError: pass
         modifier = data.get("interval_modifier", 1.0)
-        self.srs_manager = SRSManager(self.current_subject, exam_date, modifier)
+        self.srs_manager = SRSManager(self.current_subject, exam_date, modifier, self.app_data_manager, self.settings_manager)
 
         cache_path = Path(f"{data.get('txt_path')}.cache.json")
 
@@ -156,7 +191,7 @@ class QuizController:
 
     def _start_quiz_ui(self, timer_duration: int = 0):
         self.root.withdraw(); self.current_question_index = 0
-        self.practice_view = PracticeView(self.root, self.on_practice_close, self.current_mode)
+        self.practice_view = PracticeView(self.root, self.on_practice_close, self.current_mode, self.display_current_question)
         self.practice_view.set_callbacks(self.prev_question, self.next_question, self.submit_or_show_answer, self.rate_srs_question)
         self.practice_view.setup_for_mode()
         if self.current_mode == 'exam':
@@ -213,7 +248,24 @@ class QuizController:
             for opt_radio in self.practice_view.option_widgets: opt_radio['radio'].config(command=self.on_answer_selected)
         self.question_start_time = time.monotonic()
 
-    def on_answer_selected(self): self.active_questions[self.current_question_index].time_taken = time.monotonic() - self.question_start_time
+    def on_answer_selected(self):
+        q = self.active_questions[self.current_question_index]
+        q.time_taken = time.monotonic() - self.question_start_time
+
+        selected_answer = q.user_answer.get()
+        if not selected_answer:
+            return
+
+        is_correct = (selected_answer == q.correct_answer)
+
+        # Trova l'indice dell'opzione selezionata per il feedback visivo
+        try:
+            option_index = q.options.index(selected_answer)
+            if self.practice_view:
+                self.practice_view.flash_answer_feedback(option_index, is_correct)
+        except (ValueError, IndexError):
+            pass # L'opzione selezionata non è stata trovata, non dare feedback
+
     def jump_to_question(self, index: int): self.current_question_index = index; self.display_current_question()
     def next_question(self):
         if self.current_question_index < len(self.active_questions) - 1:
@@ -271,15 +323,15 @@ class QuizController:
         if self.practice_view: self.practice_view.destroy(); self.practice_view = None
         if show_final_message and self.srs_manager:
             leech_questions = self.srs_manager.get_leech_questions()
-            if self.srs_session_results: self.settings_manager.update_retention_stats(self.current_subject, self.srs_session_results)
+            # La logica di ritenzione è ora gestita globalmente tramite AppDataManager
             if leech_questions:
                 msg = "Sessione di ripasso completata!\n\nATTENZIONE: Hai difficoltà persistenti con queste domande (leeches). Considera di studiarle da una fonte diversa:\n\n"
                 for q in leech_questions[:5]: msg += f"- {q.text[:80]}...\n"
                 messagebox.showwarning("Domande Ostiche Rilevate", msg)
             else: messagebox.showinfo("Fine Sessione", "Hai completato tutte le domande da ripassare per oggi!")
-        self.root.deiconify(); self.check_srs_availability()
+        self.root.deiconify(); self.update_dashboard_and_srs_status()
 
     def on_results_close(self):
         if self.results_view: self.results_view.destroy(); self.results_view = None
         if self.practice_view: self.practice_view.destroy(); self.practice_view = None # Clean up practice view as well
-        self.root.deiconify(); self.check_srs_availability()
+        self.root.deiconify(); self.update_dashboard_and_srs_status()

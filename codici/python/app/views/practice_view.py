@@ -7,9 +7,10 @@ from app.models.question_model import Question
 
 class PracticeView(Toplevel):
     MAX_OPTIONS = 10
-    def __init__(self, parent: tk.Tk, close_callback: Callable[[], None], mode: str):
+    def __init__(self, parent: tk.Tk, close_callback: Callable[[], None], mode: str, image_update_callback: Callable[[], None]):
         super().__init__(parent)
         self.parent = parent; self.mode = mode; self.is_exam_mode = (mode == 'exam'); self.close_controller_callback = close_callback
+        self.image_update_callback = image_update_callback
         self.protocol("WM_DELETE_WINDOW", self.on_close); self.title(f"Modalità: {mode.capitalize()}"); self.state('zoomed')
         self.img_ref, self._after_id = None, None; self.nav_buttons: List[ttk.Button] = []
         self._setup_styles(); self._setup_ui()
@@ -32,26 +33,55 @@ class PracticeView(Toplevel):
 
     def _setup_styles(self):
         style = ttk.Style(self)
-        style.configure("Answered.TButton", foreground="green", font=('Helvetica', 9, 'bold')); style.configure("Current.TButton", relief="sunken", foreground="blue", font=('Helvetica', 9, 'bold'))
-        style.configure("CorrectAnswer.TLabel", foreground="blue", font=('Helvetica', 11, 'bold')); style.configure("Rate.TButton", font=('Helvetica', 10, 'bold'))
+        # Stili per i pulsanti di navigazione dell'esame
+        style.configure("Answered.TButton", foreground="green", font=('Helvetica', 9, 'bold'))
+        style.configure("Current.TButton", relief="sunken", foreground="blue", font=('Helvetica', 9, 'bold'))
+        # Stile per la risposta corretta in modalità ripasso
+        style.configure("CorrectAnswer.TLabel", foreground="blue", font=('Helvetica', 11, 'bold'))
+        # Stili per il feedback immediato
+        correct_bg = "#d4edda"; correct_fg = "#155724" # Verde
+        incorrect_bg = "#f8d7da"; incorrect_fg = "#721c24" # Rosso
+        style.configure("Correct.TFrame", background=correct_bg)
+        style.configure("Correct.TLabel", background=correct_bg, foreground=correct_fg)
+        style.configure("Correct.TRadiobutton", background=correct_bg)
+        style.configure("Incorrect.TFrame", background=incorrect_bg)
+        style.configure("Incorrect.TLabel", background=incorrect_bg, foreground=incorrect_fg)
+        style.configure("Incorrect.TRadiobutton", background=incorrect_bg)
+        # Stile per i pulsanti di valutazione SRS
+        style.configure("Rate.TButton", font=('Helvetica', 10, 'bold'))
+
     def _setup_ui(self):
         root_frame = ttk.Frame(self, padding=10); root_frame.pack(expand=True, fill='both')
         self.timer_label = ttk.Label(root_frame, text="", font=("Helvetica", 14, "bold"), foreground="navy")
         if self.is_exam_mode: self.timer_label.pack(pady=(0, 10))
         content_frame = ttk.Frame(root_frame); content_frame.pack(expand=True, fill='both')
-        question_area = ttk.Frame(content_frame); question_area.pack(side='left', expand=True, fill='both')
+        content_frame.columnconfigure(0, weight=1)
+        content_frame.rowconfigure(0, weight=1)
+
+        question_area = ttk.Frame(content_frame); question_area.grid(row=0, column=0, sticky="nsew")
+        question_area.rowconfigure(1, weight=1)
+        question_area.columnconfigure(0, weight=1)
+
         if self.is_exam_mode:
-            nav_container = ttk.Frame(content_frame); nav_container.pack(side='right', fill='y', padx=(10, 0))
+            content_frame.columnconfigure(1, weight=0) # Nav panel non si espande
+            nav_container = ttk.Frame(content_frame); nav_container.grid(row=0, column=1, sticky="ns", padx=(10, 0))
             nav_canvas = tk.Canvas(nav_container, width=120); nav_scrollbar = ttk.Scrollbar(nav_container, orient="vertical", command=nav_canvas.yview)
             self.nav_panel = ttk.Frame(nav_canvas); self.nav_panel.bind("<Configure>", lambda e: nav_canvas.configure(scrollregion=nav_canvas.bbox("all")))
             nav_canvas.create_window((0, 0), window=self.nav_panel, anchor="nw"); nav_canvas.configure(yscrollcommand=nav_scrollbar.set)
             nav_canvas.pack(side="left", fill="both", expand=True); nav_scrollbar.pack(side="right", fill="y")
-        self.status_label = ttk.Label(question_area, text="", font=("Helvetica", 12)); self.status_label.pack(pady=(0, 10))
+
+        self.status_label = ttk.Label(question_area, text="", font=("Helvetica", 12)); self.status_label.pack(pady=(0, 10), fill='x')
+
         container = ttk.Frame(question_area); container.pack(expand=True, fill='both', pady=10)
         container.grid_rowconfigure(1, weight=1); container.grid_columnconfigure(0, weight=1)
+
         self.image_label = ttk.Label(container); self.image_label.grid(row=0, column=0, pady=10)
+
         frame_content = ttk.LabelFrame(container, text="Domanda", padding=20); frame_content.grid(row=1, column=0, sticky='nsew')
+        frame_content.columnconfigure(0, weight=1)
+
         self.question_text_label = ttk.Label(frame_content, wraplength=100, font=('Helvetica', 12, 'bold'), justify='left'); self.question_text_label.pack(anchor='w', pady=(10, 20), fill='x')
+
         self.option_widgets: List[Dict[str, Any]] = []
         options_frame = ttk.Frame(frame_content); options_frame.pack(expand=True, fill='both', anchor='n')
         for _ in range(self.MAX_OPTIONS):
@@ -105,13 +135,42 @@ class PracticeView(Toplevel):
         if not self.winfo_exists() or (self.winfo_width() < 100 or self.winfo_height() < 100): return
         if self._after_id: self.after_cancel(self._after_id)
         self._after_id = self.after(200, self.update_wraplength_and_image)
-    def update_wraplength_and_image(self, image_update_callback: Optional[Callable] = None):
+
+    def update_wraplength_and_image(self):
         if not self.winfo_exists(): return
         width = self.winfo_width(); nav_width = 150 if self.is_exam_mode else 0
         wraplength_value = max(300, width - nav_width - 100)
         self.question_text_label.config(wraplength=wraplength_value)
         for widget in self.option_widgets: widget['label'].config(wraplength=wraplength_value - 50)
-        if image_update_callback: image_update_callback()
+        if self.image_update_callback:
+            self.image_update_callback()
+
+    def flash_answer_feedback(self, option_index: int, is_correct: bool):
+        """Evidenzia brevemente la risposta selezionata cambiando lo stile dei widget."""
+        if not (0 <= option_index < len(self.option_widgets)):
+            return
+
+        widgets = self.option_widgets[option_index]
+        target_frame = widgets['frame']
+        radio_button = widgets['radio']
+        label_widget = widgets['label']
+
+        feedback_style_prefix = "Correct" if is_correct else "Incorrect"
+
+        # Applica i nuovi stili
+        target_frame.configure(style=f"{feedback_style_prefix}.TFrame")
+        radio_button.configure(style=f"{feedback_style_prefix}.TRadiobutton")
+        label_widget.configure(style=f"{feedback_style_prefix}.TLabel")
+
+        def clear_feedback():
+            if target_frame.winfo_exists():
+                # Ripristina gli stili predefiniti
+                target_frame.configure(style="TFrame")
+                radio_button.configure(style="TRadiobutton")
+                label_widget.configure(style="TLabel")
+
+        self.after(750, clear_feedback)
+
     def display_question(self, q: Question, status_text: str, image: Optional[ImageTk.PhotoImage]):
         self.status_label.config(text=status_text); self.question_text_label.config(text=q.text)
         self.image_label.config(image=image or ''); self.img_ref = image
