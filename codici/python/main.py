@@ -12,6 +12,8 @@ import random
 import datetime
 import collections
 import math
+from tools import image_snipper, text_formatter, pdf_merger
+
 
 # --- MODELLO DATI (Data Models) ---
 
@@ -281,6 +283,19 @@ class MainView(ThemedTk):
     def __init__(self, start_callback: Callable[[str], None], settings_callback: Callable[[], None]):
         super().__init__(theme="arc")
         self.title("Quiz Loader"); self.geometry("550x300")
+
+        # --- Creazione Menu Bar ---
+        menubar = tk.Menu(self)
+        self.config(menu=menubar)
+
+        # --- Menu Strumenti ---
+        tools_menu = tk.Menu(menubar, tearoff=0)
+        menubar.add_cascade(label="Strumenti", menu=tools_menu)
+        tools_menu.add_command(label="Unisci PDF...", command=self.run_pdf_merger)
+        tools_menu.add_command(label="Formatta Testo Paniere...", command=self.run_text_formatter)
+        tools_menu.add_separator()
+        tools_menu.add_command(label="Crea Ritagli Immagine...", command=self.run_image_snipper)
+
         style = ttk.Style(self); style.configure("Accent.TButton", font=("Helvetica", 10, "bold"))
         main_frame = ttk.Frame(self, padding=20); main_frame.pack(expand=True, fill='both')
         ttk.Label(main_frame, text="Quiz Loader", font=("Helvetica", 16, "bold")).pack(pady=10)
@@ -290,6 +305,15 @@ class MainView(ThemedTk):
         self.exam_button = ttk.Button(button_frame, text="Esame", command=lambda: start_callback('exam')); self.exam_button.pack(side='left', expand=True, fill='x', padx=5, ipady=10)
         self.review_button = ttk.Button(button_frame, text="Studio SRS", command=lambda: start_callback('review'), state='disabled'); self.review_button.pack(side='left', expand=True, fill='x', padx=5, ipady=10)
         ttk.Button(main_frame, text="Impostazioni", command=settings_callback).pack(side='bottom', fill='x', pady=(10,0), ipady=5)
+
+    def run_pdf_merger(self):
+        pdf_merger.main()
+
+    def run_text_formatter(self):
+        text_formatter.main()
+
+    def run_image_snipper(self):
+        image_snipper.main()
 
     def update_review_button(self, count: int, next_exam_info: str):
         if count > 0: self.review_button.config(text=f"Studio SRS ({count})", state='normal')

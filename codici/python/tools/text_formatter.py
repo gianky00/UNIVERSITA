@@ -186,6 +186,10 @@ class MainApp(tk.Tk):
         self.wait_window(win)
         return choice.get()
 
-if __name__ == "__main__":
+def main():
+    """Initializes and runs the main application window."""
     app = MainApp()
     app.mainloop()
+
+if __name__ == "__main__":
+    main()
