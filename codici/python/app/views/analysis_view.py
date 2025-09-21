@@ -15,16 +15,19 @@ class AnalysisView(tk.Toplevel):
         self._create_widgets(stats)
 
     def _configure_styles(self):
-        self.configure(background="#ECECEC")
+        BG_COLOR = "#ECECEC"
+        self.configure(background=BG_COLOR)
         style = ttk.Style(self)
-        style.configure("Analysis.TLabelFrame", padding=15, background="#ECECEC")
-        style.configure("Analysis.TLabelFrame.Label", font=("Helvetica", 12, "bold"))
-        style.configure("Stat.TLabel", font=("Helvetica", 10), background="#ECECEC")
-        style.configure("StatValue.TLabel", font=("Helvetica", 10, "bold"), foreground="#333333", background="#ECECEC")
+        style.configure("Analysis.TFrame", background=BG_COLOR)
+        style.configure("Analysis.TLabelFrame", padding=15, background=BG_COLOR)
+        style.configure("Analysis.TLabelFrame.Label", font=("Helvetica", 12, "bold"), background=BG_COLOR)
+        style.configure("Analysis.TLabel", background=BG_COLOR)
+        style.configure("Stat.TLabel", font=("Helvetica", 10), background=BG_COLOR)
+        style.configure("StatValue.TLabel", font=("Helvetica", 10, "bold"), foreground="#333333", background=BG_COLOR)
 
     def _create_widgets(self, stats: Dict[str, Any]):
-        main_frame = ttk.Frame(self, padding=20, style="Analysis.TLabelFrame")
-        main_frame.pack(expand=True, fill="both")
+        main_frame = ttk.LabelFrame(self, text="Statistiche Complessive", style="Analysis.TLabelFrame", padding=20)
+        main_frame.pack(expand=True, fill="both", padx=10, pady=10)
 
         main_frame.columnconfigure(1, weight=1)
 

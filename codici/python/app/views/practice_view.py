@@ -33,8 +33,23 @@ class PracticeView(Toplevel):
 
     def _setup_styles(self):
         style = ttk.Style(self)
-        style.configure("Answered.TButton", foreground="green", font=('Helvetica', 9, 'bold')); style.configure("Current.TButton", relief="sunken", foreground="blue", font=('Helvetica', 9, 'bold'))
-        style.configure("CorrectAnswer.TLabel", foreground="blue", font=('Helvetica', 11, 'bold')); style.configure("Rate.TButton", font=('Helvetica', 10, 'bold'))
+        # Stili per i pulsanti di navigazione dell'esame
+        style.configure("Answered.TButton", foreground="green", font=('Helvetica', 9, 'bold'))
+        style.configure("Current.TButton", relief="sunken", foreground="blue", font=('Helvetica', 9, 'bold'))
+        # Stile per la risposta corretta in modalità ripasso
+        style.configure("CorrectAnswer.TLabel", foreground="blue", font=('Helvetica', 11, 'bold'))
+        # Stili per il feedback immediato
+        correct_bg = "#d4edda"; correct_fg = "#155724" # Verde
+        incorrect_bg = "#f8d7da"; incorrect_fg = "#721c24" # Rosso
+        style.configure("Correct.TFrame", background=correct_bg)
+        style.configure("Correct.TLabel", background=correct_bg, foreground=correct_fg)
+        style.configure("Correct.TRadiobutton", background=correct_bg)
+        style.configure("Incorrect.TFrame", background=incorrect_bg)
+        style.configure("Incorrect.TLabel", background=incorrect_bg, foreground=incorrect_fg)
+        style.configure("Incorrect.TRadiobutton", background=incorrect_bg)
+        # Stile per i pulsanti di valutazione SRS
+        style.configure("Rate.TButton", font=('Helvetica', 10, 'bold'))
+
     def _setup_ui(self):
         root_frame = ttk.Frame(self, padding=10); root_frame.pack(expand=True, fill='both')
         self.timer_label = ttk.Label(root_frame, text="", font=("Helvetica", 14, "bold"), foreground="navy")
@@ -131,23 +146,28 @@ class PracticeView(Toplevel):
             self.image_update_callback()
 
     def flash_answer_feedback(self, option_index: int, is_correct: bool):
-        """Evidenzia brevemente la risposta selezionata in verde o rosso."""
+        """Evidenzia brevemente la risposta selezionata cambiando lo stile dei widget."""
         if not (0 <= option_index < len(self.option_widgets)):
             return
 
-        target_frame = self.option_widgets[option_index]['frame']
-        original_color = target_frame.cget("background")
-        feedback_color = "#28a745" if is_correct else "#dc3545" # Verde per corretto, Rosso per errato
+        widgets = self.option_widgets[option_index]
+        target_frame = widgets['frame']
+        radio_button = widgets['radio']
+        label_widget = widgets['label']
 
-        widgets_to_color = [target_frame, target_frame.children['!ttkradiobutton'], target_frame.children['!ttklabel']]
+        feedback_style_prefix = "Correct" if is_correct else "Incorrect"
 
-        for widget in widgets_to_color:
-            widget.configure(background=feedback_color)
+        # Applica i nuovi stili
+        target_frame.configure(style=f"{feedback_style_prefix}.TFrame")
+        radio_button.configure(style=f"{feedback_style_prefix}.TRadiobutton")
+        label_widget.configure(style=f"{feedback_style_prefix}.TLabel")
 
         def clear_feedback():
-            if target_frame.winfo_exists(): # Assicurati che il widget esista ancora
-                for widget in widgets_to_color:
-                    widget.configure(background=original_color)
+            if target_frame.winfo_exists():
+                # Ripristina gli stili predefiniti
+                target_frame.configure(style="TFrame")
+                radio_button.configure(style="TRadiobutton")
+                label_widget.configure(style="TLabel")
 
         self.after(750, clear_feedback)
 
