@@ -41,7 +41,6 @@ class QuizController:
         self.practice_view: Optional[PracticeView] = None
         self.results_view: Optional[ResultsView] = None
         self.question_start_time = 0.0
-        self.question_start_time = 0.0
         self.srs_session_results: List[bool] = []
 
     def update_dashboard_and_srs_status(self):
@@ -156,27 +155,38 @@ class QuizController:
         if self.current_mode == 'review':
             if not self.srs_manager: return
             self.srs_session_results = []
-            self.active_questions = self.srs_manager.get_due_questions()
+
+            # Fetch both due questions and new questions
+            due_questions = self.srs_manager.get_due_questions()
+            new_questions = self.srs_manager.get_new_questions(self.all_questions)
+
+            self.active_questions = due_questions + new_questions
+
             if not self.active_questions:
                 leech_questions = self.srs_manager.get_leech_questions()
                 if leech_questions:
                     msg = "Nessuna domanda da ripassare oggi.\n\nTuttavia, hai difficoltà persistenti con queste domande (leeches). Considera di studiarle da una fonte diversa:\n\n"
                     for q in leech_questions[:5]: msg += f"- {q.text[:80]}...\n"
                     messagebox.showwarning("Domande Ostiche Rilevate", msg)
-                else: messagebox.showinfo("Studio SRS", f"Nessuna domanda da ripassare per {self.current_subject}.\nOttimo lavoro!")
+                else:
+                    # Updated message for clarity
+                    messagebox.showinfo("Studio SRS", f"Nessuna nuova domanda da imparare o da ripassare per {self.current_subject}.\nOttimo lavoro!")
                 return
+
             random.shuffle(self.active_questions)
-        else:
+        else: # 'exam' or 'practice' mode
             if not self.all_questions:
                 messagebox.showwarning("Attenzione", "Nessuna domanda trovata. Controlla il file .txt e il segnalibro.")
                 return
             if self.current_mode == 'exam':
                 num, duration = self._ask_exam_settings(len(self.all_questions))
                 if num == 0: return
-                random.shuffle(self.all_questions); self.active_questions = self.all_questions[:num]
+                random.shuffle(self.all_questions)
+                self.active_questions = self.all_questions[:num]
             else: # Practice
                 self.active_questions = self.all_questions
                 random.shuffle(self.active_questions)
+
         if self.active_questions:
             self._start_quiz_ui()
 
@@ -190,7 +200,8 @@ class QuizController:
         messagebox.showwarning("Input non valido", "Il numero deve essere un multiplo di 24."); return 0, 0
 
     def _start_quiz_ui(self, timer_duration: int = 0):
-        self.root.withdraw(); self.current_question_index = 0
+        self.root.withdraw()
+        self.current_question_index = 0
         self.practice_view = PracticeView(self.root, self.on_practice_close, self.current_mode, self.display_current_question)
         self.practice_view.set_callbacks(self.prev_question, self.next_question, self.submit_or_show_answer, self.rate_srs_question)
         self.practice_view.setup_for_mode()
@@ -201,7 +212,8 @@ class QuizController:
         self.display_current_question()
 
     def _start_timer(self, duration_minutes: int):
-        self.end_time = datetime.datetime.now() + datetime.timedelta(minutes=duration_minutes); self._update_timer_display()
+        self.end_time = datetime.datetime.now() + datetime.timedelta(minutes=duration_minutes)
+        self._update_timer_display()
     def _update_timer_display(self):
         if not self.practice_view or not self.practice_view.winfo_exists(): return
         remaining = self.end_time - datetime.datetime.now()
@@ -210,7 +222,8 @@ class QuizController:
             messagebox.showinfo("Tempo Scaduto", "Il tempo è terminato. La prova sarà verificata.")
             self.submit_or_show_answer(auto_submit=True)
         else:
-            self.practice_view.update_timer(f"Tempo Rimanente: {str(remaining).split('.')[0]}"); self.timer_id = self.root.after(1000, self._update_timer_display)
+            self.practice_view.update_timer(f"Tempo Rimanente: {str(remaining).split('.')[0]}")
+            self.timer_id = self.root.after(1000, self._update_timer_display)
     def _stop_timer(self):
         if self.timer_id: self.root.after_cancel(self.timer_id); self.timer_id = None
     def _image_loader_worker(self):
@@ -239,7 +252,8 @@ class QuizController:
     def display_current_question(self):
         if not self.practice_view or not self.practice_view.winfo_exists() or not self.active_questions: return
         q = self.active_questions[self.current_question_index]
-        status = f"Domanda {self.current_question_index + 1} di {len(self.active_questions)}"; image = self.get_resized_image()
+        status = f"Domanda {self.current_question_index + 1} di {len(self.active_questions)}"
+        image = self.get_resized_image()
         self.practice_view.display_question(q, status, image)
         self.practice_view.update_navigation_buttons(self.current_question_index > 0, self.current_question_index < len(self.active_questions) - 1)
         if self.current_mode == 'exam': self.practice_view.update_navigation_panel(self.active_questions, self.current_question_index)
@@ -266,18 +280,25 @@ class QuizController:
         except (ValueError, IndexError):
             pass # L'opzione selezionata non è stata trovata, non dare feedback
 
-    def jump_to_question(self, index: int): self.current_question_index = index; self.display_current_question()
+    def jump_to_question(self, index: int):
+        self.current_question_index = index
+        self.display_current_question()
     def next_question(self):
         if self.current_question_index < len(self.active_questions) - 1:
-            self.current_question_index += 1; self.display_current_question()
-        elif self.current_mode == 'review': self.on_practice_close(show_final_message=True)
+            self.current_question_index += 1
+            self.display_current_question()
+        elif self.current_mode == 'review':
+            self.on_practice_close(show_final_message=True)
     def prev_question(self):
-        if self.current_question_index > 0: self.current_question_index -= 1; self.display_current_question()
+        if self.current_question_index > 0:
+            self.current_question_index -= 1
+            self.display_current_question()
 
     def submit_or_show_answer(self, auto_submit: bool = False):
         if self.current_mode == 'review':
             q = self.active_questions[self.current_question_index]
-            self.practice_view.show_correct_answer(q.correct_answer); self.practice_view.switch_to_srs_feedback(True)
+            self.practice_view.show_correct_answer(q.correct_answer)
+            self.practice_view.switch_to_srs_feedback(True)
         else:
             if not auto_submit and not messagebox.askyesno("Conferma", "Sei sicuro di voler terminare?"): return
             self._stop_timer()
@@ -328,10 +349,13 @@ class QuizController:
                 msg = "Sessione di ripasso completata!\n\nATTENZIONE: Hai difficoltà persistenti con queste domande (leeches). Considera di studiarle da una fonte diversa:\n\n"
                 for q in leech_questions[:5]: msg += f"- {q.text[:80]}...\n"
                 messagebox.showwarning("Domande Ostiche Rilevate", msg)
-            else: messagebox.showinfo("Fine Sessione", "Hai completato tutte le domande da ripassare per oggi!")
-        self.root.deiconify(); self.update_dashboard_and_srs_status()
+            else:
+                messagebox.showinfo("Fine Sessione", "Hai completato tutte le domande da ripassare per oggi!")
+        self.root.deiconify()
+        self.update_dashboard_and_srs_status()
 
     def on_results_close(self):
         if self.results_view: self.results_view.destroy(); self.results_view = None
         if self.practice_view: self.practice_view.destroy(); self.practice_view = None # Clean up practice view as well
-        self.root.deiconify(); self.update_dashboard_and_srs_status()
+        self.root.deiconify()
+        self.update_dashboard_and_srs_status()

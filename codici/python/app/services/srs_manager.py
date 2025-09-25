@@ -57,6 +57,19 @@ class SRSManager:
     def get_leech_questions(self) -> List[Question]:
          return [item.question for item in self.deck.values() if item.lapses >= self.LEECH_THRESHOLD]
 
+    def get_new_questions(self, all_questions: List[Question]) -> List[Question]:
+        """
+        Identifies and returns a list of new questions that are not yet in the SRS deck,
+        limited by the 'new_cards_per_day' setting.
+        """
+        existing_ids = set(self.deck.keys())
+        new_questions = [q for q in all_questions if q.id not in existing_ids]
+
+        global_settings = self.settings_manager.get_global_settings()
+        limit = global_settings.get("new_cards_per_day", 20) # Default to 20 if not set
+
+        return new_questions[:limit]
+
     def add_or_update_from_exam(self, question: Question) -> bool:
         item = self.deck.get(question.id)
         if item:
@@ -69,12 +82,16 @@ class SRSManager:
         return item.lapses >= self.LEECH_THRESHOLD
 
     def update_after_review(self, question: Question, rating: str, time_taken: float) -> bool:
-        if question.id not in self.deck: return False
-
         is_correct = rating != "non_la_sapevo"
         self.app_data_manager.log_review(self.subject, is_correct)
 
-        item = self.deck[question.id]
+        # If the question is not in the deck, it's a new card. Create a new SRSItem for it.
+        # Otherwise, retrieve the existing item.
+        if question.id not in self.deck:
+            item = SRSItem(question)
+            self.deck[question.id] = item
+        else:
+            item = self.deck[question.id]
 
         # Carica gli intervalli SRS dalle impostazioni globali
         global_settings = self.settings_manager.get_global_settings()

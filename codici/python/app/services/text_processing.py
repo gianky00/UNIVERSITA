@@ -48,15 +48,9 @@ class TextFileParser:
                     option_text = line[1:].strip()
                     options.append(option_text)
                     correct_answer = option_text
-                elif line.startswith('[x]'): # Support for another format
-                    option_text = line[3:].strip()
-                    options.append(option_text)
-                    correct_answer = option_text
-                elif line.startswith('[ ]'): # Support for another format
-                    option_text = line[3:].strip()
-                    options.append(option_text)
+                # A line is considered an option if it doesn't start with a known non-option pattern
+                # and is not a junk line. This is more robust than looking for specific option markers.
                 else:
-                    # Assume any other non-junk line is a regular option
                     options.append(line)
 
             if options:

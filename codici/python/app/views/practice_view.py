@@ -108,8 +108,15 @@ class PracticeView(Toplevel):
         self.prev_button.config(command=prev_cb); self.next_button.config(command=next_cb); self.submit_button.config(command=submit_cb)
         for rating, button in self.srs_rate_buttons.items(): button.config(command=lambda r=rating: rate_cb(r))
     def switch_to_srs_feedback(self, show: bool):
-        if show: self.nav_frame.pack_forget(); self.feedback_frame.pack(side='bottom', fill='x', pady=(10, 0))
-        else: self.feedback_frame.pack_forget(); self.nav_frame.pack(side='bottom', fill='x', pady=(10, 0))
+        if show:
+            self.nav_frame.pack_forget()
+            self.feedback_frame.pack(side='bottom', fill='x', pady=(10, 0))
+            self.status_label.config(text="Valuta la tua risposta per proseguire.")
+            self.submit_button.config(state='disabled')
+        else:
+            self.feedback_frame.pack_forget()
+            self.nav_frame.pack(side='bottom', fill='x', pady=(10, 0))
+            self.submit_button.config(state='normal')
     def setup_for_mode(self):
         if self.mode == 'review':
             self.submit_button.config(text="Mostra Risposta"); self.prev_button.grid_remove(); self.next_button.grid_remove()
