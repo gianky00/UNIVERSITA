@@ -1,0 +1,607 @@
+# 01. I saw him ___________ days ago.
+a little
+a few
+much
+a lot
+
+# 02. I haven't got ___________ clean clothes.
+a
+a little
+any
+some
+
+# 03. How _________ friends have you got?
+many
+any
+a little
+much
+
+# 04. There are ________ carrots in the fridge.
+many
+any
+much
+lot of
+
+# 05. Is there _________ apple juice left? No, but there is ________ orange juice.
+some / any
+a / an
+an / an
+any / some
+
+# 06. Would you like _______________ tea?
+many
+any
+a lot
+some
+
+# 07. How __________ milk have we got?
+many
+much
+a lot
+any
+INGEGNERIA INFORMATICA E DELL'AUTOMAZIONE (D.M. 270/04)
+
+# 01. We couldn't book a room. The hotel has no ____________ .
+lobby
+room service
+restaurant
+vacancies
+
+# 02. _________ rich should do more to help _________ poor.
+--- / the
+The / the
+A / the
+A / a
+
+# 03. I never listen to _________ radio. In fact, I haven't even got _________ radio.
+a / a
+--- / a
+the / the
+the / a
+
+# 04. _________ President Bush is from Texas.
+A
+---
+An
+The
+
+# 05. If you'd like some snacks, you can find a ______________ at the entrance.
+tip
+vacancy
+vending machine
+weight room
+
+# 06. Fill in the gaps with: THE, A, AN or --- (no article).
+____ girls are more sensitive than boys.
+Gina is waiting for you in ____ living room.
+Rome is _____ capital city of ____ Italy.
+"What do you do?" "I'm ____ doctor.
+What time do you usually go to _____ school?
+
+# 01. The room was _____________ silent.
+completest
+completer
+completely
+complete
+
+# 02. You should take these things ______________ !
+more serious
+serious
+seriously
+much serious
+
+# 03. It's ________________ story I have ever heard.
+the most funny
+the funniest
+funnier
+the most funniest
+
+# 04. There was ________________ silence in the room.
+completely
+completest
+completer
+complete
+
+# 05. My shoes are _____________ than yours.
+expensiver
+more expensive
+epensivest
+expensive
+
+# 06. I am _____________ than my friend.
+thinnest
+more thin
+thin
+thinner
+
+# 07. My life isn't _______________ yours.
+difficult than
+more difficult
+difficulter
+as difficult as
+INGEGNERIA INFORMATICA E DELL'AUTOMAZIONE (D.M. 270/04)
+
+# 08. It's ________________ carbonara I have ever tasted.
+the worse
+the worst
+the worsest
+worse
+
+# 01. ____________ daughter is really cute!
+Yours
+Mine
+Your
+Hers
+
+# 02. It's not his fault. He shouldn't blame _____________ .
+him
+himself
+themselves
+hers
+
+# 03. He gave me ___________ phone number.
+hers
+him
+theirs
+his
+
+# 04. That beautiful house over there is ___________.
+theirs
+our
+their
+my
+
+# 05. This is ____________ favourite song. Do you like it?
+---
+my
+hers
+mine
+
+# 06. We had a great holiday. We enjoyed _______________.
+ours
+ourself
+we
+ourselves
+
+# 01. What would you like to do _________ the weekend?
+at
+to
+in
+on
+
+# 02. What time do you get ___________ home on Mondays?
+at
+to
+---
+in
+
+# 03. The concert begins ________ 8 p.m.
+at
+---
+on
+to
+
+# 04. Are you free _________ Saturdays?
+to
+on
+in
+at
+
+# 05. I love reading ________ the evenings.
+---
+on
+at
+in
+
+# 06. The bus leaves __________ 12.45.
+at
+in
+on
+to
+
+# 07. It gets hot _________ the summer.
+at
+on
+in
+---
+
+# 01. Steve earns a lot of money. He has the highest __________ in the family.
+perks
+salary
+cash
+retire
+
+# 02. The HR Department selects the most suitable ______________ .
+pension
+promotion
+applicants
+recruitment
+
+# 01. Alex _________ already read when she was 5.
+could
+can
+may
+might
+
+# 02. Bernard ___________ speak four languages.
+able to
+is
+cans
+can
+
+# 03. I _________ be late this morning.
+---
+am
+might
+need
+
+# 04. ________ you hear me?
+Might
+Need
+Can
+Should
+
+# 01. For privacy reasons, use the ___________ feature when sending an email to many people.
+skim
+carbon copy
+network
+blind carbon copy
+
+# 02. Please find ______________ my CV.
+forward
+copy
+save
+attached
+
+# 03. Please confirm __________ of this mail.
+respond
+receipt
+browse
+delete
+
+# 04. Children _____________ eat too much chocolate.
+need
+haven't to
+shouldn't
+isn't
+
+# 05. You must keep my secret. You _________ tell it to Emma.
+be able to
+mustn't
+need
+haven't
+
+# 06. You __________ listen to your mum.
+has to
+need
+able to
+should
+
+# 07. How many hours do you ___________ work on weekdays?
+may
+should
+have to
+can
+
+# 01. _____________ you American?
+Do
+Is
+Don't
+Are
+
+# 02. Italy is a very popular tourist _____________.
+runway
+destination
+arrival
+accommodation
+
+# 03. At the check-in desk passengers receive a ______________ card.
+take-off
+boarding
+cabin
+booking
+
+# 04. The plane was ______________ by an hour because of bad weather.
+customs
+terminal
+departure
+delayed
+
+# 05. More and more people book their ________________ on the Internet.
+review
+passport
+runway
+accommodation
+
+# 06. Ron ____________ coffee.
+drink
+doesn't drink
+not drink
+isn't drink
+
+# 07. What time ________ you usually get up in the morning?
+do
+is
+does
+are
+INGEGNERIA INFORMATICA E DELL'AUTOMAZIONE (D.M. 270/04)
+
+# 08. ______________ Emma live in London?
+Is
+Do
+---
+Does
+
+# 09. Peter's girlfriend _____________ pretty.
+does
+aren't
+isn't
+are
+
+# 10. Gina ____________ the piano very well.
+play
+plays
+playing
+is play
+
+# 01. _________ you listening to me?
+Are
+Do
+Is
+Does
+
+# 02. Why ______ you ________ at me like that?
+are / looking
+do / looking
+are / look
+do / looks
+
+# 03. Ann cannot answer the phone because she _____________ a shower.
+has
+is taking
+take
+have
+
+# 04. Hurry up! ____________ for you.
+She waiting
+I wait
+I'm waiting
+Wait
+
+# 05. We can go out now. It _________________ anymore.
+don't rain
+isn't rain
+isn't raining
+doesn't raining
+INGEGNERIA INFORMATICA E DELL'AUTOMAZIONE (D.M. 270/04)
+
+# 01. We _________ a house in the country.
+buying
+buys
+buyed
+bought
+
+# 02. Yesterday I __________ to the theatre.
+went
+goed
+goes
+did go
+
+# 03. What _______ you do last weekend?
+was
+did
+does
+were
+
+# 04. Where _________ you? I didn't see you.
+was
+did
+were
+do
+
+# 05. I ________ an apple for breakfast.
+eating
+has
+ate
+eated
+
+# 01. While I ________ (shop) I _________ (lose) my wallet.
+was shopping / lost
+shopped / was losing
+was shopping / was losing
+shopped / losed
+
+# 02. 1. When Penny last ________ (see) him, he __________ (look) for a job.
+saw / was looking
+saw / looked
+seen / was looking
+was seeing / looked
+
+# 03. What ____ you _______ (do) when I ________ (call) you?
+did ___ do / was calling
+was ___ doing / called
+were ___ doing / called
+do ___ do / called
+
+# 04. Susan _________ (break) a glass while she __________ (do) the washing up.
+broke / was doing
+was breaking / did
+was breaking / were doing
+broke / did
+
+# 01. I'm calling __________ your advertisement.
+because
+reply
+for
+about
+
+# 02. I was _________ if you could give me some information.
+pleased to
+think
+wondering
+wondered
+
+# 01. I __________ to Rome twice.
+have been
+am
+were
+was
+
+# 02. How many cakes ________ you ____________ ?
+have ___ eaten
+has ___ eaten
+did ___ ate
+have ___ eated
+
+# 03. Tommy ____________ his homework yet.
+did finish
+haven't finished
+hasn't finished
+has finish
+
+# 04. Gina has been working here _______ five years.
+---
+since
+at
+for
+
+# 05. I haven't seen my sister ____________ Friday.
+since
+at
+to
+for
+
+# 06. How long _______ you _________ ?
+have ___ waiting
+has ___ waiting
+are ___ waited
+have ___ been waiting
+
+# 01. __________ you ever ___________ golf?
+Did ___ played
+Has ___ played
+Did ___ play
+Have ___ played
+
+# 02. William Shakespeare __________ Romeo and Juliet.
+has been writing
+has written
+writed
+wrote
+INGEGNERIA INFORMATICA E DELL'AUTOMAZIONE (D.M. 270/04)
+
+# 01. How about _________ to the cinema?
+go
+we going
+going
+we should going
+
+# 02. I think we _________ go to the theatre.
+should be
+should
+are go
+must to
+
+# 01. “I'm tired, and I still have a lot to do.” “Don't panic. I _______ you.”
+helping
+'ll help
+help
+going to help
+
+# 02. What _____ you ________ to do tonight?
+will / ---
+do / going
+are ___ going
+do / ---
+
+# 03. “It's so hot in here.” “I____________ the window.”
+am opening
+'ll open
+opening
+open
+
+# 04. Luisa _______ finish her paper this evening.
+are going
+is going to
+is going
+will be
+INGEGNERIA INFORMATICA E DELL'AUTOMAZIONE (D.M. 270/04)
+
+# 01. The bus _________ at 8.30.
+leaves
+is going to leave
+is leaving
+will leave
+
+# 02. The shop ___________ at 9 a.m.
+will open
+open
+opens
+is opening
+
+# 03. This time tomorrow I _______ a fancy hotel.
+am visit
+will visiting
+visits
+will be visiting
+
+# 04. She _______ to Paris on Sunday. She has already bought her ticket.
+flying
+is going to fly
+is flying
+will fly
+
+# 05. The first semester always ________ in September.
+is going to begin
+will be beginning
+is beginning
+begins
+
+# 06. I _____________ my doctor tomorrow morning at 9.
+am visiting
+going to visit
+visits
+will visit
+
+# 01. Don't forget about the email _______ you have to write!
+whom
+whose
+that
+who
+
+# 02. He is the boy _______ wanted to marry me _______ we were 5.
+that / ---
+--- / when
+whom / when
+who / when
+
+# 03. These are things _______ we should recycle.
+whose
+who
+that
+whom
+
+# 04. My sister, __________ husband is a piano player, hates classical music.
+whom
+whose
+that
+which
+
+# 05. This is the village __________ I lived as a child.
+where
+which
+whom
+---
+INGEGNERIA INFORMATICA E DELL'AUTOMAZIONE (D.M. 270/04)
+
+# 01. To “regret” means __________ .
+to ask
+to inform
+to inquire
+to be sorry
+
+# 02. To “apologise” means ________ .
+to confirm
+to inform
+to say sorry
+to inquire

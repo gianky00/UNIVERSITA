@@ -1,0 +1,2077 @@
+Set Domande
+ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+Generato il 26/01/2024 11:33:25
+N° Domande Aperte 163
+N° Domande Chiuse 248
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 2/89
+Indice
+Indice Lezioni .......................................................................................................................... p. 2
+Lezione 001 ............................................................................................................................. p. 4
+Lezione 002 ............................................................................................................................. p. 7
+Lezione 003 ............................................................................................................................. p. 8
+Lezione 004 ............................................................................................................................. p. 10
+Lezione 005 ............................................................................................................................. p. 11
+Lezione 006 ............................................................................................................................. p. 24
+Lezione 007 ............................................................................................................................. p. 26
+Lezione 008 ............................................................................................................................. p. 27
+Lezione 009 ............................................................................................................................. p. 30
+Lezione 010 ............................................................................................................................. p. 31
+Lezione 011 ............................................................................................................................. p. 38
+Lezione 012 ............................................................................................................................. p. 39
+Lezione 013 ............................................................................................................................. p. 40
+Lezione 014 ............................................................................................................................. p. 41
+Lezione 015 ............................................................................................................................. p. 43
+Lezione 017 ............................................................................................................................. p. 45
+Lezione 018 ............................................................................................................................. p. 46
+Lezione 019 ............................................................................................................................. p. 47
+Lezione 020 ............................................................................................................................. p. 48
+Lezione 021 ............................................................................................................................. p. 49
+Lezione 022 ............................................................................................................................. p. 51
+Lezione 023 ............................................................................................................................. p. 54
+Lezione 025 ............................................................................................................................. p. 55
+Lezione 026 ............................................................................................................................. p. 58
+Lezione 027 ............................................................................................................................. p. 60
+Lezione 028 ............................................................................................................................. p. 61
+Lezione 029 ............................................................................................................................. p. 62
+Lezione 030 ............................................................................................................................. p. 63
+Lezione 031 ............................................................................................................................. p. 66
+Lezione 032 ............................................................................................................................. p. 67
+Lezione 033 ............................................................................................................................. p. 68
+Lezione 034 ............................................................................................................................. p. 70
+Lezione 035 ............................................................................................................................. p. 72
+Lezione 036 ............................................................................................................................. p. 74
+Lezione 037 ............................................................................................................................. p. 75
+Lezione 038 ............................................................................................................................. p. 78
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 3/89
+Lezione 039 ............................................................................................................................. p. 80
+Lezione 041 ............................................................................................................................. p. 82
+Lezione 042 ............................................................................................................................. p. 83
+Lezione 043 ............................................................................................................................. p. 84
+Lezione 044 ............................................................................................................................. p. 85
+Lezione 045 ............................................................................................................................. p. 86
+Lezione 046 ............................................................................................................................. p. 88
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 4/89
+Lezione 001
+01. IL VALORE DELLA RESISTENZA
+ E' inversamente proporzionale alla sezione del materiale, alla resistività e direttamente proporzionale alla lunghezza
+ E' direttamente proporzionale alla resistività del materiale, direttamente proporzionale alla lunghezza, e inversamente proporzionale alla sezione
+ E' variabile solo con la sezione del materiale con cui è costituita.
+ E' costante e si differenzia solo per la tipologia di materiale.
+02. LA CARICA ELETTRICA
+ E' LA DERIVATA DELLA CORRENTE NEL TEMPO
+ E' INVERSAMENTE PROPORZIONALE ALLA CORRENTE CHE ATTRAVERSA LA SUPERFICIE S
+ E' L'INTEGRALE DELLA CORRENTE NEL TEMPO
+ E' INDIPENDENTE DALLA CORRENTE
+03. LA DIFFERENZA DI POTENZIALE TRA I PUNTI A E B -2
+ DIPENDE DAL PERCORSO SEGUITO
+ IN ALCUNI CASI DIPENDE DAL PERCORSO SEGUITO
+ VALE SEMPRE ZERO
+ E' INDIPENDENTE DAL PERCORSO SEGUITO
+04. 1 VOLT =
+ TENSIONE TRA DUE PUNTI POSTI AD UN METRO DI DISTANZA
+ 1 COULOMB/1 JOULE
+ 1 JOULE/ 1 COULOMB
+ CORRENTE NELLA SUPERFICIE UNITARIA
+05. LA DIFFERENZA DI POTENZIALE TRA I PUNTI A E B -1
+ NON DIPENDE DAL LAVORO COMPITUTO PER SPOSTARE UNA CARICA DA A IN B
+ DIPENDE DAL PERCORSO SEGUITO
+ SE A E B COINCIDONO TALE VALORE E' MASSIMO
+ DIPENDE DAL LAVORO COMPIUTO PER SPOSTARE UNA CARICA DA A IN B
+06. UN POTENZIOMETRO
+ E' UN RESISTORE CON RESISTENZA COSTANTE
+ E' UN'APPARECCHIATURA ELETTRICA IN GRADO DI MANTENERE COSTANTE LA RESISTENZA AL VARIARE DELLA TEMPERATURA
+ E' UNA APPARECCHIATURA IN GRADO DI GENERARE POTENZA ELETTRICA
+ E' UN RESISTORE CON RESISTENZA VARIABILE
+07. LA RESISTIVITA' DI UN MATERIALE
+ VARIA CON LA TEMPERATURA
+ E' INDIPENDENTE DALLA TEMPERATURA
+ E' DIRETTAMENTE PROPORZIONALE ALLA TEMPERATURA
+ E' INVERSAMENTE PROPORZIONALE ALLA TEMPERATURA
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 5/89
+08. LA CORRENTE ELETTRICA
+ E' L'INTEGRALE DELLA CARICA RISPETTO AL TEMPO
+ E' INDIPENDENTE DALLA CARICA
+ E' INVERSAMENTE PROPORZIONALE ALLA CARICA CHE ATTRAVERSA LA SUPERFICIE S
+ E' LA DERIVATA DELLA CARICA RISPETTO AL TEMPO
+09. UN ATOMO DI RAME CONTIENE
+ 26 ELETTRONI
+ 8 ELETTRONI
+ 29 ELETTRONI
+ 4 ELETTRONI
+10. LA FORZA DI COULOMB SI RIFERISCE A:
+ LA FORZA CON CUI CARICHE DI SEGNO OPPOSTO SI RESPINGONO
+ UN ATOMO ELETTRICAMENTE NEUTRO
+ LA FORZA CON CUI CARICHE DELLO STESSO SEGNO SI ATTRAGGONO
+ LA FORZA CON CUI LE CARICHE ELETTRICHE INTERAGISCONO
+11. IN UN ATOMO
+ IL NUMERO DEGLI ELETTRONI E' UGUALE AL NUMERO DEI PROTONI
+ IL NUMERO DEGLI ELETTRONI E' UGUALE AL NUMERO DEI NEUTRONI
+ IL NUMERO DEGLI ELETTRONI E' UGUALE AL NUMERO DI PROTONI SOMMATO AL NUMERO DEI NEUTRONI
+ IL NUMERO DEGLI ELETTRONI E' PARI A QUATTRO
+12. LA RESISTENZA SI MISURA IN
+ WATT
+ AMPERE
+ OHM
+ VOLT
+13. LA CORRENTE SI MISURA IN
+ VOLT
+ AMPERE
+ WATT
+ OHM
+14. LA TENSIONE SI MISURA IN
+ V*A
+ AMPERE
+ OHM
+ VOLT
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 6/89
+15. LA RESISTIVITÀ DI UN MATERIALE DIPENDE
+ Dalla temperatura e dalla composizione chimica.
+ Dalla lunghezza del materiale
+ Dalla sezione del materiale
+ Dalla temperatura al quadrato e dalla composizione chimica del materiale
+16. Corrente elettrica
+17. Tensione elettrica
+18. Resistenza elettrica
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 7/89
+Lezione 002
+01. CHE COSA SI INTENDE PER MAGLIA
+ Un percorso chiuso che contiene un insieme di elementi circuitali connessi tra di loro
+ Un percorso chiuso con soli generatori di tensione e corrente
+ Un percorso chiuso che contiene un insieme di resistenze connesse tra di loro
+ Un percorso chiuso con resistenze capacità e induttanze
+02. CHE COSA SI INTENDE PER QUADRIPOLO
+ Due bipoli capacitivi con nessuno estremo in comune.
+ Un componente a quattro morsetti di cui un coppia costituisce la porta di ingresso e una coppia costituisce la porta di uscita.
+ Due bipoli collegati in modo da formare una maglia chiusa
+ Due bipoli resistivi con un estremo in comune
+03. Convenzione degli utilizzatori
+04. Convenzione dei generatori
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 8/89
+Lezione 003
+01. DIODO REALE
+ SI COMPORTA SEMPRE COME UN CORTO CIRCUITO
+ IL SUO COMPORTAMENTO NON DIPENDE DALLA TEMPERATURA IN CUI OPERA
+ SI COMPORTA SEMPRE COME UN CIRCUITO APERTO
+ IL SUO COMPORTAMENTO DIPENDE DALLA TEMPERATURA IN CUI OPERA
+02. CHE COSA SI INTENDE PER BIPOLO NON LINEARE
+ Un bipolo la cui caratteristica tensione-corrente è esprimibile solo sotto forma di esponenziale
+ Un bipolo la cui caratteristica tensione-corrente è una retta
+ Un bipolo in cui la caratteristica tensione-corrente non è una retta
+ Un bipolo in cui la caratteristica tensione-corrente non è esprimibile sotto forma di funzione
+03. COSA SI INTENDE PER BIPOLO CIRCUITO APERTO
+ Un bipolo con resistenza finita ma maggiore di 1000 ohm
+ Un bipolo con resistenza finita ma minore di 1000 ohm.
+ Un bipolo con resistenza infinita
+ Un bipolo con resistenza nulla
+04. GENERATORE DI TENSIONE INDIPENDENTE
+ LA SUA CARATTERISTICA E' UNA SPEZZATA PASSANTE PER L'ORIGINE
+ NON ESISTONO
+ LA SUA CARATTERISTICA E' UNA RETTA
+ LA SUA CARATTERISTICA NON E' UNA RETTA
+05. IL VALORE DELLA CONDUTTANZA
+ E' l'opposto del valore della resistenza
+ E' indipendente dal valore della resistenza.
+ E' direttamente proporzionale al valore della resistenza
+ E' il reciproco del valore della resistenza
+06. DIODO IDEALE -2
+ IL SUO COMPORTAMENTO NON DIPENDE DA COME E' POLARIZZATO
+ IL SUO COMPORTAMENTO DIPENDE DA COME E' POLARIZZATO
+ SI COMPORTA SEMPRE COME UN CIRCUITO APERTO
+ SI COMPORTA SEMPRE COME UN CORTO CIRCUITO
+07. BIPOLO CIRCUITO APERTO
+ LA SUA RESISTENZA VALE ZERO
+ LA SUA RESISTENZA PUO' ASSUMERE QUALSIASI VALORE
+ LA SUA RESISTENZA ASSUME VALORE COSTANTE E POSISTIVO
+ LA SUA RESISTENZA VALE INFINITO
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 9/89
+08. RESISTORI LINEARI TEMPO INVARIANTI -1
+ SONO COMPONENTI A QUATTRO MORSETTI
+ SONO COMPONENTI A TRE MORSETTI
+ SONO COMPONENTI A DUE MORSETTI
+ SONO COMPONENTI AD N MORSETTI
+09. RESISTORI LINEARI TEMPO INVARIANTI -2
+ LA SUA CARATTERISTICA E' UNA QUALSIASI RETTA
+ LA SUA CARATTERISTICA E' UNA RETTA NON PASSANTE PER L'ORIGINE CHE NON VARIA NEL TEMPO
+ LA SUA CARATTERISTICA E' UNA RETTA PASSANTE PER L'ORIGINE CHE VARIA NEL TEMPO
+ LA SUA CARATTERISTICA E' UNA RETTA PASSANTE PER L'ORIGINE CHE NON VARIA NEL TEMPO
+10. RESISTORI LINEARI TEMPO VARIANTI
+ LA SUA CARATTERISTICA E' UNA RETTA PASSANTE PER L'ORIGINE CHE HA UNA PENDENZA CHE VARIA NEL TEMPO
+ LA SUA CARATTERISTICA E' UNA RETTA NON PASSANTE PER L'ORIGINE CHE NON VARIA NEL TEMPO
+ LA SUA CARATTERISTICA E' UNA QUALSIASI RETTA
+ LA SUA CARATTERISTICA E' UNA RETTA PASSANTE PER L'ORIGINE CHE HA UNA PENDENZA CHE VARIA NEL TEMPO
+11. BIPOLO CORTO CIRCUITO -1
+ LA SUA RESISTENZA ASSUME VALORE COSTANTE E POSISTIVO
+ LA SUA RESISTENZA PUO' ASSUMERE QUALSIASI VALORE
+ LA SUA RESISTENZA VALE INFINITO
+ LA SUA RESISTENZA VALE ZERO
+12. BIPOLO CORTO CIRCUITO -2
+ LA TENSIONE AI SUOI MORSETTI VALE INFINITO
+ NON E' POSSIBILE REALIZZARLO PRATICAMENTE
+ LA TENSIONE AI SUOI MORSETTI VALE ZERO
+ LA TENSIONE AI SUOI MORSETTI PUO' ASSUMERE QUALSIASI VALORE
+13. DIODO IDEALE -1
+ E' UN COMPONENTE LINEARE
+ SI COMPORTA SEMPRE COME UN CORTO CIRCUITO
+ LA SUA RESISTENZA E' SEMPRE MAGGIORE DI ZERO
+ E' UN COMPONENTE NON LINEARE
+14. Diodo reale
+15. Bipolo corto circuito e bipolo circuito aperto
+16. Diodo ideale
+17. Generatore di tensione
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 10/89
+Lezione 004
+01. UN GENERATORE E' CONTROLLATO QUANDO.
+ Il valore del generatore cambia al cambiare di una tensione generata da un altro generatore.
+ Il valore del generatore dipende da un'altra tensione o corrente presente nel circuito e varia proporzionalmente ad essa.
+ Il valore del generatore dipende solo dal valore di una corrente generata
+ Il valore del generatore dipende solo dal valore di una tensione generata.
+02. L'INDUTTANZA SI MISURA IN
+ FARAD
+ SECONDI
+ HENRY
+ OHM
+03. LA CAPACITA' SI MISURA IN
+ SECONDI
+ HENRY
+ FARAD
+ OHM
+04. QUAL'E' LA RELAZIONE TRA TENSIONE E CORRENTE AI CAPI DI UNA INDUTTANZA
+ In una induttanza la variazione della corrente è direttamente proporzionale alla tensione e inversamente proporzionale al valore dell'induttanza stessa.
+ In una induttanza, la variazione della tensione è direttamente proporzionale al valore della corrente e all'induttanza.
+ In una induttanza, la variazione della tensione è inversamente proporzionale al valore della corrente e all'induttanza.
+ In una induttanza la variazione della corrente è direttamente proporzionale alla tensione.
+05. QUAL'E' LA RELAZIONE TRA TENSIONE E CORRENTE AI CAPI DI UN CONDENSATORE
+ In un condensatore, la variazione della tensione ai capi delle due armature, è direttamente proporzionale alla corrente e inversamente proporzionale al valore della capacità
+stessa.
+ In un condensatore, la variazione della tensione ai capi delle due armature, è direttamente proporzionale alla corrente.
+ In un condensatore, la variazione della corrente è direttamente proporzionale alla tensione
+ In un condensatore, la variazione della corrente e inversamente proporzionale alla tensione.
+06. COSA SI INTENDE PER GENERATORE INDIPENDENTE DI CORRENTE O DI TENSIONE
+ Un generatore il cui valore di corrente o di tensione non dipende dal tempo t.
+ Un generatore il cui valore di corrente o di tensione non dipende dalla temperatura
+ Un generatore il cui valore di corrente o di tensione son fra di loro indipendenti.
+ Un generatore in cui il valore della corrente o della tensione non dipende da nessun'altra grandezza elettrica del circuito.
+07. Induttore
+08. Generatori controllati
+09. Generatore di corrente
+10. Condensatore
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 11/89
+Lezione 005
+01.
+Nel circuito in figura la tensione V:
+ È sempre positiva
+ Può assumere qualsiasi valore
+ È sempre uguale a zero
+ È sempre negativa
+02. COLLEGAMENTO IN PARALLELO DI BIPOLI
+ LA CORRENTE CHE LI ATTRAVERSA E' DIVERSA
+ SONO SOTTOPOSTI ALLA STESSA TENSIONE
+ SONO SOTTOPOSTI A DIVERSA TENSIONE
+ LA CORRENTE CHE LI ATTRAVERSA E' LA STESSA
+03.
+Nel circuito in figura la corrente che attraversa la resistenza R5 (da A verso B) è:
+ Sempre V/R5
+ Sempre negativa
+ Sempre nulla
+ Sempre positiva
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 12/89
+04.
+Nel circuito in figura la tensione VAB:
+ Tutte vere
+ È uguale alla tensione VR ai morsetti della resistenza R
+ È sempre positiva
+ E’ uguale a V-VR1-VR3
+05.
+Nel circuito in figura le tre resistenze R:
+ Sono collegate in serie
+ Sono collegate a stella
+ Sono collegate a triangolo
+ Sono collegate in parallelo
+06. COLLEGAMENTO IN PARALLELO DI GENERATORI DI CORRENTE
+ LA CORRENTE DEL PARALLELO E' PARI ALLA SOMMA ALGEBRICA DELLE CORRENTI DEI SINGOLI GENERATORI
+ LA CORRENTE DEL PARALLELO E' SEMPRE MASSIMA
+ LA POTENZA DEL PARALLELO E' PARI ALLA MASSIMA POTENZA
+ PER REALIZZARLO E' NECESSARIO CHE I GENERATORI ABBIANO TUTTI LA STESSA CORRENTE
+07. COLLEGAMENTO IN SERIE DI GENERATORI DI TENSIONE
+ LA POTENZA DELLA SERIE E' PARI ALLA MASSIMA POTENZA
+ PER REALIZZARLO E' NECESSARIO CHE I GENERATORI ABBIANO TUTTI LA STESSA TENSIONE
+ LA CORRENTE DELLA SERIE E' PARI ALLA SOMMA ALGEBRICA DELLE CORRENTI DEI SINGOLI GENERATORI
+ LA TENSIONE DELLA SERIE E' PARI ALLA SOMMA ALGEBRICA DELLE TENSIONI DEI SINGOLI GENERATORI
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 13/89
+08. PARTITORE RESISTIVO DI CORRENTE
+ LA TENSIONE SI SUDDIVIDE EQUAMENTE TRA LE RESISTENZE
+ LA TENSIONE SI SUDDIVIDE TRA LE RESISTENZE IN MANIERA PROPORZIONALE AL LORO VALORE
+ LA TENSIONE VALE SEMPRE ZERO AI CAPI DEL PARALLELO
+ LA CORRENTE SI SUDDIVIDE TRA LE RESISTENZE IN MANIERA INVERSAMENTE PROPORZIONALE AL LORO VALORE
+09. PARTITORE RESISTIVO DI TENSIONE
+ LA TENSIONE SI SUDDIVIDE TRA LE RESISTENZE IN MANIERA INVERSAMENTE PROPORZIONALE AL LORO VALORE
+ LA TENSIONE VALE SEMPRE ZERO AI CAPI DELLA SERIE
+ LA TENSIONE SI SUDDIVIDE EQUAMENTE TRA LE RESISTENZE
+ LA TENSIONE SI SUDDIVIDE TRA LE RESISTENZE IN MANIERA PROPORZIONALE AL LORO VALORE
+10.
+Nel circuito in figura la tensione tra i punti A e B:
+ Dipende dal valore del generatore di tensione V
+ Dipende dalla posizione del tasto T
+ Tutte vere
+ Dipende dal diodo
+11. COLLEGAMENTO IN SERIE DI BIPOLI
+ LA CORRENTE CHE LI ATTRAVERSA E' DIVERSA
+ LA CORRENTE CHE LI ATTRAVERSA E' LA STESSA
+ LA TENSIONE CHE LI ATTRAVERSA E' LA STESSA
+ LA TENSIONE CHE LI ATTRAVERSA E' DIVERSA
+12. APPLICANDO LA LEGGE DI KIRCHHOOFF DELLE TENSIONI
+ TUTTI I TERMINI DELL'EQUAZIONE OTTENUTA POSSONO ESSERE TENSIONI
+ TUTTI I TERMINI DELL'EQUAZIONE OTTENUTA DEVONO ESSERE TENSIONI
+ TUTTI I TERMINI DELL'EQUAZIONE OTTENUTA DEVONO ESSERE CORRENTI
+ TUTTI I TERMINI DELL'EQUAZIONE OTTENUTA POSSONO ESSERE CORRENTI
+13. LA LEGGE DI KIRCHHOOFF DELLE TENSIONI
+ NON SI APPLICA AI CIRCUITI NON LINEARI
+ LA SOMMA ALGEBRICA DELLE TENSIONI DEI LATI DI UNA MAGLIA E' NULLA
+ DICE CHE IN OGNI MAGLIA LA SOMMA DELLE CORRENTI E' NULLA
+ DICE CHE IN OGNI NODO LA SOMMA DELLE TENSIONI E' NULLA
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 14/89
+14. APPLICANDO LA LEGGE DI KIRCHHOOFF DELLE CORRENTI
+ TUTTI I TERMINI DELL'EQUAZIONE OTTENUTA POSSONO ESSERE TENSIONI
+ TUTTI I TERMINI DELL'EQUAZIONE OTTENUTA DEVONO ESSERE TENSIONI
+ TUTTI I TERMINI DELL'EQUAZIONE OTTENUTA POSSONO ESSERE CORRENTI
+ TUTTI I TERMINI DELL'EQUAZIONE OTTENUTA DEVONO ESSERE CORRENTI
+15. LA LEGGE DI KIRCHHOOFF DELLE CORRENTI
+ ESPRIME LA LEGGE DELLA CONSERVAZIONE DELLA CARICA
+ NON SI APPLICA AI CIRCUITI NON LINEARI
+ DICE CHE IN OGNI NODO LA SOMMA DELLE TENSIONI E' NULLA
+ DICE CHE IN OGNI MAGLIA LA SOMMA DELLE CORRENTI E' NULLA
+16. RESISTENZE IN PARALLELO
+ Possono essere collegate in parallelo solo resistenze aventi lo stesso valore
+ Un parallelo di resistenze può essere sostituito da una resistenza il cui valore è dato dalla somma delle resistenze del parallelo
+ La tensione totale viene suddivisa tra le resistenze, tutte le resistenze sono attraversate dalla stessa corrente
+ La corrente totale viene suddivisa tra le resistenze, tutte le resistenze sono soggette alla stessa tensione
+17. RESISTENZE IN SERIE
+ Una serie di resistenze si ha solo quando tutte le resistenze hanno lo stesso valore
+ La corrente totale viene suddivisa tra le resistenze, tutte le resistenze sono soggette alla stessa tensione
+ Una serie di resistenze implica una partizione della corrente su ogni resistenza
+ La tensione totale viene suddivisa tra le resistenze, tutte le resistenze sono attraversate dalla stessa corrente
+18.
+Nel circuito in figura le resistenze R2 e R3:
+ Tutte false
+ Sono collegate a stella
+ Sono collegate in serie
+ Sono collegate in parallelo
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 15/89
+19.
+Nel circuito in figura la corrente che attraversa la resistenza R4 è:
+ Sempre nulla
+ Sempre positiva
+ Sempre negativa
+ Sempre V/R4
+20.
+Nel circuito in figura, vista la presenza del generatore controllato, per calcolare la tensione tra i due nodi:
+ Non si può usare Millmann
+ Tutte false
+ Si può usare Millmann
+ Basta applicare la legge di Ohm
+21.
+Nel circuito in figura le tre resistenze R sono collegate:
+ In parallelo
+ In serie
+ A triangolo
+ A stella
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 16/89
+22.
+Nel circuito in figura la tensione ai morsetti della resistenza R2 vale:
+ E1
+ 0 V
+ VDC
+ Non si può calcolare
+23.
+Nel circuito in figura la corrente che circola in R3 dipende:
+ Solo dal valore di R3
+ Dal valore di tutti i bipoli
+ Solo dal valore dei due generatori
+ Dal valore e da come sono collegati tra di loro tutti i bipoli
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 17/89
+24.
+Nel circuito in figura sono presenti:
+ Una stella di resistenze
+ Tutte false
+ Una stella di resistenze ed un triangolo di resistenze
+ Un triangolo di resistenze
+25.
+Nel circuito in figura sono presenti:
+ Tre nodi
+ Quattro nodi
+ Due nodi
+ Un nodo
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 18/89
+26.
+Nel circuito in figura la somma delle correnti che attraversano le resistenze R1 ed R2 è uguale a:
+ J
+ -J
+ Tutte false
+ V/(R1+R2)
+27.
+Nel circuito in figura quante stelle di resistenze è possibile individuare:
+ Tre
+ Una
+ Nessuna
+ Due
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 19/89
+28.
+Nel circuito in figura la tensione ai morsetti della resistenza R3 vale:
+ V
+ Zero
+ V/R3
+ Tutte false
+29.
+Nel circuito in figura VAB vale:
+ Sempre zero
+ Tutte false
+ V1+V3
+ R2*(J1+J3)
+30.
+Nel circuito in figura la resistenza R2:
+ È attraversata da una corrente pari a J4-J5
+ E’ attraversata da una corrente pari a J2
+ Non è attraversata da corrente
+ Tutte false
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 20/89
+31.
+Nel circuito in figura la tensione VAB:
+ Vale sempre zero
+ Vale R3*(V/(R1+R2+R3))
+ Vale R4*(V/(R1+R2+R3))
+ Vale sempre V
+32.
+Nel circuito in figura le resistenze R1 ed R3 sono collegate:
+ in parallelo
+ in serie
+ a stella
+ Tutte false
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 21/89
+33.
+Nel circuito in figura la corrente che attraversa la resistenza RA vale:
+ Tutte false
+ J1+(EA/RA)
+ Sempre zero
+ EA/RA
+34.
+Nel circuito in figura la corrente erogata dal generatore di tensione E1:
+ È sempre positiva
+ E’ sempre negativa
+ E’ sempre nulla
+ Tutte false
+35.
+Nel circuito in figura sono presenti:
+ Tutte false
+ Una maglia
+ Due maglie
+ Tre maglie
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 22/89
+36.
+Nel circuito in figura le resistenze R4, R5 ed R6:
+ Sono collegate a stella
+ Sono collegate in serie
+ Tutte false
+ Sono collegate a triangolo
+37.
+Per in circuito in figura, in cui E=12V, R1=1 ohm, R2=3 ohm, R=3 ohm,
+calcolare I.
+38.
+Per il circuito in figura, in cui V1=12 V, Ri=i ohm,
+calcolare la tensione V.
+39. Collegamento in parallelo di bipoli
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 23/89
+40.
+Per il circuito in figura, in cui Ri=i ohm,
+R=3 ohm, calcolare ReqA-A'
+41. Collegamento in serie di bipoli
+42. Legge di Kirchhoff delle tensioni
+43. Legge di Kirchhoff delle correnti
+44.
+Per il circuito in figura, in cui
+E1=12 V, E2=6 V, R1=10 Ω, R2=20 Ω.
+Calcolare il valore di J tale che la corrente I sia pari a zero.
+45.
+Per il circuito in figura, in cui E=12 V,R1=1 Ω, R2=5 Ω,
+calcolare I.
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 24/89
+Lezione 006
+01.
+Nel circuito in figura la tensione VAB vale:
+ VAB=0
+ VAB=R4/J
+ VAB=R4*J
+ Tutte false
+02.
+Per il circuito in figura sono noti V=6 V, J=5 A, Ri=i Ω,
+calcolare la tensione VAB.
+03.
+Per il circuito in figura sono noti E=12 V, Ri=i Ω, I3= 5 A
+calcolare VAB
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 25/89
+04.
+Per il circuito in figura sono noti E=12 V, Ri=i Ω , I3= 5 A,
+calcolare I.
+05. Sovrapposizione degli effetti
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 26/89
+Lezione 007
+01. QUANDO E' POSSIBILE CALCOLARE IL CIRCUITO EQUIVALENTE ALLA THEVENIN
+ Dipende dal circuito che si vuole sostituire: deve avere solo generatori di uno stesso tipo
+ Non ci sono limitazioni, occorre semplicemente poter calcolare la resistenza equivalente vista ai capi dei morsetti rispetto ai quali calcolare il circuito equivalente, una volta
+reso attivo il circuito su cui si lavora, e poi determinare la tensione misurata a vuoto ai capi degli stessi morsetti, una volta che si è reso passivo il circuito stesso.
+ Non ci sono limitazioni, occorre semplicemente poter calcolare la resistenza equivalente vista ai capi dei morsetti rispetto ai quali calcolare il circuito equivalente, una volta
+reso passivo il circuito su cui si lavora, e poi determinare la corrente misurata in corto circuito ai capi degli stessi morsetti, una volta che si è reso attivo il circuito stesso.
+ Quando la resistenza equivalente ai morsetti ai quali si vuole calcolare il circuito equivalente è finita.
+02. Thevenin
+03.
+Per il circuito in figura sono noti E=12 V, Ri=i Ω, J=2 A,
+calcolare il circuito equivalente di Thevenin ai morsetti AB.
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 27/89
+Lezione 008
+01. PER RENDERE UNA RETE PASSIVA
+ SI CORTOCIRCUITANO I GENERATORI DI CORRENTE E SI APRONO I GENERATORI DI CORRENTE
+ SI APRONONO I GENERATORI DI TENSIONE E SI APRONO I GENERATORI DI CORRENTE
+ SI CORTOCIRCUITANO I GENERATORI DI TENSIONE E SI CORTOCIRCUITANO I GENERATORI DI CORRENTE
+ SI CORTOCIRCUITANO I GENERATORI DI TENSIONE E E SI APRONO I GENERATORI DI CORRENTE
+02. COSA SIGNIFICA CONSIDERARE IL CIRCUITO EQUIVALENTE ALLA THEVENIN E ALLA NORTON
+ Significa sostituire il circuito con uno esattamente equivalente costituito sempre da un generatore di tensione e una resistenza in parallelo
+ Significa sostituire il circuito con uno equivalente dal punto di vista elettrico costituito da una sola resistenza e da un solo generatore di corrente (o di tensione) a seconda
+che si tratti del circuito equivalente di Norton o quello di Thevenin
+ Significa sostituire il circuito con uno esattamente equivalente costituito sempre da un generatore di tensione in parallelo ad una resistenza
+ Significa sostituire il circuito con uno esattamente equivalente costituito sempre da un generatore di corrente e una resistenza in serie
+03. IL CIRCUITO EQUIVALENTE DI THEVENIN
+ PUO' ESSERE VALUTATO ANCHE PER RETI NON LINEARI
+ PUO' ESSERE VALUTATO SEMPRE TRA I MORSETTI AB DI UNA RETE NON LINEARE
+ PUO' ESSERE VALUTATO SOLO PER RETI LINEARI
+ PUO' ESSERE VALUTATO SOLO PER ALCUNI TITPI DI CIRCUITI LINEARI
+04. IL CIRCUITO EQUIVALENTE DI NORTON
+ PUO' ESSERE VALUTATO SEMPRE TRA I MORSETTI AB DI UNA RETE NON LINEARE
+ PUO' ESSERE VALUTATO ANCHE PER RETI NON LINEARI
+ PUO' ESSERE VALUTATO SOLO PER RETI LINEARI
+ PUO' ESSERE VALUTATO SOLO PER ALCUNI TITPI DI CIRCUITI LINEARI
+05. IL TEOREMA DI THEVENIN DICE CHE
+ QUALSIASI RETE LINEARE COMPRESA TRA I MORSETTI A E B E' EQUIVALENTE AD UN CIRCUITO COSTITUITO DA UNA RESISTENZA IN SERIE AD
+UN GENERATORE DI TENSIONE
+ QUALSIASI RETE LINEARE COMPRESA TRA I MORSETTI A E B E' EQUIVALENTE AD UN CIRCUITO COSTITUITO DA UNA RESISTENZA IN SERIE AD
+UN GENERATORE DI CORRENTE
+ QUALSIASI RETE LINEARE COMPRESA TRA I MORSETTI A E B E' EQUIVALENTE AD UN CIRCUITO COSTITUITO DA UNA RESISTENZA COLLEGATA
+AD UN GENERATORE DI TENSIONE
+ QUALSIASI RETE LINEARE COMPRESA TRA I MORSETTI A E B E' EQUIVALENTE AD UN CIRCUITO COSTITUITO DA UNA RESISTENZA IN
+PARALLELO AD UN GENERATORE DI TENSIONE
+06. IL TEOREMA DI NORTON DICE CHE
+ QUALSIASI RETE LINEARE COMPRESA TRA I MORSETTI A E B E' EQUIVALENTE AD UN CIRCUITO COSTITUITO DA UNA RESISTENZA IN
+PARALLELO AD UN GENERATORE DI CORRENTE
+ QUALSIASI RETE LINEARE COMPRESA TRA I MORSETTI A E B E' EQUIVALENTE AD UN CIRCUITO COSTITUITO DA UNA RESISTENZA IN
+PARALLELO AD UN GENERATORE DI TENSIONE
+ QUALSIASI RETE LINEARE COMPRESA TRA I MORSETTI A E B E' EQUIVALENTE AD UN CIRCUITO COSTITUITO DA UNA RESISTENZA COLLEGATA
+AD UN GENERATORE DI TENSIONE
+ QUALSIASI RETE LINEARE COMPRESA TRA I MORSETTI A E B E' EQUIVALENTE AD UN CIRCUITO COSTITUITO DA UNA RESISTENZA IN SERIE AD
+UN GENERATORE DI CORRENTE
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 28/89
+07. PER CIRCUITO X EQUIVALENTE AL CIRCUITO Y INTENDIAMO
+ IL FATTO CHE X ED Y HANNO LO STESSO COMPORTAMENTO ELETTRICO
+ DUE CIRCUITI IDENTICI
+ CONTENGONO O SOLO GENERATORI DI CORRENTE O SOLO GENERATORI DI TENSIONI
+ IL FATTO CHE X ED Y HANNO LO STESSO NUMERO DI BIPOLI
+08. LE RESISTENZE EQUIVALENTI DI THEVENIN E DI NORTON
+ SI CALCOLANO ALLO STESSO MODO
+ POSSONO ESSERE VALUTATE SOLO SE IL CIRCUITO NON E' LINEARE
+ DIPENDONO SOLO DAI VALORI DELLE RESISTENZE PRESENTI NEL CIRCUITO
+ HANNO VALORI DIPENDENTI DAI CIRCUITI E ,IN GENERALE, DIVERSI TRA DI LORO
+09. AFFINCHE', AI MORSETTI AB, ESISTANO ENTRAMBI I CIRCUITI EQUIVALENTI DI THEVENIN E DI NORTON
+ LA RESISTENZA EQUIVALENTE AI MORSETTI AB PUO' VALERE ZERO
+ LA RESISTENZA EQUIVALENTE AI MORSETTI AB DEVE ESSERE MAGGIORE DI ZERO E MINORE DI INFINITO
+ LA RESISTENZA EQUIVALENTE AI MORSETTI AB PUO' VALERE INFINITO
+ LA RESISTENZA EQUIVALENTE AI MORSETTI AB PUO' ASSUMERE QUALSIASI VALORE
+10. LA TENSIONE DEL GENERATORE DI TENSIONE EQUIVALENTE DI THEVENIN TRA I MORSETTI AB
+ COINCIDE CON LA TENSIONE A VUOTO TRA I MORSETTI AB
+ COINCIDE CON LA CORRENTE A VUOTO TRA I MORSETTI AB
+ COINCIDE CON LA TENSIONE IN CORTO CIRCUITO TRA I MORSETTI AB
+ COINCIDE CON LA TENSIONE IN CORTO CIRCUITO TRA I MORSETTI AB APERTI
+11. LA CORRENTE DEL GENERATORE DI CORRENTE EQUIVALENTE DI NORTON TRA I MORSETTI AB
+ COINCIDE CON LA CORRENTE IN CORTOCIRCUITO TRA I MORSETTI AB
+ COINCIDE CON LA CORRENTE A VUOTO TRA I MORSETTI AB
+ COINCIDE CON LA TENSIONE IN CORTO CIRCUITO TRA I MORSETTI AB
+ COINCIDE CON LA TENSIONE IN CORTO CIRCUITO TRA I MORSETTI AB APERTI
+12. PER UNA RETE LINEARE COMPRESA TRA I MORSETTI AB
+ SE CALCOLIAMO IL CIRCUITO EQUIVALENTE DI THEVENIN NON POSSIAMO CALCOLARE IL CIRCUITO EQUIVALENTE DI NORTON
+ IN GENERALE, O ESISTE IL CIRCUITO EQUIVALENTE DI THEVENIN OPPURE ESISTE IN CIRCUITO EQUIVALENTE DI NORTON
+ IN GENERALE, E' POSSIBILE CALCOLARE SIA IL CIRCUITO EQUIVALENTE DI THEVENIN, SIA QUELLO DI NORTON
+ I CIRCUITI EQUIVALENTI DI THEVENIN E DI NORTON ESISTONO SEMPRE
+13. Norton
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 29/89
+14.
+Per il circuito in figura sono noti V=12 V, Ri=i Ω,
+determinare il circuito equivalente di Norton ai morsetti AB.
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 30/89
+Lezione 009
+01. IL TEOREMA DI MILLMAN
+ E' applicabile quando il numero di nodi del circuito è pari a tre ed uno si prende come riferimento
+ E' applicabile quando il numero di maglie è pari
+ E' applicabile quando il numero di nodi del circuito è pari a due
+ E' applicabile solo quando nel circuito ci sono due nodi e solo generatori di tensioni
+02.
+Nel circuito in figura, per calcolare la tensione ai morsetti della resistenza R:
+ si deve usare il teorema di Millmann
+ tutte false
+ si deve usare il teorema di Thevenin
+ si deve usare la sovrapposizione degli effetti
+03.
+Nel circuito in figura, per calcolare la tensione ai morsetti della resistenza R4:
+ tutte vere
+ si deve usare la sovrapposizione degli effetti
+ si può usare il teorema di Millmann
+ si deve usare il teorema di Thevenin
+04.
+Per il circuito in figura, in cui sono noti
+E=9 V, Ri=i Ω, determinare le tre correnti nei lati.
+05. Millmann
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 31/89
+Lezione 010
+01. PER UN GENERATORE REALE IL RENDIMENTO E' PARI A
+ UNO
+ RAPPORTO TRA POTENZA EROGATA ALL'ESTERNO E POTENZA GENERATA
+ ZERO
+ RAPPORTO TRA POTENZA EROGATA ALL'ESTERNO E POTENZA DISSIPATA AL SUO INTERNO
+02. UN GENERATORE PUO' ASSORBIRE POTENZA
+ SOLO SE COLLEGATO AD UN RESISTORE
+ SEMPRE
+ IN ALCUNI CASI PARTICOLARI
+ MAI
+03. LA POTENZA DISSIPATA PER EFFETTO JOULE
+ DIPENDE SOLO DAL VALORE DELLA CORRENTE CHE ATTRAVERSA IL CONDUTTORE
+ E' INDIPENDENTE DALLA CORRENTE
+ SI HA OGNI VOLTA CHE UNA CORRENTE ATTRAVERSA UN CONDUTTORE
+ E' INDIPENDENTE DALLA RESISTENZA
+04. ENUNCIATO DEL TEOREMA DI TELLEGEN
+ La somma dei prodotti delle tensioni al quadrato per le correnti di ogni lato deve essere nulla
+ La somma delle potenze al quadrato di ogni lato deve essere nulla
+ La somma dei prodotti delle tensioni per le correnti al quadrato di ogni lato, deve essere nulla
+ La somma algebrica dei prodotti delle tensioni per le correnti di ogni lato deve essere nulla
+05. LA POTENZA DISSIPATA DA UNA RESISTENZA SI CALCOLA ESEGUENDO
+ Il prodotto tra la tensione al quadrato e la resistenza stessa
+ Il prodotto tra la corrente al quadrato e la tensione
+ Il prodotto tra la corrente al quadrato e la resistenza stessa
+ Il prodotto tra la resistenza al quadrato e la corrente
+06. IL LEGAME ESISTENTE TRA POTENZA ED ENERGIA E' IL SEGUENTE
+ L'energia è l'integrale della potenza nel tempo
+ L'energia è la derivata della potenza nel tempo
+ La potenza è l'integrale dell'energia immagazzinata nel tempo
+ L'energia è il prodotto potenza per resistenza
+07. LA POTENZA ATTIVA SI MISURA IN
+ JOULE
+ VA
+ WATT
+ VAR
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 32/89
+08. POTENZA ELETTRICA
+ p(t)=Rv(t)i(t)
+ p(t)=v(t)i(t) è sempre positiva
+ p(t)=v(t)i(t) è sempre negativa
+ p(t)=v(t)i(t)
+09.
+Nel circuito in figura la potenza del generatore di corrente J è positiva (lo stesso eroga potenza):
+ Solo se la tensione VBC è positiva
+ Solo se la tensione VBC è negativa
+ Sempre
+ Mai
+10. UN BIPOLO E' DETTO ATTIVO QUANDO
+ PER OGNI t LA CARATTERISTICA NON E' TUTTA O NEL I O NEL III QUADRANTE
+ NON PUO' FORNIRE POTENZA ALL'ESTERNO
+ FORNISCE SEMPRE POTENZA ALL'ESTERNO
+ LA POTENZA ASSORBITA E' COSTANTE
+11. UN BIPOLO E' DETTO PASSIVO QUANDO
+ LA POTENZA ASSORBITA E' COSTANTE
+ PER OGNI t LA CARATTERISTICA E' O NEL I O NEL III QUADRANTE
+ FORNISCE SEMPRE POTENZA ALL'ESTERNO
+ PUO' FORNIRE POTENZA ALL'ESTERNO
+12. IL DIAGRAMMA DI CARICO RAPPRESENTA
+ L'ANDAMENTO DELLA POTENZA IN FUNZIONE DEL TEMPO
+ L'ANDAMENTO DELLA POTENZA IN FUNZIONE DELLA TENSIONE
+ L'ENERGIA ASSORBITA DA UN CIRCUITO IN 24 ORE
+ L'ANDAMENTO DELLA POTENZA IN FUNZIONE DELLA CORRENTE
+13. L'ENERGIA ELETTRICA
+ E' LA DERIVATA DELLA POTENZA NEL TEMPO
+ E' L'INTEGRALE DELLA POTENZA NEL TEMPO
+ E' SEMPRE ZERO NELLE RESISTENZE
+ E' SEMPRE PARI ALLA POTENZA ISTANTE PER ISTANTE
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 33/89
+14. LA POTENZA ELETTRICA PER UN DATO BIPOLO
+ E' SOLO NEGATIVA
+ E' SEMPRE NULLA
+ E' SOLO POSITIVA
+ PUO' ESSERE POSITIVA-NEGATIVA-NULLA
+15.
+Per il circuito riportato in figura , sono noti
+Vi=10∙i V , R=Ri=1 Ω,
+determinare il valore di J tale che la potenza dissipata nella resistenza R sia nulla.
+16.
+Per il circuito in figura sono noti V=12 V, J=2 A, Ri=i Ω
+determinare la potenza P del generatore di tensione.
+17.
+Per il circuito in figura sono noti V=12 V, Ri=i Ω,
+calcolare le potenze e verificarne il bilancio.
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 34/89
+18.
+Per il circuito in figura, in cui sono noti V1=12 V,
+V3=6 V, J1=2 A, J3=4 A, R2=6 Ω,
+calcolare le potenze e verificarne il bilancio energetico.
+19.
+Per il circuito in figura , in cui sono noti Ri=i Ω , J=2 A
+Determinare il valore di V1 tale che la potenza dissipata nella resistenza R3 sia nulla.
+20.
+Per il circuito riportato in figura,
+sono noti E1=E=12 V, R1=1 Ω, R=3 Ω,
+determinare la potenza erogata dal generatore E.
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 35/89
+21.
+Per il circuito in figura, in cui sono noti EA=75 V, J1=6 A,
+R1=12 Ω, R2=20 Ω, R3=30 Ω, R4=90 Ω, R5=60 Ω , RA=10,5 Ω
+determinare la potenza dissipata nella resistenza RA.
+22.
+Per il circuito in figura, in cui sono noti
+E1=12 V, J2=2 A, Ri=i Ω,
+calcolare le potenze e verificarne il bilancio energetico.
+23.
+Per il circuito in figura sono noti I=8 A, R=2 Ω, R1=10 Ω, R2=6 Ω, R3=6 Ω, RU=3 Ω,
+calcolare la potenza dissipata in RU.
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 36/89
+24.
+Per il circuito in figura in cui sono noti E=10 V, E5=10 V, I=5 A,
+R1=20 Ω , R2=5 Ω , R3=5 Ω , R4=10 Ω,
+calcolare la potenza P del generatore di tensione E5
+25.
+Per il circuito in figura sono noti V=12 V, J1=6 A, J3=3 A, Ri=i Ω, R=3 Ω,
+calcolare la potenza PJ3 del generatore di corrente J3.
+26. Potenza in corrente continua
+27.
+Per il circuito in figura, in cui sono noti
+V1=12 V, V2=6 V, I3=1 A, I4=2 A, Ri=i Ω,
+calcolare la potenza PR1 dissipata nella resistenza R1.
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 37/89
+28.
+Per il circuito in figura sono noti V1=12 V, Ji=i A, Ri=i Ω,
+calcolare la potenza assorbita dalla resistenza R1.
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 38/89
+Lezione 011
+01. Energia in corrente continua
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 39/89
+Lezione 012
+01.
+Per il circuito in figura 1, in cui sono noti
+V1=12 V , V2=6 V , J=2 A, Ri=i Ω
+Determinare la potenza dissipata nella resistenza R2.
+02. Metodo delle correnti cicliche di maglia
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 40/89
+Lezione 013
+01. Metodo del potenziale ai nodi
+02.
+Per il circuito in figura, in cui sono noti
+V1=50 V, J=60 A, R1=5 Ω, R2=40 Ω, R3=80 Ω, R4=120 Ω,
+determinare la tensione VBC.
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 41/89
+Lezione 014
+01.
+Nel circuito in figura:
+ Tutte false
+ Potrebbe essere V1=V2
+ Non è mai V1=V2
+ È sempre V1=V2
+02.
+Nel circuito in figura:
+ Non è mai I1=I2
+ Potrebbe essere I1=I2
+ Tutte false
+ È sempre I1=I2
+03. CHE COSA SI INTENDE PER PORTA
+ Una coppia di morsetti in cui la corrente che entra in un morsetto è la metà di quella che esce dall'altro.
+ Una coppia di morsetti in cui la somma delle correnti (quella entrante in un morsetto e quella uscente nell'altro morsetto) è nulla.
+ Una coppia di morsetti in cui la somma delle correnti (quella entrante in un morsetto e quella uscente nell'altro morsetto) è costante.
+ Una coppia di morsetti in cui la corrente che entra in un morsetto è il doppio di quella che esce dall'altro.
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 42/89
+04.
+Per il circuito in figura, in cui sono noti
+R=1 Ω , I1=1 A, I2=2 A,
+determinare la potenza assorbita dal doppio bipolo compreso tra le porte 1-1’ e 2-2’.
+05. Doppi bipoli
+06. Doppi bipoli a T
+07. Doppi bipoli a pi-greca
+08.
+Per il circuito in figura, in cui è noto R=1 Ω
+determinare la matrice delle resistenze del doppio bipolo compreso tra le porte 1-1’ e 2-2’.
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 43/89
+Lezione 015
+01.
+Nel circuito in figura, per calcolare la corrente I si può:
+ tutte false
+ applicare Thevenin ai morsetti del bipolo non lineare dopo di che applicare il metodo grafico
+ utilizzare la sovrapposizione degli effetti
+ applicare il metodo grafico dopo di che applicare Thevenin ai morsetti del bipolo non lineare
+02.
+Per il circuito in figura, in cui sono noti
+V=12 V , Ri=i Ω ,
+Determinare l’energia W trasferita dal sistema all’utilizzatore U in 24 ore.
+03. Circuiti non lineari
+04.
+Per il circuito in figura, in cui sono noti
+V=12 V, R=2 Ω, R1=1 Ω,
+determinare la potenza PR1 assorbita dalla resistenza R1
+e la tensione VAB con il tasto T aperto.
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 44/89
+05.
+Per il circuito in figura, in cui sono noti
+V=12 V, Ri=i Ω,
+determinare l’energia W trasferita dal sistema all’utilizzatore U in 24 ore.
+06.
+Per il circuito riportato in figura, in cui sono noti
+V=12 V , Ri=i Ω,
+determinare il valore della resistenza R tale che il trasferimento
+di potenza ai morsetti AB sia massimo.
+07.
+Dato il circuito non lineare in figura, in cui sono note
+E=12 V, R1=1 Ω, R2=1 Ω, R3=2 Ω, la caratteristica (V-I) del bipolo non lineare,
+determinare la potenza assorbita (o generata) dal bipolo non lineare.
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 45/89
+Lezione 017
+01. f=50 Hz SIGNIFICA
+ pulsazione=infinito rad/sec
+ pulsazione=0 rad/sec
+ la pulsazione non è definibile
+ pulsazione=314 rad/sec
+02. DATA LA GRANDEZZA SINUSOIDALE x(t)=XMsen(omegat+fi) il suo fasore è:
+ X=v2Xej(omegat+fi)
+ X=v2Xej(omegat)
+ X=Xej(fi)
+ X=v2Xej(fi)
+03. LA FREQUENZA SI MISURA IN
+ CICLI/MIN
+ SECONDI
+ RAD/SEC
+ HZ
+04. Grandezze periodiche
+05. Grandezze sinusoidali
+06. Numeri complessi in forma cartesiana
+07. Numeri complessi in forma polare
+08. Numeri complessi in forma esponenziale
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 46/89
+Lezione 018
+01. X=Xej(fi) E' IL FASORE DELLA GRANDEZZA SINUSOIDALE
+ x(t)=v2Xsen(fi)
+ x(t)=Xsen(omegat)
+ x(t)=Xsen(omegat+fi)
+ x(t)=v2Xsen(omegat+fi)
+02. Rappresentazione di sinusoidi con fasori
+03.
+Per il circuito riportato in figura, in cui sono noti
+ Zi=i+j4 Ω, Z=3+j2 Ω,
+determinare l’impedenza equivalente ai morsetti A-A’.
+04.
+Per il circuito riportato in figura, funzionante in regime sinusoidale,
+supponendo note tutte le grandezze disegnare il diagramma vettoriale
+qualitativo delle stesse (prendere IR a fase zero).
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 47/89
+Lezione 019
+01. DATA L'IMPEDENZA Z=R+jXL :
+ R=V/I
+ R=Zsenfi
+ R=Ztgfi
+ R=Zcosfi
+02. L'IMPEDENZA SI MISURA IN
+ AMPERE
+ OHM
+ WATT
+ VOLT
+03. PER UN INDUTTORE LINEARE E TEMPO INVARIANTE
+ La tensione è in anticipo di 90° sulla corrente
+ La corrente è in anticipo di 90° sulla tensione
+ V=LI
+ Corrente e tensione sono in fase
+04. IN UNA RESISTENZA
+ CORRENTE E TENSIONE SONO IN OPPOSIZIONE DI FASE
+ LA CORRENTE E' IN RITARDO DI 90° SULLA TENSIONE
+ LA CORRENTE E' IN ANTICIPO DI 90° SULLA TENSIONE
+ CORRENTE E TENSIONE SONO IN FASE
+05. Circuito puramente ohmico
+06. Circuito puramente capacitivo
+07. Circuito puramente induttivo
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 48/89
+Lezione 020
+01. I TRE PARAMETRI DI UN'IMPEDENZA (R,X,Z)
+ NON POSSONO ESSERE RAPPRESENTATI TRAMITE UN TRIANGOLO RETTANGOLO
+ SI DEVONO RAPPRESENTARE TRAMITE UN TRIANGOLO RETTANGOLO
+ POSSONO ESSERE RAPPRESENTATI TRAMITE UN TRIANGOLO
+ POSSONO ESSERE RAPPRESENTATI SU UNA RETTA
+02. Circuito RL serie
+03. Circuito RC serie
+04. Circuito RL parallelo
+05. Circuito RC parallelo
+06.
+Per il circuito riportato in figura, supponendo note le grandezze
+V=230 V, R1=20 Ω, R2=10 Ω, R3=3 Ω, XL1=37,7 Ω, XC2=53,1 Ω, XL3=4 Ω
+Determinare la corrente I , la tensione VAB, le correnti IR ed IL
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 49/89
+Lezione 021
+01.
+Nel circuito in figura il vettore corrente I, rispetto al vettore tensione V è:
+ tutte false
+ in anticipo
+ in ritardo
+ in fase
+02. NELLE IMPEDENZE IN SERIE
+ LA CORRENTE TOTALE VIENE SUDDIVISA TRA LE IMPEDENZE, TUTTE LE IMPEDENZE SONO SOGGETTE ALLA STESSA TENSIONE
+ UNA SERIE DI IMPEDENZE IMPLICA UNA PARTIZIONE DELLA CORRENTE SU OGNI IMPEDENZE
+ UNA SERIE DI IMPEDENZE SI HA SOLO QUANDO DUE IMPEDENZE HANNO LO STESSO VALORE
+ LA TENSIONE TOTALE VIENE SUDDIVISA TRA LE IMPEDENZE, TUTTE LE IMPEDENZE SONO ATTRAVERSATE DALLA STESSA CORRENTE
+03. NELLE IMPEDENZE IN PARALLELO
+ LA TENSIONE TOTALE VIENE SUDDIVISA TRA LE IMPEDENZE, TUTTE LE IMPEDENZE SONO ATTRAVERSATE DALLA STESSA CORRENTE
+ UN PARALLELO DI IMPEDENZE PUÒ ESSERE SOSTITUITO DA UNA IMPEDENZE IL CUI VALORE È DATO DALLA SOMMA DELLE IMPEDENZE
+COINVOLTE NEL PARALLELO
+ POSSONO ESSERE COLLEGATE IN PARALLELO SOLO IMPEDENZE AVENTI LO STESSO VALORE
+ LA CORRENTE TOTALE VIENE SUDDIVISA TRA LE IMPEDENZE, TUTTE LE IMPEDENZE SONO SOGGETTE ALLA STESSA TENSIONE
+04.
+Nel circuito in figura le impedenze Z2 e Z3:
+ Sono collegate in parallelo
+ Sono collegate in serie
+ Sono collegate a stella
+ Tutte false
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 50/89
+05.
+Nel circuito in figura:
+ tutte false
+ ci sono due correnti
+ ci sono tre correnti
+ c’è una corrente
+06.
+Nel circuito in figura la caduta di tensione Ep-Ea:
+ Dipende dal valore X
+ Tutte vere
+ Dipende dal valore R
+ Dipende dalla corrente
+07.
+Nel circuito in figura i Vettori IC ed IR:
+ Sono sfasati di 90° con IR in anticipo
+ Tutte false
+ Sono in fase
+ Sono sfasati di 90° con IC in anticipo
+08. Circuito RLC serie
+09. Circuito RLC parallelo
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 51/89
+Lezione 022
+01. LA POTENZA REATTIVA SI MISURA IN
+ JOULE
+ WATT
+ VAR
+ VA
+02. LA POTENZA APPARENTE COMPLESSA A=P+jQ PUO' ESSERE CALCOLATA COME: (*= complesso coniugato)
+ A=VI
+ A=VI*
+ A=v(P2+Q2)
+ A=V*I
+03. PER UNA RESISTENZA SI HA:
+ P =0, Q diversa da 0, A=P
+ P diversa da 0, Q diversa da 0, A=Q
+ P =0, Q diversa da 0, A=Q
+ P diversa da 0, Q = 0, A=P
+04. L'ENERGIA ATTIVA SI MISURA IN
+ Wh
+ VAR
+ OHM
+ VA
+05.
+Nel circuito in figura il generatore:
+ Tutte false
+ Genera potenza apparente complessa
+ Genera solo potenza reattiva
+ Genera solo potenza attiva
+06. PER UN CIRCUITO LA POTENZA APPARENTE COMPLESSA TOTALE A PUO' ESSERE OTTENUTA:
+ Sommando aritmeticamente le Ai di tutti i bipoli
+ Sommando vettorialmente le Ai di tutti i bipoli
+ Sommando algebricamente le Ai di tutti i bipoli
+ Come A=VI
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 52/89
+07. IN UN CIRCUITO:
+ La potenza attiva generata è nulla
+ La somma delle potenze reattive generate è pari a zero
+ La somma delle potenze attive assorbite è uguale alla somma delle potenze attive generate
+ La somma delle potenze attive assorbite è pari a zero
+08. LE POTENZE ATTIVA-REATTIVA-APPARENTE COMPLESSA
+ POSSONO ESSERE RAPPRESENTATE TRAMITE UN TRIANGOLO RETTANGOLO
+ NON POSSONO ESSERE RAPPRESENTATE TRAMITE UN TRIANGOLO RETTANGOLO
+ POSSONO ESSERE RAPPRESENTATE TRAMITE UN TRIANGOLO
+ POSSONO ESSERE RAPPRESENTATE SU UNA RETTA
+09. PER UNA INDUTTANZA SI HA:
+ P diversa da 0, Q = 0, A=P
+ P diversa da 0, Q diversa da 0, A=Q
+ P =0, Q diversa da 0, A=P
+ P =0, Q diversa da 0, A=Q
+10. PER UNA CAPACITA' SI HA:
+ P =0, Q diversa da 0, A=P
+ P diversa da 0, Q diversa da 0, A=Q
+ P =0, Q diversa da 0, A=Q
+ P diversa da 0, Q = 0, A=P
+11.
+Per il circuito riportato in figura, funzionante in regime sinusoidale, in cui sono noti
+R1=10 Ω, VR2=220 V, f=50 Hz, R2=20 Ω, XL1=5 Ω, XL2=15 Ω,
+determinare il valore della capacità C, da collegare ai morsetti AB, in modo che l’angolo di fase tra V ed I sia pari a 0° (rifasamento totale).
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 53/89
+12.
+Per il circuito riportato in figura, funzionante in regime sinusoidale, in cui sono noti
+Ea =220+j0 V (efficace), R=1 Ω, X=1 Ω
+U: PU=2 kW, cosφU=0,95 (rit.)
+Determinare i tre costi relativi all’energia attiva per l’utilizzatore WU, la linea Wl e del generatore Wp;
+è noto che 1 kWh costa 0,12 €, il circuito funziona per 24 ore al giorno per 60 giorni.
+13.
+Per il circuito riportato in figura, funzionante in regime sinusoidale,
+in cui sono noti V=220+j0 V (valore efficace)
+Zl=1 Ω, ZU=j2 Ω
+Verificare del bilancio energetico per le potenze apparenti complesse.
+14. Teorema di Bouquerot
+15. Potenze in corrente sinusoidale
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 54/89
+Lezione 023
+01. PER RIFASARE A cos fi=1 UN CARICO OHMICO CAPACITIVO CHE ASSORBE Q E' NECESSARIA UNA POTENZA REATTIVA QL :
+ QL=R*I2
+ QL=Q
+ QL=P
+ TUTTE FALSE
+02. PER RIFASARE A cos fi=1 UN CARICO OHMICO INDUTTIVO CHE ASSORBE Q E' NECESSARIA UNA POTENZA REATTIVA QC:
+ QC=RI2
+ QC=P
+ TUTTE FALSE
+ QC=Q
+03. Rifasamento parziale
+04. Rifasamento totale
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 55/89
+Lezione 025
+01. TERNA DELLE TENSIONI STELLATE E1,E2, E3 PER UN SISTEMA SIMMETRICO ED EQUILIBRATO
+ Le tre tensioni hanno lo stesso modulo
+ Le tre tensioni sono sfasate tra di loro di 120 gradi
+ La loro somma in ogni istante di tempo vale zero
+ Tutte le altre tre
+02. LA TRASFORMAZIONE TRIANGOLO-STELLA DI IMPEDENZE
+ NON PUO' ESSERE MAI ESEGUITA
+ PUO' ESSERE ESEGUITA SOLO SE LE IMPEDENZE A TRIANGOLO SONO IDENTICHE
+ PUO' ESSERE ESEGUITA PER QUALSIASI VALORE DELLE IMPEDENZE A TRIANGOLO
+ NON PUO' ESSERE ESEGUITA PER QUALSIASI VALORE DELLE IMPEDENZE A TRIANGOLO
+03. CORRENTE SUL NEUTRO PER UN SISTEMA SIMMETRICO ED EQUILIBRATO A STELLA CON NEUTRO
+ Vale zero in ogni istante di tempo
+ Coincide con la somma delle correnti di linea diviso per sqrt(3)
+ Coincide con la somma delle correnti di linea moltiplicata per sqrt(3)
+ Coincide con una delle correnti di linea
+04. LA TRASFORMAZIONE STELLA-TRIANGOLO DI IMPEDENZE
+ PUO' ESSERE ESEGUITA SOLO SE LE IMPEDENZE A STELLA SONO IDENTICHE
+ NON PUO' ESSERE MAI ESEGUITA
+ NON PUO' ESSERE ESEGUITA PER QUALSIASI VALORE DELLE IMPEDENZE A STELLA
+ PUO' ESSERE ESEGUITA PER QUALSIASI VALORE DELLE IMPEDENZE A STELLA
+05.
+Per il circuito trifase riportato in figura, in cui sono noti
+E1=220+j0 V (terna simmetrica alla sequenza diretta, valore efficace)
+ZD=10+j10 Ω,
+determinare le tre correnti di linea e verificare che la loro somma è pari a zero.
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 56/89
+06.
+Per il circuito trifase riportato in figura, sono noti
+E1=220+j0 V (terna simmetrica alla sequenza diretta, valore efficace)
+Z1=1+j Ω, Z2=2+j2 Ω, Z3 =1+j Ω,
+determinare la corrente sul neutro.
+07.
+Per il circuito trifase riportato in figura, in cui sono noti
+E1 =0+j220 V (terna simmetrica alla sequenza diretta, valore efficace)
+ZL=2+j4 Ω, ZU =5+j5 Ω,
+determinare la potenza attiva assorbita dall’utilizzatore PU.
+08. Impedenze a stella e a triangolo
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 57/89
+09.
+Per il circuito trifase riportato in figura, in cui sono noti
+ E1=220+j0 V (terna simmetrica alla sequenza diretta, valore efficace)
+ZY=10+j10 Ω
+Determinare le tre correnti di linea, e verificare che la loro somma è pari a zero.
+10. Sistemi trifase a stella equilibrata
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 58/89
+Lezione 026
+01. CORRENTE SUL NEUTRO PER UN SISTEMA SIMMETRICO E SQUILIBRATO A STELLA CON NEUTRO
+ Coincide con la somma delle correnti di linea diviso per sqrt(3)
+ Coincide con la terna delle tensioni concatenate
+ Coincide con la somma delle correnti di fase diviso per sqrt(3)
+ Nessuna delle altre tre
+02. TERNA DELLE CORRENTI DI FASE PER UN SISTEMA SIMMETRICO ED EQUILIBRATO A STELLA
+ Le tre correnti hanno lo stesso modulo e la stessa fase
+ Coincide con la terna delle correnti di linea moltiplicata per sqrt(3)
+ Coincide con la terna delle correnti di linea
+ Coincide con la terna delle correnti di linea divisa per sqrt(3)
+03. POTENZIALE DEL CENTRO STELLA PER UN SISTEMA SIMMETRICO E SQUILIBRATO A STELLA SENZA NEUTRO
+ Vale zero in ogni istante di tempo
+ Coincide con la somma delle tensioni di linea diviso l'impedenza di fase
+ Coincide con la somma delle tensioni di linea
+ E' diverso da zero
+04. NEI SISTEMI A STELLA SQUILIBRATI SENZA NEUTRO LA TENSIONE DEL CENTRO STELLA REALE PUO' ESSERE VALUTATA
+AGEVOLMENTE TRAMITE
+ NORTON
+ MILLMANN
+ THEVENIN
+ SOVRAPPOSIZIONE DEGLI EFFETTI
+05.
+Nel circuito in figura, in ogni istante di tempo, la somma delle correnti è:
+ maggiore di zero
+ tutte vere
+ minore di zero
+ uguale a zero
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 59/89
+06.
+Nel circuito in figura, con terna delle tensioni simmetrica:
+ I moduli delle tre correnti non dipendono dal valore di ZL
+ I moduli delle tre correnti sono uguali
+ I moduli delle tre correnti sono diversi
+ Tutte vere
+07.
+Nel circuito in figura, supponendo le tre impedenze identiche e la terna delle tensioni simmetrica, la corrente sul neutro IN:
+ Dipende dal modulo delle tensioni
+ è sempre uguale a zero
+ è sempre diversa da zero
+ Dipende dal valore del modulo delle impedenze
+08. Sistemi trifase a stella squilibrata senza neutro
+09. Sistemi trifase a stella squilibrata con neutro
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 60/89
+Lezione 027
+01. TERNA DELLE CORRENTI DI FASE PER UN SISTEMA SIMMETRICO ED EQUILIBRATO A TRIANGOLO
+ Coincide con la terna delle correnti di linea divisa per sqrt(3)
+ Le tre correnti hanno lo stesso modulo e la stessa fase
+ Coincide con la terna delle correnti di linea
+ Coincide con la terna delle correnti di linea moltiplicata per sqrt(3)
+02.
+Nel circuito in figura, con terna delle tensioni simmetrica:
+ I moduli delle tre correnti di linea sono uguali
+ Tutte vere
+ I moduli delle tre correnti di linea sono diversi
+ I moduli delle tre correnti di linea non dipendono dal valore dell’impedenza dell’utilizzatore
+03. TERNA DELLE CORRENTI DI LINEA PER UN SISTEMA SIMMETRICO E SQUILIBRATO A TRIANGOLO
+ In ogni istante di tempo la loro somma vale zero
+ In ogni istante di tempo la loro somma è diversa da zero
+ Le tre correnti hanno lo stesso modulo e la stessa fase
+ Coincide con la terna delle correnti di fase moltiplicata per sqrt(3)
+04. Sistemi trifase a triangolo equilibrato
+05. Sistemi trifase a triangolo squilibrato
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 61/89
+Lezione 028
+01. NEI SISTEMI TRIFASE
+ IL TEOREMA DI BOUQUEROT HA VALIDITA' SOLO SE IL SITEMA E' SIMMETRICO ED EQUILIBRATO
+ IL TEOREMA DI BOUQUEROT NON HA MAI VALIDITA'
+ IL TEOREMA DI BOUQUEROT HA SEMPRE VALIDITA'
+ IL TEOREMA DI BOUQUEROT HA VALIDITA' SOLO PER LE POTENZE ATTIVE
+02. PER UN SISTEMA TRIFASE SIMMETRICO ED EQUILIBRATO -2
+ Q= sqrt(3)EIsenfi
+ P diversa da 0, Q = 0, A=Q
+ P diversa da 0, Q diversa da 0, A=Q
+ Q = sqrt(3)VIsenfi
+03. PER UN SISTEMA TRIFASE SIMMETRICO ED EQUILIBRATO -1
+ P diversa da 0, Q = 0, A=Q
+ P diversa da 0, Q diversa da 0, A=Q
+ P = sqrt(3)EIcosfi
+ P = sqrt(3)VIcosfi
+04. Potenze nei sistemi trifase
+05. Potenze nei sistemi trifase simmetrici ed equilibrati
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 62/89
+Lezione 029
+01. INSERZIONE ARON DI DUE WATTMETRI
+ CONSENTE DI MISURARE LA POTENZA ATTIVA DI SISTEMI TRIFASE A TRE CONDUTTORI
+ CONSENTE DI MISURARE LA POTENZA APPARENTE DI SISTEMI TRIFASE A TRE CONDUTTORI
+ CONSENTE DI MISURARE LA POTENZA ATTIVA DI SISTEMI TRIFASE A QUATTRO CONDUTTORI
+ NON CONSENTE DI MISURARE LA POTENZA ATTIVA DI SISTEMI TRIFASE A TRE CONDUTTORI
+02. Misure elettriche e strumenti di misura
+03. Misure di potenza nei sistemi trifase
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 63/89
+Lezione 030
+01.
+Nel circuito in figura, supponendo l’utilizzatore di natura ohmmico-induttiva:
+ con il tasto T aperto si può rifasare il carico
+ tutte false
+ con il tasto T chiuso si può rifasare il carico
+ con il tasto T chiuso non si può rifasare il carico
+02.
+Nel circuito in figura:
+ non è possibile considerare il circuito equivalente monofase
+ il circuito è simmetrico e squilibrato
+ tutte vere
+ è possibile considerare il circuito equivalente monofase
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 64/89
+03. PER RIFASARE A cos fi=1 UN CARICO OHMICO-CAPACITIVO TRIFASE CHE ASSORBE UNA POTENZA REATTIVA Q E' NECESSARIA UNA
+POTENZA REATTIVA QL
+ QL=R+I
+ QL=P
+ TUTTE FALSE
+ QL=Q
+04. PER RIFASARE A cos fi=1 UN CARICO OHMICO INDUTTIVO TRIFASE CHE ASSORBE UNA POTENZA REATTIVA Q E' NECESSARIA UNA
+POTENZA REATTIVA QC
+ TUTTE FALSE
+ QC=P
+ QC=R+I
+ QC=Q
+05.
+Per il circuito trifase riportato in figura, sono noti
+E1=220+j0 V (terna simmetrica alla sequenza diretta, valore efficace)
+ZL=0,1+j0,1 Ω, Z1=10+j10 Ω, Z2=20+j20 Ω,
+determinare il circuito equivalente di Thevenin trifase alla sezione S.
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 65/89
+06.
+Per il circuito trifase riportato in figura, in cui sono noti
+V=380 V (terna simmetrica alla sequenza diretta, valore efficace)
+PU=5 kW , cosfiU=0,6, f=50 Hz, costo Wa=0,15 €/kW∙h, costo Wr=0,25 €/kVAR∙h,
+con il tasto T chiuso provvedere al rifasamento totale determinando il valore di CY.
+07. Rifasamento parziale di carico monofase
+08. Rifasamento parziale di carico trifase
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 66/89
+Lezione 031
+01. DATA UNA TERNA GENERICA DI VETTORI ESSA
+ PUO' ESSERE SEMPRE OTTENUTA SOMMANDO DUE TERNE ALLE SEQUENZE DIRETTA E INVERSA
+ PUO' ESSERE SEMPRE OTTENUTA SOMMANDO TRE TERNE ALLE SEQUENZE DIRETTA, INVERSA E OMOPOLARE
+ NON PUO' ESSERE SEMPRE OTTENUTA SOMMANDO TRE TERNE ALLE SEQUENZE DIRETTA, INVERSA E OMOPOLARE
+ PUO' ESSERE SEMPRE OTTENUTA SOMMANDO TRE TERNE ALLE SEQUENZE DIRETTA
+02. NEI SISTEMI SIMMETRICI CON TERNE ALLA SEQUENZA DIRETTA
+ LA TERNA DELLE TENSIONI CONCATENATE E' IN ANTICIPO DI UN ANGOLO DIPENDENTE DAL CARICO SULLA TERNA DELLE TENSIONI
+STELLATE
+ LA TERNA DELLE TENSIONI CONCATENATE NON E' IN ANTICIPO DI 30° SULLA TERNA DELLE TENSIONI STELLATE
+ LA TERNA DELLE TENSIONI CONCATENATE E' IN ANTICIPO DI 30° SULLA TERNA DELLE TENSIONI STELLATE
+ LA TERNA DELLE TENSIONI CONCATENATE E' IN RITARDO DI 30° SULLA TERNA DELLE TENSIONI STELLATE
+03. LE TERNE ALLA SEQUENZA OMOPOLARE
+ NON ESISTONO IN PRATICA
+ HANNO I TRE VETTORI CON STESSO MODULO E DIVERSA FASE
+ HANNO I TRE VETTORI IDENTICI
+ HANNO I TRE VETTORI CON STESSA FASE E DIVERSO MODULO
+04. Scomposizione alle sequenze di terne
+05. Terne alla sequenza diretta-inversa-omopolare
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 67/89
+Lezione 032
+01. IL CIRCUITO EQUIVALENTE DI THEVENIN PER I SISTEMI TRIFASE
+ PUÒ ESSERE CALCOLATO SOLO PER CARICHI R-L
+ NON PUÒ ESSERE MAI CALCOLATO
+ PUÒ ESSERE CALCOLATO SOLO PER CARICHI R-C
+ PUÒ ESSERE CALCOLATO UTILIZZANDO LE REGOLE VISTE PER LA CONTINUA E LA MONOFASE
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 68/89
+Lezione 033
+01. IN UN CIRCUITO R-L-C PARALLELO
+ ALL'AUMENTARE DELLA FREQUENZA DIMINUISCE LA TENSIONE
+ ALL'AUMENTARE DELLA FREQUENZA LA TENSIONE RIMANE COSTANTE
+ NESSUNA DELLE ALTRE
+ ALL'AUMENTARE DELLA FREQUENZA AUMENTA LA TENSIONE
+02. IN UN CIRCUITO R-L-C SERIE
+ NESSUNA DELLE ALTRE
+ ALL'AUMENTARE DELLA FREQUENZA DIMINUISCE LA CORRENTE
+ ALL'AUMENTARE DELLA FREQUENZA LA CORRENTE RIMANE COSTANTE
+ ALL'AUMENTARE DELLA FREQUENZA AUMENTA LA CORRENTE
+03. UN CIRCUITO RLC PARALLELO E' IN RISONANZA QUANDO:
+ LA PARTE IMMAGINARIA DELL'AMMETTENZA E' DIVERSA DA ZERO
+ LA PARTE IMMAGINARIA DELL'AMMETTENZA E' NULLA
+ IN NESSUN CASO
+ NESSUNA DELLE ALTRE
+04. IN UN CIRCUITO R-L-C SERIE PER VALORI DI PULSAZIONE OMEGA MAGGIORI DELLA PULSAZIONE DI RISONANZA
+ IL CIRCUITO E' PURAMENTE OHMICO
+ NESSUNA DELLE ALTRE
+ IL CIRCUITO E' OHMICO-INDUTTIVO
+ IL CIRCUITO E' OHMICO-CAPACITIVO
+05. IN UN CIRCUITO R-L-C SERIE IN CONDIZIONI DI RISONANZA, A PARITA' DI TENSIONE
+ LA CORRENTE E' MASSIMA
+ LA TENSIONE E' MASSIMA
+ NESSUNA DELLE ALTRE
+ L'IMPEDENZA E' MASSIMA
+06. IN UN CIRCUITO R-L-C PARALLEO IN CONDIZIONI DI RISONANZA, A PARITA' DI CORRENTE
+ L'IMPEDENZA E' MASSIMA
+ LA TENSIONE E' MASSIMA
+ NESSUNA DELLE ALTRE
+ LA CORRENTE E' MASSIMA
+07. LA RISONANZA DI UN CIRCUITO R-L-C PARALLELO SI PUO' OTTENERE
+ NESSUNA DELLE ALTRE
+ VARIANDO LA FREQUENZA DI ALIMENTAZIONE
+ VARIANDO LA TENSIONE DI ALIMENTAZIONE
+ IN NESSUN CASO
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 69/89
+08. LA RISONANZA DI UN CIRCUITO R-L-C SERIE SI PUO' OTTENERE
+ IN NESSUN CASO
+ VARIANDO LA FREQUENZA DI ALIMENTAZIONE
+ VARIANDO LA TENSIONE DI ALIMENTAZIONE
+ NESSUNA DELLE ALTRE
+09. IN UN CIRCUITO R-L-C PARALLELO PER VALORI DI PULSAZIONE OMEGA MAGGIORI DELLA PULSAZIONE DI RISONANZA
+ IL CIRCUITO E' OHMICO-CAPACITIVO
+ NESSUNA DELLE ALTRE
+ IL CIRCUITO E' OHMICO-INDUTTIVO
+ IL CIRCUITO E' PURAMENTE OHMICO
+10. UN CIRCUITO RLC SERIE E' IN RISONANZA QUANDO:
+ LA PARTE IMMAGINARIA DELL'IMPEDENZA E' NULLA
+ NESSUNA DELLE ALTRE
+ LA PARTE IMMAGINARIA DELL'IMPEDENZA E' DIVERSA DA ZERO
+ IN NESSUN CASO
+11. Circuiti risonanti serie
+12. Circuiti risonanti parallelo
+13. Coefficiente di risonanza
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 70/89
+Lezione 034
+01. LA SOLUZIONE DI UNA EQUAZIONE DIFFERENZIALE LINEARE DEL PRIMO ORDINE A COEFFICIENTI COSTANTI
+ E' sempre nulla
+ E' una soluzione ottenuta considerando lo stato iniziale del sistema
+ Si ottiene sommando alla soluzione generale una soluzione particolare
+ Si ottiene risolvendo l'equazione omogenea associata
+02. DURANTE LA FASE DI CARICA DI UN CONDENSATORE
+ La tensione ai suoi morsetti decresce
+ La tensione ai suoi morsetti cresce
+ La tensione ai suoi morsetti rimane costante
+ La corrente nel circuito vale zero
+03. DURANTE LA FASE DI SCARICA DI UN CONDENSATORE
+ La tensione ai suoi morsetti decresce
+ La tensione ai suoi morsetti cresce
+ La corrente nel circuito vale zero
+ La tensione ai suoi morsetti rimane costante
+04. LA COSTANTE DI TEMPO DEL CIRCUITO RC SI MISURA IN -1
+ Secondi
+ Farad
+ E' adimensionale
+ Ohm
+05. DURANTE IL TRANSITORIO
+ Vale solo la legge di Kirchhoff ai nodi
+ Vale solo la legge di Ohm ai morsetti del componente
+ Vale solo la legge di Kirchhoff alle maglie
+ Valgono tutte le leggi dell'elettrotecnica
+06. Il FUNZIONAMENTO DEL TRANSITORIO RC E' DESCRIVIBILE TRAMITE
+ Un'equazione differenziale del secondo ordine
+ Un'equazione differenziale del primo ordine omogenea a coefficienti costanti
+ Un'equazione algebrica di primo grado
+ Un'equazione differenziale del primo ordine non omogenea a coefficienti costanti
+07. IL TRANSITORIO E'
+ Una particolare condizione di funzionamento a regime del circuito
+ L'intervallo di tempo in cui il circuito passa da una condizione di funzionamento A ad una condizione di funzionamento B
+ Cinque volte Tau
+ L'intervallo di tempo in cui la tensione ai morsetti del condensatore passa da 0 ad E
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 71/89
+08. A TRANSITORIO ESAURITO UN CONDENSATORE
+ Ha sempre una tensione nulla ai suoi morsetti
+ Si comporta come un circuito aperto
+ E' attraversato dalla corrente di corto circuito
+ Si comporta come un corto circuito
+09. LA COSTANTE DI TEMPO DI UN CIRCUITO RC SI MISURA IN -2
+ SEC
+ OHM
+ V*A
+ R*C
+10. Circuito RC in scarica
+11. Circuito RC in carica
+12.
+Per il circuito in figura, in cui sono noti
+R=1 Ω, R1=2 Ω, R2=4 Ω, V1=12 V, C= 1 F,
+determinare la tensione vC(t) per -∞<t<+∞ sapendo che il tasto T è aperto
+da moltissimo tempo e che all’istante t=0 viene chiuso.
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 72/89
+Lezione 035
+01. A TRANSITORIO ESAURITO UN INDUTTORE
+ E' attraversato dalla corrente di corto circuito
+ Si comporta come un circuito aperto
+ Ha sempre una tensione nulla ai suoi morsetti
+ Si comporta come un corto circuito
+02. LA COSTANTE DI TEMPO DI UN CIRCUITO RL FORNISCE INDICAZIONE RIGUARDO
+ Il tempo impiegato dall'induttore per caricarsi
+ Il tempo impiegato dall'induttore per scaricarsi
+ La rapidità con cui il transitorio si esaurisce
+ Tutte vere
+03.
+Nel circuito in figura, in cui il tasto T è chiuso da moltissimo tempo:
+ I(t) è negativa
+ I(t) non e valutabile
+ Tutte false
+ I(t)=0
+04.
+Nel circuito in figura, in cui il tasto T è aperto da moltissimo tempo la corrente iL(t):
+ Vale V1/R4
+ Vale zero
+ È sempre negativa
+ Vale V1/(R1+R2)
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 73/89
+05. LA COSTANTE DI TEMPO DI UN CIRCUITO RL SI MISURA IN
+ R*C
+ OHM
+ SEC
+ V*A
+06. Circuito RL in carica
+07. Circuito RL in scarica
+08.
+Per il circuito in figura, in cui sono noti
+V1=10 V, L=100 mH, Ri=i kΩ,
+determinare la corrente iL(t) per -∞<t<+∞ sapendo che il tasto T è
+chiuso da tempo lunghissimo e che a t=0 viene aperto.
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 74/89
+Lezione 036
+01. Circuito del secondo ordine RLC
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 75/89
+Lezione 037
+01. PER UN CONDUTTORE RETTILINEO ATTRAVERSATO DA UNA CORRENTE I, IL VERSO DEL CAMPO MAGNETICO
+ Non si può determinare a priori
+ Può essere individuato usando la regola della mano destra
+ Può essere individuato usando la regola della mano sinistra
+ E' concorde al verso della corrente
+02. L'INDUZIONE MAGNETICA B SI MISURA IN
+ WEBER
+ TESLA
+ WEBER*M
+ WATT
+03. ALL'INTERNO DI UN SOLENOIDE COSTITUITO DA N SPIRE ATTRAVERSATE DA UNA CORRENTE I , AVENTE LUNGHEZZA L L'INTENSITA'
+DEL CAMPO MAGNETICO H VALE:
+ Non si può determinare a priori
+ H=N*I
+ H=N*I/L
+ H=N*L/I
+04. LA PERMEABILITA' MAGNETICA RELATIVA SI MISURA IN
+ HENRY*METRO
+ ADIMENSIONALE
+ WEBER
+ HENRY/METRO
+05. LA PERMEABILITA' MAGNETICA ASSOLUTA SI MISURA IN
+ ADIMENSIONALE
+ WEBER
+ HENRY*METRO
+ HENRY/METRO
+06. IL FLUSSO MAGNETICO FI SI MISURA IN
+ WEBER
+ TESLA
+ WATT
+ WEBER*M
+07. NEI MATERIALI FERROMAGNETICI CONSIDERANDO LA CURVA DI MAGNETIZZAZIONE B=f(H) NOTIAMO CHE:
+ La permeabilità magnetica dei materiali è costante
+ La permeabilità magnetica dei materiali non è costante
+ Per i materiali ferromagnetici non è possibile determinare la curva di magnetizzazione
+ Non esiste alcun legame tra B ed H
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 76/89
+08. LA LEGGE DELL'INDUZIONE ELETTROMAGNETICA DICE CHE
+ La forza elettromotrice indotta non dipende dalla variazione di flusso nel tempo
+ La forza elettromotrice indotta dipende dalla variazione di flusso nel tempo
+ La forza elettromotrice indotta è sempre sinusoidale
+ La forza elettromotrice indotta non si oppone alla causa che l'ha generata
+09. LE PERDITE PER ISTERESI
+ Sono inversamente proporzionali all'area del ciclo di isteresi
+ Sono direttamente proporzionali alla frequenza
+ Non dipendono dal materiale
+ Non dipendono dalla frequenza
+10. LE PERDITE PER CORRENTI PARASSITE IN UN MATERIALE FERROMAGNETICO -2
+ Sono indipendenti dallo spessore
+ Sono proporzionali al quadrato dello spessore
+ Variano linearmente con lo spessore
+ Dipendono solo dalla frequenza
+11. FORZA DI LORENTZ: SU UN CONDUTTORE DI LUNGHEZZA L ATTRAVERSATO DA UNA CORRENTE I ,IMMERSO IN UN CAMPO
+MAGNETICO DI INDUZIONE B (PERPENDICOLARE ALLA CORRENTE), AGISCE UNA FORZA
+ Che è sempre nulla
+ F=I*B*L
+ F=B*L/I
+ F=I*B/L
+12. PER UN CONDUTTORE RETTILINEO ATTRAVERSATO DA UNA CORRENTE I, L'INTENSITA' DEL CAMPO MAGNETICO
+ Decresce man mano che ci allontaniamo dal conduttore
+ Rimane costante ed indipendente dalla distanza dal conduttore
+ E' sempre nulla
+ Cresce man mano che ci allontaniamo dal conduttore
+13. L'INDUZIONE MAGNETICA B E'
+ Il flusso magnetico per la sezione
+ Indipendente dall'intensità del campo magnetico
+ La densità del flusso magnetico
+ Una grandezza adimensionale
+14. LE PERDITE PER CORRENTI PARASSITE IN UN MATERIALE FERROMAGNETICO -1
+ Sono proporzionali al quadrato della frequenza
+ Dipendono solo dallo spessore
+ Variano linearmente con la frequenza
+ Sono indipendenti dalla frequenza
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 77/89
+15. I MATERIALI FERROMAGNETICI HANNO UNA PERMEABILITA' MAGNETICA RELATIVA
+ Uguale ad uno
+ Molto maggiore di uno
+ Molto minore di uno
+ Sempre pari a quella del vuoto
+16. Permeabilità magnetica
+17. Forze agenti su conduttori paralleli
+18. Regola della mano destra
+19. Regola della mano sinistra
+20. Forze agenti su una spira
+21. Ciclo di isteresi
+22. Legge di Faraday-Lenz
+23. Perdite per correnti parassite
+24. Perdite per isteresi
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 78/89
+Lezione 038
+01.
+Nel circuito in figura il flusso fi2 (quello sul tronco di destra)
+ Dipende dalla corrente I2
+ Dipende dal materiale con cui è realizzato il circuito magnetico
+ Tutte vere
+ Dipende dalla corrente I1
+02. NELLA DUALITA' TRA CIRCUITI ELETTRICI E CIRCUITI MAGNETICI
+ La resistenza coincide con il flusso
+ Non ci sono corrispondenze tra grandezze elettriche e grandezze magnetiche
+ La corrente coincide con la forza magneto-motrice
+ La tensione coincide con N*I (forza magneto-motrice)
+03. IN OGNI NODO DI UN CIRCUITO MAGNETICO
+ La somma dei flussi è sempre positiva
+ La somma dei flussi è nulla
+ La somma dei flussi è sempre negativa
+ La somma dei flussi non è quantificabile
+04. LA RILUTTANZA DI UN MATERIALE MAGNETICO
+ E' direttamente proporzionale alla lunghezza
+ E' indipendente dalla lunghezza
+ Coincide con quella del vuoto
+ E' direttamente proporzionale alla sezione
+05. Dualità circuiti elettrici-circuiti magnetici
+06. Riluttanza magnetica
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 79/89
+07.
+Del circuito magnetico riportato in figura sono noti
+N1= 500 spire, I1= 4 A
+S = 0,5 m2 (sezione ortogonale alle linee di flusso)
+N2= 400 spire, I2= 8 A, l= 1,2 m, µr= 2.000.
+Tutti i tronchi hanno uguale sezione S e uguale lunghezza l
+µ0= 1,257∙10-6 H/m
+Determinare il valore dell’induzione magnetica B nel tronco AB.
+08.
+La spira mostrata in figura è immobile e indeformabile,
+al suo interno si ha un campo magnetico di induzione B(t)
+variabile nel tempo (ortogonale al piano del foglio, entrante nel foglio), sono noti
+x = 2 m, y = 0,5 m, B(t)= 2∙t T, R= 1 Ω,
+calcolare la corrente circolante nella spira e il verso di circolazione.
+09.
+La spira mostrata in figura ha tre lati fissi ed un lato mobile a velocità costante v(t).
+Al suo interno si ha un campo magnetico di induzione B(t) costante
+(ortogonale al piano del foglio, entrante nel foglio); sono noti
+v(t) = 0,3 m/sec, y = 1 m, B(t)= 2 T, R= 1 Ω,
+determinare la corrente circolante nella spira ed il verso di circolazione.
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 80/89
+Lezione 039
+01. IL COEFFICIENTE DI MUTUA INDUZIONE M TRA DUE BOBINE 1 E 2
+ E' sempre M12=M21
+ È sempre M= M12*M21
+ M12=M21=M
+ E' sempre nullo
+02.
+Nel circuito in figura supponendo la B(t) costante:
+ Non circola corrente
+ Circola una corrente dipendente dal valore della resistenza R
+ Circola sempre una corrente positiva
+ Circola sempre una corrente negativa
+03.
+Nel circuito in figura la corrente che circola nella maglia:
+ Non dipende solo dalla velocità v(t) con cui si muove il lato mobile
+ Tutte false
+ Dipende solo dal valore della resistenza R
+ Dipende solo dalla velocità v(t) con cui si muove il lato mobile
+04. IL COEFFICIENTE DI MUTUA INDUZIONE M SI MISURA IN
+ FARAD
+ OHM
+ HENRY
+ SECONDI
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 81/89
+05. IL COEFFICIENTE DI MUTUA INDUZIONE
+ Vale zero per circuiti perfettamente accoppiati
+ E' sempre nullo
+ Vale zero per circuiti magneticamente disaccoppiati
+ E' indipendente dai valori dei coefficienti di auto induzione
+06. IL COEFFICIENTE DI AUTO INDUZIONE L
+ E' direttamente proporzionale alla riluttanza del circuito
+ Si misura in Henry/metro
+ Non dipende dalle caratteristiche fisiche del circuito magnetico
+ Dipende dalle caratteristiche fisiche del circuito magnetico
+07. Coefficiente di mutua induzione
+08. Induttanza
+09. Coefficiente di accoppiamento
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 82/89
+Lezione 041
+01. IL RAPPORTO DI TRASFORMAZIONE SI MISURA IN
+ SPIRE
+ AMPERE
+ VOLT
+ ADIMENSIONALE
+02. IN UN TRASFORMATORE IDEALE SOTTO CARICO
+ IL RENDIMENTO E' MINORE DI UNO
+ IL RENDIMENTO E' PARI AD UNO
+ IL RENDIMENTO MASSIMO SI HA IN CORRISPONDENZA DEL CARICO PARI AL 75% DEL CARICO NOMINALE
+ IL RENDIMENTO NON E' QUANTIFICABILE
+03. IN UN TRASFORMATORE MONOFASE IL VALORE EFFICACE DELLA FORZA ELETTROMOTRICE INDOTTA SECONDARIA VALE
+ E2=-4,44 N2 f FIMAX
+ E2=4,44 N1 f FIMAX
+ E2=4,44 N2 f FIMAX
+ E' SEMPRE PARI A V2
+04. IN UN TRASFORMATORE IDEALE
+ A1>A2
+ A1=A2
+ A1
+ A1=0
+05. IN UN TRASFORMATORE IDEALE -2 (K=N1/N2)
+ k=I1/I2
+ k=E1/E2
+ k=1
+ K=E1/E2=I1/I2
+06. LA CIFRA DI PERDITA DELLE LAMIERE A CRISTALLI ORIENTATI
+ VALE INTORNO A 100 WATT/KG
+ VALE INTORNO A 0,5 WATT/KG
+ E' PRATICAMENTE PARI A ZERO WATT/KG
+ VALE INTORNO A 50 WATT/KG
+07. Uso del trasformatore negli impianti elettrici
+08. Condizioni di idealità per un trasformatore
+09. Trasformatore ideale a vuoto
+10. Trasformatore ideale sotto carico
+11. Principio di funzionamento del trasformatore.
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 83/89
+Lezione 042
+01. IL BILANCIO ENERGETICO DEL TRASFORMATORE REALE SOTTO CARICO SI ESPRIME COME:
+(P1 POTENZA ASSORBITA,P2 POTENZA EROGATA, PJ PERDITE NEL RAME, PFE PERDITE NEL FERRO)
+ TUTTE FALSE
+ PFE+PJ=P2-P1
+ P1=P2+PJ+PFE
+ P1=0
+02. IN UN TRASFORMATORE REALE SOTTO CARICO
+ I1'=I0+I2 (MODULI)
+ I1=I0+I1' (VETTORI)
+ I1'=I0+I2 (VETTORI)
+ I1=k*I0 (VETTORI)
+03. Trasformatore reale a vuoto
+04. Trasformatore ideale sotto carico
+05. Circuito equivalente trasformatore reale
+06. Diagramma vettoriale trasformatore reale sotto carico
+07. Bilancio energetico trasformatore reale
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 84/89
+Lezione 043
+01. I TRASFORMATORI DI MISURA VOLTMETRICI
+ NEL NORMALE FUNZIONAMENTO DEVONO AVERE CORRENTI TRASCURABILI PER LIMITARE LE CADUTE DI TENSIONE
+ DEVONO AVERE RAPPORTO DI TRASFORMAZIONE PARI AD UNO
+ GENERALMENTE SONO ELEVATORI DI TENSIONE
+ NEL NORMALE FUNZIONAMENTO DEVONO AVERE CORRENTI ELEVATE PER AVERE ELEVATE CADUTE DI TENSIONE
+02. LA TENSIONE DI CORTO CIRCUITO DEL TRASFORMATORE -2
+ E' LA TENSIONE DA APPLICARE AD UN AVVOLGIMENTO, CON L'ALTRO AVVOLGIMENTO IN CORTO CIRCUITO, IN GRADO DI FAR CIRCOLARE LE
+CORRENTI NOMINALI
+ E' LA TENSIONE NOMINALE DELLA MACCHINA CHE FA CIRCOLARE LE CORRENTI NOMINALI
+ VALE SEMPRE ZERO
+ E' LA TENSIONE DA APPLICARE AL PRIMARIO IN CORTO CIRCUITO IN MODO DA FAR CIRCOLARE LE CORRENTI NOMINALI
+03. DIREMO CHE DUE TRASFORMATORI FORMANO UN PARALLELO PERFETTO QUANDO:
+ NON E' POSSIBILE REALIZZARE UN PARALLELO PERFETTO
+ OGNUNO FORNISCE META' DELLA POTENZA ASSORBITA DAL CARICO
+ OGNUNO FORNISCE AL CARICO UNA POTENZA PROPORZIONALE ALLA SUA POTENZA NOMINALE
+ OGNUNO FORNISCE AL CARICO UNA TENSIONE PROPORZIONALE ALLA SUA IMPEDENZA DI CORTO CIRCUITO
+04. LA TENSIONE DI CORTO CIRCUITO DEL TRASFORMATORE -1
+ DIPENDE DALLA CORRENTE ASSORBITA DAL CARICO
+ E' DELL'ORDINE DEL 30% DELLA TENSIONE NOMINALE
+ E' DELL'ORDINE DEL 4%-7% DELLA TENSIONE NOMINALE
+ NON E' POSSIBILE QUANTIFICARLA
+05. Parallelo di trasformatori monofase
+06. Trasformatori di misura amperometrici
+07. Trasformatori di misura voltmetrici
+08. Funzionamento in corto circuito
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 85/89
+Lezione 044
+01. IN UN TRASFORMATORE TRIFASE CON LE FASI PRIMARIE A STELLA E LE FASI SECONDARIE A STELLA
+ IL RAPPORTO DI TRASFORMAZIONE COINCIDE CON IL RAPPORTO SPIRE MOLTIPLICATO RADICE QUADRATA DI TRE
+ IL RAPPORTO DI TRASFORMAZIONE COINCIDE CON IL RAPPORTO SPIRE
+ NON E' QUANTIFICABILE A PRIORI
+ IL RAPPORTO DI TRASFORMAZIONE COINCIDE CON IL RAPPORTO SPIRE DIVISO RADICE QUADRATA DI TRE
+02. L'APPARTENENZA DI UN TRASFORMATORE AL GRUPPO ZERO SIGNIFICA:
+ LE TERNE DELLE TENSIONI PRIMARIA E SECONDARIA SONO IN OPPOSIZIONE DI FASE
+ LE TERNE DELLE TENSIONI PRIMARIA E SECONDARIA SONO SFASATE DI 30'
+ TENSIONE E CORRENTE SONO A 90 GRADI
+ LE TERNE DELLE TENSIONI PRIMARIA E SECONDARIA SONO IN FASE
+03. L'APPARTENENZA AL GRUPPO DI UN TRASFORMATORE 12 SI OTTIENE:
+ NEI COLLEGAMENTI STELLA-STELLA OPPURE TRIANGOLO-TRIANGOLO CON AVVOLGIMENTI AVVOLTI NELLO STESSO VERSO
+ IL GRUPPO 12 NON ESISTE
+ NEI COLLEGAMENTI STELLA-TRIANGOLO OPPURE TRIANGOLO-STELLA CON AVVOLGIMENTI AVVOLTI IN VERSO OPPOSTO
+ NEI COLLEGAMENTI STELLA-STELLA OPPURE TRIANGOLO-TRIANGOLO CON AVVOLGIMENTI AVVOLTI IN VERSO OPPOSTO
+04. LA PROVA A VUOTO DI UN TRASFORMATORE DEVE ESSERE ESEGUITA
+ ALIMENTANDO DA ENTRAMBI I LATI ALLA TENSIONE NOMINALE
+ ALIMENTANDO DA UN LATO ALLA TENSIONE NOMINALE E MANTENENDO APERTO L'ALTRO LATO
+ ALIMENTANDO DA UN LATO ALLA TENSIONE NOMINALE E MANTENENDO IN CORTO CIRCUITO L'ALTRO LATO
+ ALIMENTANDO DA UN LATO ALLA TENSIONE DI CORTO CIRCUITO E MANTENENDO APERTO L'ALTRO LATO
+05. Prova in corto circuito di trasformatore trifase
+06. Prova a vuoto di trasformatore trifase
+07. Gruppi dei trasformatori trifase
+08. Trasformatori trifase e rapporto di trasformazione
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 86/89
+Lezione 045
+01. FREQUENZA DI ALIMENTAZIONE f1 E FREQUENZA DELLE GRANDEZZE ROTORICHE f2
+ f2(s)=s f1
+ f2(s) È INDIPENDENTE DA f1 (DIPENDE SOLO DALLA VELOCITA' DI ROTAZIONE DEL ROTORE)
+ f2(s)=s f2
+ f1(s)=s f2
+02. LO SCORRIMENTO SI MISURA IN
+ RAD/SEC
+ ADIMENSIONALE
+ GIRI/MIN
+ CICLI AL SECONDO
+03. LO SCORRIMENTO s
+ IN ITALIA VALE SEMPRE 3000 GIRI/MINUTO
+ E' LA FRAZIONE DI GIRO PERSA DALLO STATORE PER OGNI GIRO DEL ROTORE
+ E' LA FRAZIONE DI GIRO PERSA DALLO STATORE PER OGNI GIRO DEL CAMPO MAGNETICO ROTANTE
+ E' LA FRAZIONE DI GIRO PERSA DAL ROTORE PER OGNI GIRO DEL CAMPO MAGNETICO ROTANTE
+04. IN UN MOTORE ASINCRONO LO SCORRIMENTO s PUO' ASSUMERE I SEGUENTI VALORI
+ s>0 SEMPRE
+ s<1 SEMPRE
+ 0<=s<=1
+ -1<=s<=1 MAI
+05. LA VELOCITA' DI ROTAZIONE DEL CAMPO MAGNETICO ROTANTE n1 VALE
+ n1=costante=3.000 giri/min
+ n1=60*f/scorrimento
+ n1=60*scorrimento/p
+ n1=60*f/p
+06. ALL'INTERNO DEL MOTORE ASINCRONO TRIFASE
+ CAMPI MAGNETICI ALTERNATIVI POSSONO ESSERE CREATI SOLO IN LABORATORIO
+ TRE BOBINE DISPOSTE A 120 GRADI E ATTRAVERATE DA TRE CORRENTI SFASATE DI 120 GRADI PRODUCONO UN CAMPO MAGNETICO
+ALTERNATIVO
+ UN CAMPO MAGNETICO ALTERNATIVO PUO' ESSERE OTTENUTO SOVRAPPONENDO DUE CAMPI MAGNETICI ROTANTI
+ ESISTE UN'UNICA RAPPRESENTAZIONE PER UN CAMPO MAGNETICO ALTERNATIVO
+07. NEI MOTORI ASINCRONI CON ROTORE A DOPPIA GABBIA
+ ESISTONO SOLO MOTORI A GABBIA SINGOLA MA NON A DOPPIA GABBIA
+ LE DUE SBARRE HANNO SEMPRE LA STESSA SEZIONE
+ LA SBARRA ESTERNA HA SEZIONE MAGGIORE RISPETTO A QUELLA INTERNA
+ LA SBARRA ESTERNA HA SEZIONE MINORE RISPETTO A QUELLA INTERNA
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 87/89
+08. I MOTORI ASINCRONI A ROTORE NON AVVOLTO
+ POSSONO ESSERE A GABBIA MA NON A DOPPIA GABBIA
+ NON ESISTONO
+ NON POSSONO ESSERE A GABBIA MA SOLO A DOPPIA GABBIA
+ POSSONO ESSERE O A GABBIA OPPURE A DOPPIA GABBIA
+09. LA FREQUENZA DELLE GRANDEZZE ROTORICHE
+ NON DIPENDE DAL VALORE DELLO SCORRIMENTO
+ COINCIDE SEMPRE CON LA FREQUENZA DELLE GRANDEZZE STATORICHE
+ DIPENDE DAL VALORE DELLO SCORRIMENTO
+ NON COINCIDE MAI CON LA FREQUENZA DELLE GRANDEZZE STATORICHE
+10. Macchina asincrona aspetti costruttivi
+11. Il campo magnetico rotante
+12. Principio di funzionamento della macchina asincrona
+13. Scorrimento e grandezze rotoriche
+14. Circuito equivalente della macchina asincrona
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 88/89
+Lezione 046
+01. LA REGOLAZIONE DELLA VELOCITA' DI ROTAZIONE DEI MOTORI ASINCRONI TRIFASE
+ NON E' POSSIBILE
+ PUO' ESSERE OTTENUTA SOLAMENTE VARIANDO LA FREQUENZA DI ALIMENTAZIONE
+ PUO' ESSERE OTTENUTA VARIANDO LA FREQUENZA DI ALIMENTAZIONE E LE COPPIE POLARI
+ PUO' ESSERE OTTENUTA SOLAMENTE VARIANDO LE COPPIE POLARI
+02. LA REGOLAZIONE DELLA VELOCITA' DI ROTAZIONE DEI MOTORI ASINCRONI TRIFASE OTTENUTA VARIANDO IL NUMERO DI COPPIE
+POLARI
+ NON E' POSSIBILE
+ E' POSSIBILE SOLO PER LE MACCHINE CON ROTORE A GABBIA
+ E' POSSIBILE SOLO PER LE MACCHINE CON ROTORE AVVOLTO
+ SI OTTIENE INSERENDO UN REOSTATO SULLE FASI ROTORICHE
+03. LA COPPIA MASSIMA
+ E' INDIPENDENTE DAL VALORE DELLA TENSIONE DI ALIMENTAZIONE
+ SI HA SEMPRE AL SINCRONISMO ( s=0 )
+ E' PROPORZIONALE AL QUADRATO DELLA TENSIONE DI ALIMENTAZIONE
+ SI HA SEMPRE ALLO SPUNTO ( s=1 )
+04. L'AVVIAMENTO REOSTATICO SI OTTIENE
+ INSERENDO UN REOSTATO TRIFASE IN SERIE ALLE FASI STATORICHE
+ INSERENDO UN REOSTATO TRIFASE IN SERIE ALLE FASI ROTORICHE
+ INSERENDO UN REOSTATO TRIFASE IN PARALLELO ALLE FASI STATORICHE
+ INSERENDO UN REOSTATO TRIFASE IN PARALLELO ALLE FASI ROTORICHE
+05. L'AVVIAMENTO STELLA-TRIANGOLO E' UTILIZZATO PER
+ AUMENTARE LA POTENZA NECESSARIA ALLO SPUNTO
+ NON PUO' ESSERE REALIZZATO PRATICAMENTE
+ RIDURRE LA CORRENTE ASSORBITA ALLO SPUNTO
+ AUMENTARE LA CORRENTE NECESSARIA ALLO SPUNTO
+06. ROTORE BLOCCATO E FORZE ELETTROMOTRICI
+ A ROTORE BLOCCATO LE FORZE ELETTROMOTRICI ROTORICHE SONO NULLE
+ A ROTORE BLOCCATO LE FORZE ELETTROMOTRICI ROTORICHE SONO MASSIME
+ LA CONDIZIONE DI FUNZIONAMENTO A ROTORE BLOCCATO NON SI REALIZZA MAI
+ A ROTORE BLOCCATO IL ROTORE COMPIE 3000 GIRI/MINUTO (SE f=50 Hz)
+07. LA COPPIA MASSIMA
+ SI HA QUANDO s=0
+ PUO' ESSERE TRASLATA SULL'ASSE DELLO SCORRIMENTO TRAMITE L'USO DI RESISTENZE ROTORICHE
+ NON PUO' ESSERE TRASLATA SULL'ASSE DELLO SCORRIMENTO TRAMITE USO DI RESISTENZE ROTORICHE
+ SI HA QUANDO s=1
+Set Domande: ELETTROTECNICA
+INGEGNERIA INDUSTRIALE (D.M. 270/04)
+Docente: Carpino Giulio
+© 2016 - 2024 Università Telematica eCampus - Data Stampa 26/01/2024 11:33:25 - 89/89
+08. IL RENDIMENTO SI MISURA IN
+ VA
+ WATT
+ ADIMENSIONALE
+ CICLI AL SECONDO
+09. DEFINIAMO ZONA DI FUNZIONAMENTO STABILE QUELLA IN CUI
+ IL MOTORE FUNZIONERA' SEMPRE IN CONDIZIONI DI REGIME
+ AD UN AUMENTO DELLA COPPIA RESISTENTE CORRISPONDE UN AUMENTO DELLA COPPIA MOTRICE ED UN AUMENTO DELLA VELOCITA'
+ PER I MOTORI ASINCRONI NON E' DEFINIBILE
+ AD UN AUMENTO DELLA COPPIA RESISTENTE CORRISPONDE UN AUMENTO DELLA COPPIA MOTRICE ED UNA DIMINUZIONE DELLA VELOCITA'
+10. IN CONDIZIONI NORMALI ALLO SPUNTO
+ LA COPPIA MOTRICE E' NULLA
+ LA COPPIA MOTRICE NON PUO' ESSERE MODIFICATA
+ LA COPPIA MOTRICE NON E' MASSIMA
+ LA COPPIA MOTRICE E' MASSIMA
+11. BILANCIO ENERGETICO (PA=POTENZA ASSORBITA, PCU PERDITE NEL RAME, PFE=PERDITER NEL FERRO, PM PERDITE
+MECCANICHE,PR POTENZA ALL'ASSE)
+ PA+ PR=PCU+PFE+PM
+ PR=PCU+PFE+PM
+ PA=PCU+PFE+PM
+ PA=PCU+PFE+PM+PR
+12. POTENZE
+ IL MOTORE ASINCRONO RICEVE POTENZA ELETTRICA E RESTITUISCE POTENZA MECCANICA
+ IL MOTORE ASINCRONO RICEVE POTENZA ELETTRICA E RESTITUISCE POTENZA ELETTROMAGNETICA
+ IL MOTORE ASINCRONO RICEVE POTENZA ELETTRICA E RESTITUISCE POTENZA ELETTRICA
+ IL MOTORE ASINCRONO RICEVE POTENZA MECCANICA E RESTITUISCE POTENZA MECCANICA
+13. SINCRONISMO E ROTORE BLOCCATO (n1=VELOCITÀ DI ROTAZIONE c.m.r., n2=VELOCITÀ DI ROTAZIONE DEL ROTORE)
+ SONO CONDIZIONI DI FUNZIONAMENTO IRREALIZZABILI
+ n2=0 E n2= n1
+ PUO' ESSERE REALIZZATO SOLO IL SINCRONISMO
+ n2=n1 E n2=0
+14. Bilancio energetico della macchina asincrona
+15. Fuonzionamento a vuoto della macchina asincrona
+16. Funzionamento a rotore bloccato della macchina asincrona
+17. Caratteristica meccanica della macchina asincrona
+18. Sistemi di avviamento della macchina asincrona
+19. Regolazione della velocità della macchina asincrona
+Powered by TCPDF (www.tcpdf.org)

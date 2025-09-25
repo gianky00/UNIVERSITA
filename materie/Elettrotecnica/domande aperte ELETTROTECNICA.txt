@@ -1,0 +1,162 @@
+ELETTROTECNICA Generato il 26/01/2024 11:33:25
+16. Corrente elettrica
+17. Tensione elettrica
+18. Resistenza elettrica
+03. Convenzione degli utilizzatori
+04. Convenzione dei generatori
+14. Diodo reale
+15. Bipolo corto circuito e bipolo circuito aperto
+16. Diodo ideale
+17. Generatore di tensione
+07. Induttore
+08. Generatori controllati
+09. Generatore di corrente
+10. Condensatore
+37. Per in circuito in figura, in cui E=12V, R1=1 ohm, R2=3 ohm, R=3 ohm, calcolare I.
+38. Per il circuito in figura, in cui V1=12 V, Ri=i ohm, calcolare la tensione V.
+39. Collegamento in parallelo di bipoli
+40. Per il circuito in figura, in cui Ri=i ohm, R=3 ohm, calcolare ReqA-A'
+41. Collegamento in serie di bipoli
+42. Legge di Kirchhoff delle tensioni
+43. Legge di Kirchhoff delle correnti
+44. Per il circuito in figura, in cui E1=12 V, E2=6 V, R1=10 Ω, R2=20 Ω. Calcolare il valore di J tale che la corrente I sia pari a zero.
+45. Per il circuito in figura, in cui E=12 V,R1=1 Ω, R2=5 Ω, calcolare I.
+02. Per il circuito in figura sono noti V=6 V, J=5 A, Ri=i Ω, calcolare la tensione VAB.
+03. Per il circuito in figura sono noti E=12 V, Ri=i Ω, I3= 5 A calcolare VAB
+04. Per il circuito in figura sono noti E=12 V, Ri=i Ω , I3= 5 A, calcolare I.
+05. Sovrapposizione degli effetti
+02. Thevenin
+03. Per il circuito in figura sono noti E=12 V, Ri=i Ω, J=2 A, calcolare il circuito equivalente di Thevenin ai morsetti AB.
+13. Norton
+14. Per il circuito in figura sono noti V=12 V, Ri=i Ω, determinare il circuito equivalente di Norton ai morsetti AB.
+04. Per il circuito in figura, in cui sono noti E=9 V, Ri=i Ω, determinare le tre correnti nei lati.
+05. Millmann
+15. Per il circuito riportato in figura , sono noti Vi=10∙i V , R=Ri=1 Ω, determinare il valore di J tale che la potenza dissipata nella resistenza R sia nulla.
+16. Per il circuito in figura sono noti V=12 V, J=2 A, Ri=i Ω determinare la potenza P del generatore di tensione.
+17. Per il circuito in figura sono noti V=12 V, Ri=i Ω, calcolare le potenze e verificarne il bilancio.
+18. Per il circuito in figura, in cui sono noti V1=12 V, V3=6 V, J1=2 A, J3=4 A, R2=6 Ω, calcolare le potenze e verificarne il bilancio energetico.
+19. Per il circuito in figura , in cui sono noti Ri=i Ω , J=2 A Determinare il valore di V1 tale che la potenza dissipata nella resistenza R3 sia nulla.
+20. Per il circuito riportato in figura, sono noti E1=E=12 V, R1=1 Ω, R=3 Ω, determinare la potenza erogata dal generatore E.
+21. Per il circuito in figura, in cui sono noti EA=75 V, J1=6 A, R1=12 Ω, R2=20 Ω, R3=30 Ω, R4=90 Ω, R5=60 Ω , RA=10,5 Ω determinare la potenza dissipata nella resistenza RA.
+22. Per il circuito in figura, in cui sono noti E1=12 V, J2=2 A, Ri=i Ω, calcolare le potenze e verificarne il bilancio energetico.
+23. Per il circuito in figura sono noti I=8 A, R=2 Ω, R1=10 Ω, R2=6 Ω, R3=6 Ω, RU=3 Ω, calcolare la potenza dissipata in RU.
+24. Per il circuito in figura in cui sono noti E=10 V, E5=10 V, I=5 A, R1=20 Ω , R2=5 Ω , R3=5 Ω , R4=10 Ω, calcolare la potenza P del generatore di tensione E5
+25. Per il circuito in figura sono noti V=12 V, J1=6 A, J3=3 A, Ri=i Ω, R=3 Ω, calcolare la potenza PJ3 del generatore di corrente J3.
+26. Potenza in corrente continua
+27. Per il circuito in figura, in cui sono noti V1=12 V, V2=6 V, I3=1 A, I4=2 A, Ri=i Ω, calcolare la potenza PR1 dissipata nella resistenza R1.
+28. Per il circuito in figura sono noti V1=12 V, Ji=i A, Ri=i Ω, calcolare la potenza assorbita dalla resistenza R1.
+01. Energia in corrente continua
+01. Per il circuito in figura 1, in cui sono noti V1=12 V , V2=6 V , J=2 A, Ri=i Ω Determinare la potenza dissipata nella resistenza R2.
+02. Metodo delle correnti cicliche di maglia
+01. Metodo del potenziale ai nodi
+02. Per il circuito in figura, in cui sono noti V1=50 V, J=60 A, R1=5 Ω, R2=40 Ω, R3=80 Ω, R4=120 Ω, determinare la tensione VBC.
+04. Per il circuito in figura, in cui sono noti R=1 Ω , I1=1 A, I2=2 A, determinare la potenza assorbita dal doppio bipolo compreso tra le porte 1-1’ e 2-2’.
+05. Doppi bipoli
+06. Doppi bipoli a T
+07. Doppi bipoli a pi-greca
+08. Per il circuito in figura, in cui è noto R=1 Ω determinare la matrice delle resistenze del doppio bipolo compreso tra le porte 1-1’ e 2-2’.
+02. Per il circuito in figura, in cui sono noti V=12 V , Ri=i Ω , Determinare l’energia W trasferita dal sistema all’utilizzatore U in 24 ore.
+03. Circuiti non lineari
+04. Per il circuito in figura, in cui sono noti V=12 V, R=2 Ω, R1=1 Ω, determinare la potenza PR1 assorbita dalla resistenza R1 e la tensione VAB con il tasto T aperto.
+05. Per il circuito in figura, in cui sono noti V=12 V, Ri=i Ω, determinare l’energia W trasferita dal sistema all’utilizzatore U in 24 ore.
+06. Per il circuito riportato in figura, in cui sono noti V=12 V , Ri=i Ω, determinare il valore della resistenza R tale che il trasferimento di potenza ai morsetti AB sia massimo.
+07. Dato il circuito non lineare in figura, in cui sono note E=12 V, R1=1 Ω, R2=1 Ω, R3=2 Ω, la caratteristica (V-I) del bipolo non lineare, determinare la potenza assorbita (o generata) dal bipolo non lineare.
+04. Grandezze periodiche
+05. Grandezze sinusoidali
+06. Numeri complessi in forma cartesiana
+07. Numeri complessi in forma polare
+08. Numeri complessi in forma esponenziale
+02. Rappresentazione di sinusoidi con fasori
+04. Per il circuito riportato in figura, funzionante in regime sinusoidale, supponendo note tutte le grandezze disegnare il diagramma vettoriale qualitativo delle stesse (prendere IR a fase zero).
+05. Circuito puramente ohmico
+06. Circuito puramente capacitivo
+07. Circuito puramente induttivo
+02. Circuito RL serie
+03. Circuito RC serie
+04. Circuito RL parallelo
+05. Circuito RC parallelo
+06. Per il circuito riportato in figura, supponendo note le grandezze V=230 V, R1=20 Ω, R2=10 Ω, R3=3 Ω, XL1=37,7 Ω, XC2=53,1 Ω, XL3=4 Ω Determinare la corrente I , la tensione VAB, le correnti IR ed IL
+08. Circuito RLC serie
+09. Circuito RLC parallelo
+11. Per il circuito riportato in figura, funzionante in regime sinusoidale, in cui sono noti R1=10 Ω, VR2=220 V, f=50 Hz, R2=20 Ω, XL1=5 Ω, XL2=15 Ω, determinare il valore della capacità C, da collegare ai morsetti AB, in modo che l’angolo di fase tra V ed I sia pari a 0° (rifasamento totale).
+12. Per il circuito riportato in figura, funzionante in regime sinusoidale, in cui sono noti Ea =220+j0 V (efficace), R=1 Ω, X=1 Ω U: PU=2 kW, cosφU=0,95 (rit.) Determinare i tre costi relativi all’energia attiva per l’utilizzatore WU, la linea Wl e del generatore Wp; è noto che 1 kWh costa 0,12 €, il circuito funziona per 24 ore al giorno per 60 giorni.
+13. Per il circuito riportato in figura, funzionante in regime sinusoidale, in cui sono noti V=220+j0 V (valore efficace) Zl=1 Ω, ZU=j2 Ω Verificare del bilancio energetico per le potenze apparenti complesse.
+14. Teorema di Bouquerot
+15. Potenze in corrente sinusoidale
+03. Rifasamento parziale
+04. Rifasamento totale
+05. Per il circuito trifase riportato in figura, in cui sono noti E1=220+j0 V (terna simmetrica alla sequenza diretta, valore efficace) ZD=10+j10 Ω, determinare le tre correnti di linea e verificare che la loro somma è pari a zero.
+06. Per il circuito trifase riportato in figura, sono noti E1=220+j0 V (terna simmetrica alla sequenza diretta, valore efficace) Z1=1+j Ω, Z2=2+j2 Ω, Z3 =1+j Ω, determinare la corrente sul neutro.
+07. Per il circuito trifase riportato in figura, in cui sono noti E1 =0+j220 V (terna simmetrica alla sequenza diretta, valore efficace) ZL=2+j4 Ω, ZU =5+j5 Ω, determinare la potenza attiva assorbita dall’utilizzatore PU.
+08. Impedenze a stella e a triangolo
+10. Sistemi trifase a stella equilibrata
+08. Sistemi trifase a stella squilibrata senza neutro
+09. Sistemi trifase a stella squilibrata con neutro
+04. Sistemi trifase a triangolo equilibrato
+05. Sistemi trifase a triangolo squilibrato
+04. Potenze nei sistemi trifase
+05. Potenze nei sistemi trifase simmetrici ed equilibrati
+02. Misure elettriche e strumenti di misura
+03. Misure di potenza nei sistemi trifase
+05. Per il circuito trifase riportato in figura, sono noti E1=220+j0 V (terna simmetrica alla sequenza diretta, valore efficace) ZL=0,1+j0,1 Ω, Z1=10+j10 Ω, Z2=20+j20 Ω, determinare il circuito equivalente di Thevenin trifase alla sezione S.
+06. Per il circuito trifase riportato in figura, in cui sono noti V=380 V (terna simmetrica alla sequenza diretta, valore efficace) PU=5 kW , cosfiU=0,6, f=50 Hz, costo Wa=0,15 €/kW∙h, costo Wr=0,25 €/kVAR∙h, con il tasto T chiuso provvedere al rifasamento totale determinando il valore di CY.
+07. Rifasamento parziale di carico monofase
+08. Rifasamento parziale di carico trifase
+04. Scomposizione alle sequenze di terne
+05. Terne alla sequenza diretta-inversa-omopolare
+11. Circuiti risonanti serie
+12. Circuiti risonanti parallelo
+13. Coefficiente di risonanza
+10. Circuito RC in scarica
+11. Circuito RC in carica
+12. Per il circuito in figura, in cui sono noti R=1 Ω, R1=2 Ω, R2=4 Ω, V1=12 V, C= 1 F, determinare la tensione vC(t) per -∞<t<+∞ sapendo che il tasto T è aperto da moltissimo tempo e che all’istante t=0 viene chiuso.
+06. Circuito RL in carica
+07. Circuito RL in scarica
+08. Per il circuito in figura, in cui sono noti V1=10 V, L=100 mH, Ri=i kΩ, determinare la corrente iL(t) per -∞<t<+∞ sapendo che il tasto T è chiuso da tempo lunghissimo e che a t=0 viene aperto.
+01. Circuito del secondo ordine RLC
+16. Permeabilità magnetica
+17. Forze agenti su conduttori paralleli
+18. Regola della mano destra
+19. Regola della mano sinistra
+20. Forze agenti su una spira
+21. Ciclo di isteresi
+22. Legge di Faraday-Lenz
+23. Perdite per correnti parassite
+24. Perdite per isteresi
+05. Dualità circuiti elettrici-circuiti magnetici
+06. Riluttanza magnetica
+07. Del circuito magnetico riportato in figura sono noti N1= 500 spire, I1= 4 A S = 0,5 m2 (sezione ortogonale alle linee di flusso) N2= 400 spire, I2= 8 A, l= 1,2 m, µr= 2.000. Tutti i tronchi hanno uguale sezione S e uguale lunghezza l µ0= 1,257∙10-6 H/m Determinare il valore dell’induzione magnetica B nel tronco AB.
+08. La spira mostrata in figura è immobile e indeformabile, al suo interno si ha un campo magnetico di induzione B(t) variabile nel tempo (ortogonale al piano del foglio, entrante nel foglio), sono noti x = 2 m, y = 0,5 m, B(t)= 2∙t T, R= 1 Ω, calcolare la corrente circolante nella spira e il verso di circolazione.
+09. La spira mostrata in figura ha tre lati fissi ed un lato mobile a velocità costante v(t). Al suo interno si ha un campo magnetico di induzione B(t) costante (ortogonale al piano del foglio, entrante nel foglio); sono noti v(t) = 0,3 m/sec, y = 1 m, B(t)= 2 T, R= 1 Ω, determinare la corrente circolante nella spira ed il verso di circolazione.
+07. Coefficiente di mutua induzione
+08. Induttanza
+09. Coefficiente di accoppiamento
+07. Uso del trasformatore negli impianti elettrici
+08. Condizioni di idealità per un trasformatore
+09. Trasformatore ideale a vuoto
+10. Trasformatore ideale sotto carico
+11. Principio di funzionamento del trasformatore.
+03. Trasformatore reale a vuoto
+04. Trasformatore ideale sotto carico
+05. Circuito equivalente trasformatore reale
+06. Diagramma vettoriale trasformatore reale sotto carico
+07. Bilancio energetico trasformatore reale
+05. Parallelo di trasformatori monofase
+06. Trasformatori di misura amperometrici
+07. Trasformatori di misura voltmetrici
+08. Funzionamento in corto circuito
+05. Prova in corto circuito di trasformatore trifase
+06. Prova a vuoto di trasformatore trifase
+07. Gruppi dei trasformatori trifase
+08. Trasformatori trifase e rapporto di trasformazione
+10. Macchina asincrona aspetti costruttivi
+11. Il campo magnetico rotante
+12. Principio di funzionamento della macchina asincrona
+13. Scorrimento e grandezze rotoriche
+14. Circuito equivalente della macchina asincrona
+14. Bilancio energetico della macchina asincrona
+15. Fuonzionamento a vuoto della macchina asincrona
+16. Funzionamento a rotore bloccato della macchina asincrona
+17. Caratteristica meccanica della macchina asincrona
+18. Sistemi di avviamento della macchina asincrona
+19. Regolazione della velocità della macchina asincrona
