@@ -94,13 +94,18 @@ class PracticeView(Toplevel):
         self.prev_button = ttk.Button(self.nav_frame, text="<< Precedente"); self.prev_button.grid(row=0, column=0, sticky='ew', padx=5, ipady=5)
         self.submit_button = ttk.Button(self.nav_frame, text="Verifica", style="Accent.TButton"); self.submit_button.grid(row=0, column=1, sticky='ew', padx=5, ipady=5)
         self.next_button = ttk.Button(self.nav_frame, text="Successiva >>"); self.next_button.grid(row=0, column=2, sticky='ew', padx=5, ipady=5)
-        self.feedback_frame = ttk.Frame(question_area); self.feedback_frame.columnconfigure((0,1,2,3), weight=1)
+        self.feedback_frame = ttk.Frame(question_area)
+        self.feedback_frame.columnconfigure((0, 1, 2, 3), weight=1)
+
+        srs_feedback_label = ttk.Label(self.feedback_frame, text="Valuta la tua risposta per proseguire", font=("Helvetica", 10, "italic"), justify='center')
+        srs_feedback_label.grid(row=0, column=0, columnspan=4, pady=(0, 5), sticky='ew')
+
         self.srs_rate_buttons = {
             "non_la_sapevo": ttk.Button(self.feedback_frame, text="Non la sapevo (1)"), "difficile": ttk.Button(self.feedback_frame, text="Difficile (2)"),
             "medio": ttk.Button(self.feedback_frame, text="Medio (3)"), "facile": ttk.Button(self.feedback_frame, text="Facile (4)"),
         }
         for i, (rating, button) in enumerate(self.srs_rate_buttons.items()):
-            button.grid(row=0, column=i, sticky='ew', padx=5, ipady=8); self.bind(f"<KeyPress-{i+1}>", lambda e, r=rating: self._rate_by_key(r))
+            button.grid(row=1, column=i, sticky='ew', padx=5, ipady=8); self.bind(f"<KeyPress-{i+1}>", lambda e, r=rating: self._rate_by_key(r))
 
     def _rate_by_key(self, rating: str):
         if self.feedback_frame.winfo_ismapped(): self.srs_rate_buttons[rating].invoke()
