@@ -41,6 +41,7 @@ class QuizController:
         self.practice_view: Optional[PracticeView] = None
         self.results_view: Optional[ResultsView] = None
         self.question_start_time = 0.0
+        self.question_start_time = 0.0
         self.srs_session_results: List[bool] = []
 
     def update_dashboard_and_srs_status(self):
@@ -274,10 +275,17 @@ class QuizController:
         if self.current_question_index > 0: self.current_question_index -= 1; self.display_current_question()
 
     def submit_or_show_answer(self, auto_submit: bool = False):
+        print("DEBUG: Controller.submit_or_show_answer called")
         if self.current_mode == 'review':
+            print("DEBUG: Controller - Mode is 'review'")
             q = self.active_questions[self.current_question_index]
-            self.practice_view.show_correct_answer(q.correct_answer); self.practice_view.switch_to_srs_feedback(True)
+            print("DEBUG: Controller - Calling practice_view.show_correct_answer")
+            self.practice_view.show_correct_answer(q.correct_answer)
+            print("DEBUG: Controller - Calling practice_view.switch_to_srs_feedback(True)")
+            self.practice_view.switch_to_srs_feedback(True)
+            print("DEBUG: Controller - Finished submit_or_show_answer")
         else:
+            print("DEBUG: Controller - Mode is not 'review'")
             if not auto_submit and not messagebox.askyesno("Conferma", "Sei sicuro di voler terminare?"): return
             self._stop_timer()
 
@@ -310,21 +318,15 @@ class QuizController:
             self.results_view = ResultsView(self.root, incorrect_display_data, self.on_results_close, title, summary)
 
     def rate_srs_question(self, rating: str):
+        print(f"DEBUG: Controller.rate_srs_question called with rating: {rating}")
         q = self.active_questions[self.current_question_index]
         self.srs_session_results.append(rating != "non_la_sapevo")
-
         if self.srs_manager:
-            is_leech = self.srs_manager.update_after_review(q, rating, q.time_taken)
-            if is_leech:
+            if self.srs_manager.update_after_review(q, rating, q.time_taken):
                 messagebox.showwarning("Attenzione: Domanda Ostica!", f"Continui ad avere difficoltà con questa domanda. Prova a studiarla da una fonte diversa.\n\n- {q.text[:100]}...")
-
-        # Logica di avanzamento o fine sessione SRS
-        if self.current_question_index < len(self.active_questions) - 1:
-            self.current_question_index += 1
-            self.display_current_question()
-        else:
-            # Fine della sessione SRS
-            self.on_practice_close(show_final_message=True)
+        print("DEBUG: Controller - Calling next_question from rate_srs_question")
+        self.next_question()
+        print("DEBUG: Controller - Finished rate_srs_question")
 
     def on_practice_close(self, show_final_message: bool = False):
         self._stop_timer()
