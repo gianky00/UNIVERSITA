@@ -11,6 +11,9 @@ class SettingsManager:
     def __init__(self):
         self.filepath = JSON_DIR / "quiz_settings.json"
         self.settings = self._load()
+        # Ensure the settings file is created on the first run if it doesn't exist.
+        if not self.filepath.exists():
+            self.save()
 
     def _get_default_settings(self) -> Dict:
         """Restituisce la struttura delle impostazioni di default."""
@@ -27,11 +30,19 @@ class SettingsManager:
     def _load(self) -> Dict:
         try:
             settings = json.loads(self.filepath.read_text(encoding='utf-8'))
+            default_globals = self._get_default_settings()["global_settings"]
+
             if "global_settings" not in settings:
-                settings["global_settings"] = self._get_default_settings()["global_settings"]
+                settings["global_settings"] = default_globals
+            else:
+                # Ensure all default global keys are present for forward compatibility.
+                for key, value in default_globals.items():
+                    settings["global_settings"].setdefault(key, value)
+
             for subj, data in settings.items():
                 if subj != "global_settings":
                     data.setdefault("interval_modifier", 1.0)
+
             return settings
         except (FileNotFoundError, json.JSONDecodeError):
             return self._get_default_settings()
@@ -58,6 +69,7 @@ class SettingsManager:
     def set_subject_data(self, subject: str, data: Dict[str, Any]):
         if subject in self.settings and subject != "global_settings":
             self.settings[subject].update(data)
+            self.save()
 
     def add_subject(self, subject: str):
         if subject and subject.strip() and subject not in self.settings:

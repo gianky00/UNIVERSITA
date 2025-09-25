@@ -156,15 +156,22 @@ class QuizController:
         if self.current_mode == 'review':
             if not self.srs_manager: return
             self.srs_session_results = []
-            self.active_questions = self.srs_manager.get_due_questions()
+
+            due_questions = self.srs_manager.get_due_questions()
+            new_questions = self.srs_manager.get_new_questions(self.all_questions)
+
+            self.active_questions = due_questions + new_questions
+
             if not self.active_questions:
                 leech_questions = self.srs_manager.get_leech_questions()
                 if leech_questions:
                     msg = "Nessuna domanda da ripassare oggi.\n\nTuttavia, hai difficoltà persistenti con queste domande (leeches). Considera di studiarle da una fonte diversa:\n\n"
                     for q in leech_questions[:5]: msg += f"- {q.text[:80]}...\n"
                     messagebox.showwarning("Domande Ostiche Rilevate", msg)
-                else: messagebox.showinfo("Studio SRS", f"Nessuna domanda da ripassare per {self.current_subject}.\nOttimo lavoro!")
+                else:
+                    messagebox.showinfo("Studio SRS", f"Nessuna nuova domanda da imparare o da ripassare per {self.current_subject}.\nOttimo lavoro!")
                 return
+
             random.shuffle(self.active_questions)
         else:
             if not self.all_questions:
