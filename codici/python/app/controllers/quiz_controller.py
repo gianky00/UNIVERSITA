@@ -243,7 +243,9 @@ class QuizController:
         self.practice_view.display_question(q, status, image)
         self.practice_view.update_navigation_buttons(self.current_question_index > 0, self.current_question_index < len(self.active_questions) - 1)
         if self.current_mode == 'exam': self.practice_view.update_navigation_panel(self.active_questions, self.current_question_index)
-        self.practice_view.switch_to_srs_feedback(False)
+        # La riga seguente è stata rimossa per prevenire il bug del refresh UI.
+        # Lo stato dei pulsanti SRS viene ora gestito esplicitamente nei metodi di navigazione.
+        # self.practice_view.switch_to_srs_feedback(False)
         if self.current_mode != 'review':
             for opt_radio in self.practice_view.option_widgets: opt_radio['radio'].config(command=self.on_answer_selected)
         self.question_start_time = time.monotonic()
@@ -266,13 +268,24 @@ class QuizController:
         except (ValueError, IndexError):
             pass # L'opzione selezionata non è stata trovata, non dare feedback
 
-    def jump_to_question(self, index: int): self.current_question_index = index; self.display_current_question()
+    def jump_to_question(self, index: int):
+        self.current_question_index = index
+        if self.practice_view: self.practice_view.switch_to_srs_feedback(False)
+        self.display_current_question()
+
     def next_question(self):
         if self.current_question_index < len(self.active_questions) - 1:
-            self.current_question_index += 1; self.display_current_question()
-        elif self.current_mode == 'review': self.on_practice_close(show_final_message=True)
+            self.current_question_index += 1
+            if self.practice_view: self.practice_view.switch_to_srs_feedback(False)
+            self.display_current_question()
+        elif self.current_mode == 'review':
+            self.on_practice_close(show_final_message=True)
+
     def prev_question(self):
-        if self.current_question_index > 0: self.current_question_index -= 1; self.display_current_question()
+        if self.current_question_index > 0:
+            self.current_question_index -= 1
+            if self.practice_view: self.practice_view.switch_to_srs_feedback(False)
+            self.display_current_question()
 
     def submit_or_show_answer(self, auto_submit: bool = False):
         if self.current_mode == 'review':
