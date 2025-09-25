@@ -11,23 +11,41 @@ class TextFileParser:
     def __init__(self, file_path: Path): self.file_path = file_path
     def parse(self) -> List[Question]:
         questions: List[Question] = []
-        try: content = self.file_path.read_text(encoding='utf-8')
-        except Exception: return []
-        if self.BOOKMARK in content: content, _ = content.split(self.BOOKMARK, 1)
+        question_counter = 1
+        try:
+            content = self.file_path.read_text(encoding='utf-8')
+        except Exception:
+            return []
+
+        if self.BOOKMARK in content:
+            content, _ = content.split(self.BOOKMARK, 1)
+
+        # Split the content by lines starting with #, which indicates a new question
         blocks = re.split(r'^\s*#\s*', content, flags=re.MULTILINE)
         for block in filter(None, (b.strip() for b in blocks)):
             lines = [line.strip() for line in block.split('\n') if line.strip()]
-            if not lines: continue
+            if not lines:
+                continue
+
             q_text_full = lines.pop(0)
-            q_number_match = re.match(r"(\d+)\.", q_text_full)
-            q_number = q_number_match.group(1) if q_number_match else 'N/A'
+            # Assign a unique sequential ID to each question, ignoring the number in the file
+            # to prevent issues with duplicate question numbers.
+            q_number = str(question_counter)
+
             options, correct_answer, image_path = [], None, None
             for line in lines:
-                if line.startswith('[image:'): image_path = Path(line.replace('[image:', '').replace(']', '').strip())
+                if line.startswith('[image:'):
+                    image_path = Path(line.replace('[image:', '').replace(']', '').strip())
                 elif line.startswith('*'):
-                    option_text = line[1:].strip(); options.append(option_text); correct_answer = option_text
-                else: options.append(line)
-            if options: questions.append(Question(q_number, q_text_full, options, correct_answer, image_path))
+                    option_text = line[1:].strip()
+                    options.append(option_text)
+                    correct_answer = option_text
+                else:
+                    options.append(line)
+
+            if options:
+                questions.append(Question(q_number, q_text_full, options, correct_answer, image_path))
+                question_counter += 1
         return questions
 
 class SimilarityAnalyser:
