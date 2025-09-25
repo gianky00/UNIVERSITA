@@ -41,7 +41,6 @@ class QuizController:
         self.practice_view: Optional[PracticeView] = None
         self.results_view: Optional[ResultsView] = None
         self.question_start_time = 0.0
-        self.question_start_time = 0.0
         self.srs_session_results: List[bool] = []
 
     def update_dashboard_and_srs_status(self):
@@ -313,10 +312,19 @@ class QuizController:
     def rate_srs_question(self, rating: str):
         q = self.active_questions[self.current_question_index]
         self.srs_session_results.append(rating != "non_la_sapevo")
+
         if self.srs_manager:
-            if self.srs_manager.update_after_review(q, rating, q.time_taken):
+            is_leech = self.srs_manager.update_after_review(q, rating, q.time_taken)
+            if is_leech:
                 messagebox.showwarning("Attenzione: Domanda Ostica!", f"Continui ad avere difficoltà con questa domanda. Prova a studiarla da una fonte diversa.\n\n- {q.text[:100]}...")
-        self.next_question()
+
+        # Logica di avanzamento o fine sessione SRS
+        if self.current_question_index < len(self.active_questions) - 1:
+            self.current_question_index += 1
+            self.display_current_question()
+        else:
+            # Fine della sessione SRS
+            self.on_practice_close(show_final_message=True)
 
     def on_practice_close(self, show_final_message: bool = False):
         self._stop_timer()
