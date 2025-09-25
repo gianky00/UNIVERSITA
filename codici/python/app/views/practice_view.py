@@ -105,24 +105,11 @@ class PracticeView(Toplevel):
     def _rate_by_key(self, rating: str):
         if self.feedback_frame.winfo_ismapped(): self.srs_rate_buttons[rating].invoke()
     def set_callbacks(self, prev_cb, next_cb, submit_cb, rate_cb):
-        print("DEBUG: View.set_callbacks called")
         self.prev_button.config(command=prev_cb); self.next_button.config(command=next_cb); self.submit_button.config(command=submit_cb)
-        for rating, button in self.srs_rate_buttons.items():
-            print(f"DEBUG: View - Setting callback for rating button: {rating}")
-            button.config(command=lambda r=rating: rate_cb(r))
-        print("DEBUG: View.set_callbacks finished")
-
+        for rating, button in self.srs_rate_buttons.items(): button.config(command=lambda r=rating: rate_cb(r))
     def switch_to_srs_feedback(self, show: bool):
-        print(f"DEBUG: View.switch_to_srs_feedback called with show={show}")
-        if show:
-            print("DEBUG: View - Hiding nav_frame, showing feedback_frame")
-            self.nav_frame.pack_forget()
-            self.feedback_frame.pack(side='bottom', fill='x', pady=(10, 0))
-        else:
-            print("DEBUG: View - Hiding feedback_frame, showing nav_frame")
-            self.feedback_frame.pack_forget()
-            self.nav_frame.pack(side='bottom', fill='x', pady=(10, 0))
-        print("DEBUG: View.switch_to_srs_feedback finished")
+        if show: self.nav_frame.pack_forget(); self.feedback_frame.pack(side='bottom', fill='x', pady=(10, 0))
+        else: self.feedback_frame.pack_forget(); self.nav_frame.pack(side='bottom', fill='x', pady=(10, 0))
     def setup_for_mode(self):
         if self.mode == 'review':
             self.submit_button.config(text="Mostra Risposta"); self.prev_button.grid_remove(); self.next_button.grid_remove()
@@ -195,12 +182,8 @@ class PracticeView(Toplevel):
             else: widget['frame'].pack_forget()
 
     def show_correct_answer(self, correct_answer: str):
-        print("DEBUG: View.show_correct_answer called")
         for widget in self.option_widgets:
-            if widget['radio']['value'] == correct_answer:
-                print(f"DEBUG: View - Highlighting correct answer: {correct_answer}")
-                widget['label'].config(style="CorrectAnswer.TLabel")
-        print("DEBUG: View.show_correct_answer finished")
+            if widget['radio']['value'] == correct_answer: widget['label'].config(style="CorrectAnswer.TLabel")
     def update_navigation_buttons(self, prev_enabled: bool, next_enabled: bool):
         self.prev_button.config(state='normal' if prev_enabled else 'disabled'); self.next_button.config(state='normal' if next_enabled else 'disabled')
     def select_option_by_key(self, key: str):
