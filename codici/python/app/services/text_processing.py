@@ -20,7 +20,7 @@ class TextFileParser:
         if self.BOOKMARK in content:
             content, _ = content.split(self.BOOKMARK, 1)
 
-        # Split the content by lines starting with #, which indicates a new question
+        # Split content into question blocks
         blocks = re.split(r'^\s*#\s*', content, flags=re.MULTILINE)
         for block in filter(None, (b.strip() for b in blocks)):
             lines = [line.strip() for line in block.split('\n') if line.strip()]
@@ -28,19 +28,35 @@ class TextFileParser:
                 continue
 
             q_text_full = lines.pop(0)
-            # Assign a unique sequential ID to each question, ignoring the number in the file
-            # to prevent issues with duplicate question numbers.
+            # Use a sequential counter for the question ID to avoid duplicates
             q_number = str(question_counter)
 
             options, correct_answer, image_path = [], None, None
+
+            # Keywords to identify and filter out junk lines
+            JUNK_KEYWORDS = ["INGEGNERIA INFORMATICA", "eCampus", "Data Stampa", "©"]
+
             for line in lines:
+                # Check if the line is junk and should be ignored
+                if any(keyword in line for keyword in JUNK_KEYWORDS):
+                    continue
+
+                # Process valid lines
                 if line.startswith('[image:'):
                     image_path = Path(line.replace('[image:', '').replace(']', '').strip())
                 elif line.startswith('*'):
                     option_text = line[1:].strip()
                     options.append(option_text)
                     correct_answer = option_text
+                elif line.startswith('[x]'): # Support for another format
+                    option_text = line[3:].strip()
+                    options.append(option_text)
+                    correct_answer = option_text
+                elif line.startswith('[ ]'): # Support for another format
+                    option_text = line[3:].strip()
+                    options.append(option_text)
                 else:
+                    # Assume any other non-junk line is a regular option
                     options.append(line)
 
             if options:

@@ -11,10 +11,6 @@ class SettingsManager:
     def __init__(self):
         self.filepath = JSON_DIR / "quiz_settings.json"
         self.settings = self._load()
-        # Se il file non è stato trovato da _load, le impostazioni di default
-        # vengono caricate in memoria. Le salviamo per renderle persistenti.
-        if not self.filepath.exists():
-            self.save()
 
     def _get_default_settings(self) -> Dict:
         """Restituisce la struttura delle impostazioni di default."""
@@ -62,7 +58,6 @@ class SettingsManager:
     def set_subject_data(self, subject: str, data: Dict[str, Any]):
         if subject in self.settings and subject != "global_settings":
             self.settings[subject].update(data)
-            self.save()
 
     def add_subject(self, subject: str):
         if subject and subject.strip() and subject not in self.settings:
