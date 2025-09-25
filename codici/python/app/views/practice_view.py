@@ -180,6 +180,7 @@ class PracticeView(Toplevel):
                 option_text = q.options[i]; widget['frame'].pack(anchor='w', fill='x', pady=4)
                 widget['radio'].config(variable=q.user_answer, value=option_text); widget['label'].config(text=option_text, style="TLabel")
             else: widget['frame'].pack_forget()
+
     def show_correct_answer(self, correct_answer: str):
         for widget in self.option_widgets:
             if widget['radio']['value'] == correct_answer: widget['label'].config(style="CorrectAnswer.TLabel")
