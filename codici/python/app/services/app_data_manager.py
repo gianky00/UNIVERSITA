@@ -4,14 +4,14 @@ from typing import Dict, Any, List
 from pathlib import Path
 
 from app.services.settings_manager import SettingsManager
-
-# Costruisce un percorso assoluto alla directory 'json'
-JSON_DIR = Path(__file__).resolve().parent.parent.parent.parent / "json"
+from app.services.config_manager import ConfigManager
 
 class AppDataManager:
-    def __init__(self, settings_manager: SettingsManager):
-        self.filepath = JSON_DIR / "app_data.json"
+    def __init__(self, settings_manager: SettingsManager, config_manager: ConfigManager):
         self.settings_manager = settings_manager
+        self.config_manager = config_manager
+        self.data_path = self.config_manager.get_data_path()
+        self.filepath = self.data_path / "app_data.json"
         self.data = self._load_data()
 
     def _load_data(self) -> Dict[str, Any]:
@@ -93,50 +93,32 @@ class AppDataManager:
         self.settings_manager.save() # Salva immediatamente la modifica
 
     def get_overall_stats(self) -> Dict[str, Any]:
-        """Calcola e restituisce un dizionario di statistiche complessive, inclusi i dettagli per materia."""
+        """Calcola e restituisce un dizionario di statistiche complessive."""
         review_log = self.get_review_log()
         user_stats = self.get_user_stats()
 
         total_reviews = len(review_log)
+        if total_reviews == 0:
+            return {
+                "total_reviews": 0, "overall_retention": 0.0,
+                "longest_streak": user_stats.get("longest_streak", 0),
+                "most_studied": "N/D"
+            }
+
+        correct_reviews = sum(1 for r in review_log if r["is_correct"])
+        overall_retention = (correct_reviews / total_reviews) * 100
 
         subject_counts = {}
         for r in review_log:
             subject_counts[r["subject"]] = subject_counts.get(r["subject"], 0) + 1
+
         most_studied = max(subject_counts, key=subject_counts.get) if subject_counts else "N/D"
-
-        # --- Dettagli per Materia ---
-        subject_details = {}
-        all_subjects = self.settings_manager.get_subjects()
-        global_settings = self.settings_manager.get_global_settings()
-        retention_days = global_settings.get("retention_period_days", 7)
-        cutoff_date = datetime.datetime.now() - datetime.timedelta(days=retention_days)
-
-        for subject in all_subjects:
-            subject_data = self.settings_manager.get_subject_data(subject)
-
-            # Calcolo ritenzione per la materia (basato sul periodo di ritenzione)
-            recent_subject_reviews = [
-                r for r in review_log
-                if r["subject"] == subject and datetime.datetime.fromisoformat(r["timestamp"]) >= cutoff_date
-            ]
-
-            retention_rate = None
-            if recent_subject_reviews:
-                correct_count = sum(1 for r in recent_subject_reviews if r["is_correct"])
-                retention_rate = (correct_count / len(recent_subject_reviews)) * 100
-
-            subject_details[subject] = {
-                "status": subject_data.get("status", "N/D"),
-                "retention_rate": retention_rate,
-                "txt_path": subject_data.get("txt_path", ""), # Passa il percorso al controller
-            }
 
         return {
             "total_reviews": total_reviews,
-            "overall_retention": self.get_retention_rate(), # Usa il metodo corretto
+            "overall_retention": overall_retention,
             "longest_streak": user_stats.get("longest_streak", 0),
-            "most_studied": most_studied,
-            "subject_details": subject_details
+            "most_studied": most_studied
         }
 
     def get_review_log(self) -> List[Dict[str, Any]]:

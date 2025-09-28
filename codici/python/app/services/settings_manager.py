@@ -1,15 +1,16 @@
 import json
 from pathlib import Path
 from typing import List, Dict, Optional, Any
+import shutil
 
-# Costruisce un percorso assoluto alla directory 'json'
-# Questo rende l'app indipendente dalla directory di lavoro corrente
-JSON_DIR = Path(__file__).resolve().parent.parent.parent.parent / "json"
+from app.services.config_manager import ConfigManager
 
 class SettingsManager:
     """Gestisce caricamento/salvataggio dei percorsi e metadati per materia e impostazioni globali."""
-    def __init__(self):
-        self.filepath = JSON_DIR / "quiz_settings.json"
+    def __init__(self, config_manager: ConfigManager):
+        self.config_manager = config_manager
+        self.data_path = self.config_manager.get_data_path()
+        self.filepath = self.data_path / "quiz_settings.json"
         self.settings = self._load()
 
     def _get_default_settings(self) -> Dict:
@@ -37,7 +38,36 @@ class SettingsManager:
             return self._get_default_settings()
 
     def save(self):
+        self.data_path.mkdir(parents=True, exist_ok=True)
         self.filepath.write_text(json.dumps(self.settings, indent=2, ensure_ascii=False), encoding='utf-8')
+
+    def move_data_directory(self, new_path: Path) -> (bool, str):
+        """Sposta tutti i file di dati dalla vecchia alla nuova posizione."""
+        old_path = self.data_path
+        if old_path == new_path:
+            return True, "Il percorso è già quello attuale."
+
+        try:
+            new_path.mkdir(parents=True, exist_ok=True)
+            files_to_move = [f for f in old_path.glob('*.json') if f.is_file()]
+            for file in files_to_move:
+                shutil.move(str(file), str(new_path / file.name))
+
+            self.config_manager.set_data_path(str(new_path))
+            self.data_path = new_path
+            self.filepath = self.data_path / "quiz_settings.json"
+
+            return True, f"Dati spostati con successo in:\n{new_path}"
+
+        except Exception as e:
+            # Rollback in caso di errore
+            try:
+                files_to_move_back = [f for f in new_path.glob('*.json') if f.is_file()]
+                for file in files_to_move_back:
+                    shutil.move(str(file), str(old_path / file.name))
+            except Exception as rollback_e:
+                return False, f"Errore critico durante lo spostamento: {e}\n\nErrore anche nel ripristino: {rollback_e}"
+            return False, f"Errore durante lo spostamento dei dati: {e}"
 
     def get_global_settings(self) -> Dict[str, Any]:
         return self.settings.get("global_settings", self._get_default_settings()["global_settings"])
@@ -68,9 +98,12 @@ class SettingsManager:
         if subject in self.settings and subject != "global_settings":
             subject_data = self.settings[subject]
             del self.settings[subject]
-            # Gestione file associati
-            srs_file = Path(f"codici/json/{subject.replace(' ', '_').lower()}_srs_deck.json")
+
+            # Gestione file associati con il nuovo percorso dati
+            srs_file = self.data_path / f"{subject.replace(' ', '_').lower()}_srs_deck.json"
             if srs_file.exists(): srs_file.unlink()
+
+            # Il file di cache è relativo al file .txt, quindi questo non cambia
             txt_path_str = subject_data.get("txt_path")
             if txt_path_str:
                 cache_file = Path(f"{txt_path_str}.cache.json")

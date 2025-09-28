@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk, messagebox
+from tkinter import ttk
 from typing import Callable, Dict
 from ttkthemes import ThemedTk
 
@@ -78,11 +78,8 @@ class MainView(ThemedTk):
         actions_frame = ttk.LabelFrame(right_panel, text="Sessioni di Studio")
         actions_frame.pack(fill="both", expand=True)
 
-        help_button = ttk.Button(actions_frame, text="?", command=self._show_study_modes_help, width=2)
-        help_button.place(relx=1.0, x=-5, y=-8) # Posiziona nell'angolo in alto a destra
-
         self.review_button = ttk.Button(actions_frame, text="Studio SRS", command=lambda: self.start_callback('review'), style="Accent.TButton", state='disabled')
-        self.review_button.pack(expand=True, fill="both", ipady=15, padx=10, pady=(20, 10)) # Aggiunto pady top per fare spazio
+        self.review_button.pack(expand=True, fill="both", ipady=15, padx=10, pady=10)
 
         self.exam_button = ttk.Button(actions_frame, text="Modalità Esame", command=lambda: self.start_callback('exam'))
         self.exam_button.pack(expand=True, fill="both", ipady=15, padx=10, pady=5)
@@ -98,19 +95,6 @@ class MainView(ThemedTk):
 
         ttk.Button(bottom_frame, text="Analisi Performance", command=self.analysis_callback).pack(side='left', expand=True, fill='x', ipady=8, padx=(0,5))
         ttk.Button(bottom_frame, text="Impostazioni", command=self.settings_callback).pack(side='left', expand=True, fill='x', ipady=8, padx=(5,0))
-
-    def _show_study_modes_help(self):
-        """Mostra una finestra di dialogo con la spiegazione delle modalità di studio."""
-        help_text = (
-            "Ecco una spiegazione delle diverse modalità di studio:\n\n"
-            "• Studio SRS (Spaced Repetition System):\n"
-            "Questa è la modalità di studio principale. Il sistema ti presenta le domande a intervalli di tempo crescenti per massimizzare la memorizzazione a lungo termine. Si concentra sulle domande che hai trovato difficili e introduce nuove domande gradualmente.\n\n"
-            "• Modalità Esame:\n"
-            "Simula una sessione d'esame. Ti verranno presentate tutte le domande della materia selezionata in ordine casuale, senza feedback immediato. Alla fine, otterrai un punteggio complessivo.\n\n"
-            "• Esercitazione Libera:\n"
-            "Ti permette di ripassare tutte le domande di una materia in modo sequenziale, senza l'algoritmo SRS. Utile per una revisione rapida o per familiarizzare con il materiale."
-        )
-        messagebox.showinfo("Guida Modalità di Studio", help_text, parent=self)
 
     def update_dashboard(self, stats: Dict[str, any]):
         """Aggiorna i widget della dashboard con le nuove statistiche."""

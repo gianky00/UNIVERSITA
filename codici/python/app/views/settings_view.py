@@ -3,14 +3,17 @@ from tkinter import ttk, filedialog, messagebox, Toplevel, simpledialog
 import datetime
 from typing import Dict
 
+from pathlib import Path
 from app.services.settings_manager import SettingsManager
+from app.services.config_manager import ConfigManager
 from app.services.text_processing import TextFileParser
 from app.views.dialogs import Tooltip
 
 class SettingsView(Toplevel):
-    def __init__(self, parent: tk.Tk, settings_manager: SettingsManager):
+    def __init__(self, parent: tk.Tk, settings_manager: SettingsManager, config_manager: ConfigManager):
         super().__init__(parent)
         self.settings_manager = settings_manager
+        self.config_manager = config_manager
         self.title("Impostazioni")
         self.geometry("800x520")
         self.transient(parent)
@@ -79,12 +82,7 @@ class SettingsView(Toplevel):
             "srs_good": tk.IntVar(value=1440), "srs_easy": tk.IntVar(value=4320)
         }
 
-        # --- Tooltip Texts ---
-        srs_tooltip_text = "Imposta dopo quanto tempo una carta ti verrà riproposta a seconda della tua risposta. 'Di Nuovo' resetta la carta, le altre opzioni aumentano l'intervallo."
-        retention_tooltip_text = "Il numero di giorni su cui calcolare il 'Tasso di Ritenzione', ovvero la percentuale di carte che ricordi correttamente."
-        new_cards_tooltip_text = "Il numero massimo di domande mai viste prima che verranno presentate in una singola sessione di 'Studio SRS'."
-
-        # --- SRS Intervals ---
+        # SRS intervals
         srs_frame = ttk.LabelFrame(self.generali_tab, text="Intervalli di Ripetizione (in minuti)", padding=10)
         srs_frame.pack(fill='x', expand=True)
         srs_labels = {"srs_again": "Di Nuovo:", "srs_hard": "Difficile:", "srs_good": "Buono:", "srs_easy": "Facile:"}
@@ -92,29 +90,33 @@ class SettingsView(Toplevel):
             ttk.Label(srs_frame, text=label).grid(row=i, column=0, padx=5, pady=5, sticky='w')
             ttk.Entry(srs_frame, textvariable=self.global_vars[key], width=10).grid(row=i, column=1, padx=5, pady=5, sticky='w')
 
-        srs_help = ttk.Label(srs_frame, text="?", font=('Helvetica', 9, 'bold'), cursor="question_arrow")
-        srs_help.grid(row=0, column=2, padx=5, sticky='w')
-        Tooltip(srs_help, srs_tooltip_text)
-
-        # --- Other Settings ---
+        # Other settings
         other_frame = ttk.LabelFrame(self.generali_tab, text="Altre Impostazioni", padding=10)
         other_frame.pack(fill='x', expand=True, pady=(10,0))
-
-        # Retention Period
         ttk.Label(other_frame, text="Periodo Ritenzione (giorni):").grid(row=0, column=0, padx=5, pady=5, sticky='w')
         ttk.Entry(other_frame, textvariable=self.global_vars["retention_period_days"], width=10).grid(row=0, column=1, padx=5, pady=5, sticky='w')
-        retention_help = ttk.Label(other_frame, text="?", font=('Helvetica', 9, 'bold'), cursor="question_arrow")
-        retention_help.grid(row=0, column=2, padx=(5,0), sticky='w')
-        Tooltip(retention_help, retention_tooltip_text)
-
-        # New Cards per Session
         ttk.Label(other_frame, text="Nuove Carte per Sessione:").grid(row=1, column=0, padx=5, pady=5, sticky='w')
         ttk.Entry(other_frame, textvariable=self.global_vars["new_cards_per_day"], width=10).grid(row=1, column=1, padx=5, pady=5, sticky='w')
-        new_cards_help = ttk.Label(other_frame, text="?", font=('Helvetica', 9, 'bold'), cursor="question_arrow")
-        new_cards_help.grid(row=1, column=2, padx=(5,0), sticky='w')
-        Tooltip(new_cards_help, new_cards_tooltip_text)
+
+        # --- Data Sync ---
+        sync_frame = ttk.LabelFrame(self.generali_tab, text="Sincronizzazione Dati (Google Drive, etc.)", padding=10)
+        sync_frame.pack(fill='x', expand=True, pady=(10,0))
+        sync_frame.columnconfigure(0, weight=1)
+
+        self.data_path_var = tk.StringVar()
+
+        path_entry = ttk.Entry(sync_frame, textvariable=self.data_path_var, state="readonly")
+        path_entry.grid(row=0, column=0, sticky='ew', padx=5, pady=5)
+
+        path_button = ttk.Button(sync_frame, text="Cambia Cartella Dati...", command=self._select_data_directory)
+        path_button.grid(row=0, column=1, padx=5, pady=5)
+
+        path_help = ttk.Label(sync_frame, text="?", font=('Helvetica', 9, 'bold'), cursor="question_arrow")
+        path_help.grid(row=0, column=2, padx=(5,0), sticky='w')
+        Tooltip(path_help, "Seleziona la cartella (es. la tua cartella Google Drive) dove salvare tutti i dati dell'app (progressi, materie, etc.) per la sincronizzazione tra dispositivi.")
 
     def _load_global_settings(self):
+        # Load general settings
         settings = self.settings_manager.get_global_settings()
         self.global_vars["retention_period_days"].set(settings.get("retention_period_days", 7))
         self.global_vars["new_cards_per_day"].set(settings.get("new_cards_per_day", 20))
@@ -123,6 +125,40 @@ class SettingsView(Toplevel):
         self.global_vars["srs_hard"].set(srs_intervals.get("hard", 120))
         self.global_vars["srs_good"].set(srs_intervals.get("good", 1440))
         self.global_vars["srs_easy"].set(srs_intervals.get("easy", 4320))
+
+        # Load data path
+        self.data_path_var.set(str(self.config_manager.get_data_path()))
+
+    def _select_data_directory(self):
+        new_path_str = filedialog.askdirectory(
+            title="Seleziona la nuova cartella per i dati dell'applicazione",
+            mustexist=True,
+            parent=self
+        )
+        if not new_path_str:
+            return
+
+        new_path = Path(new_path_str)
+        current_path = self.config_manager.get_data_path()
+
+        if new_path == current_path:
+            messagebox.showinfo("Nessuna Modifica", "Il percorso selezionato è già quello in uso.", parent=self)
+            return
+
+        if any(new_path.iterdir()):
+             if not messagebox.askyesno("Attenzione", "La cartella selezionata non è vuota. I file di dati esistenti verranno spostati qui. Continuare?", parent=self):
+                return
+
+        success, message = self.settings_manager.move_data_directory(new_path)
+
+        if success:
+            messagebox.showinfo("Successo", message, parent=self)
+            self.data_path_var.set(str(new_path))
+            # Riavvia l'app per applicare le modifiche
+            if messagebox.askyesno("Riavvio Richiesto", "Per applicare le modifiche, è necessario riavviare l'applicazione. Vuoi chiudere ora?", parent=self):
+                self.winfo_toplevel().destroy()
+        else:
+            messagebox.showerror("Errore", message, parent=self)
 
     def _save_global_settings(self):
         new_settings = {
