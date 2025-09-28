@@ -42,8 +42,21 @@ class SettingsView(Toplevel):
     def create_materie_tab(self):
         self.subject_vars = {"txt_path": tk.StringVar(), "img_path": tk.StringVar(), "exam_date": tk.StringVar(), "status": tk.StringVar()}
 
+        # Path profiles
+        profile_frame = ttk.LabelFrame(self.materie_tab, text="Percorsi Predefiniti", padding=10)
+        profile_frame.pack(fill='x', expand=True, pady=(0, 10))
+        profile_frame.columnconfigure(1, weight=1)
+        ttk.Label(profile_frame, text="Profilo:", font=('Helvetica', 10, 'bold')).grid(row=0, column=0, sticky='w', pady=5, padx=5)
+        self.profile_combo = ttk.Combobox(profile_frame, state="readonly")
+        self.profile_combo.grid(row=0, column=1, sticky='ew', pady=5, padx=5)
+
+        profile_btn_frame = ttk.Frame(profile_frame)
+        profile_btn_frame.grid(row=0, column=2, padx=5)
+        ttk.Button(profile_btn_frame, text="Applica", command=self._apply_profile).pack(side='left', padx=2)
+        ttk.Button(profile_btn_frame, text="Salva/Aggiorna", command=self._save_profile).pack(side='left', padx=2)
+
         # Subject selection
-        subject_frame = ttk.LabelFrame(self.materie_tab, text="Selezione Materia", padding=10)
+        subject_frame = ttk.LabelFrame(self.materie_tab, text="Gestione Materia", padding=10)
         subject_frame.pack(fill='x', expand=True)
         subject_frame.columnconfigure(1, weight=1)
         ttk.Label(subject_frame, text="Materia:", font=('Helvetica', 10, 'bold')).grid(row=0, column=0, sticky='w', pady=5, padx=5)
@@ -118,10 +131,25 @@ class SettingsView(Toplevel):
         self.settings_manager.save_global_settings(new_settings)
 
     def _refresh_combobox(self):
+        # Refresh subjects
         subjects = self.settings_manager.get_subjects()
         self.subject_combo['values'] = subjects
-        if subjects: self.subject_combo.current(0)
-        else: self.subject_combo.set('')
+        if subjects:
+            self.subject_combo.current(0)
+        else:
+            self.subject_combo.set('')
+
+        # Refresh profiles
+        profiles = self.settings_manager.get_path_profiles()
+        self.profile_combo['values'] = profiles
+        active_profile = self.settings_manager.get_active_profile()
+        if active_profile in profiles:
+            self.profile_combo.set(active_profile)
+        elif profiles:
+            self.profile_combo.current(0)
+        else:
+            self.profile_combo.set('')
+
         self.update_display_for_subject()
 
     def _add_subject(self):
@@ -150,16 +178,50 @@ class SettingsView(Toplevel):
         else: path = filedialog.askdirectory(title="Seleziona cartella immagini")
         if path: self.subject_vars[path_type].set(path)
 
-    def save_and_close(self):
-        # Save subject-specific settings
+    def _apply_profile(self):
+        profile_name = self.profile_combo.get()
+        if not profile_name:
+            messagebox.showwarning("Attenzione", "Nessun profilo selezionato.", parent=self)
+            return
+
+        if messagebox.askyesno("Conferma", f"Vuoi applicare il profilo '{profile_name}'?\nQuesto sovrascriverà i percorsi per tutte le materie.", parent=self):
+            self.settings_manager.apply_path_profile(profile_name)
+            self._refresh_combobox() # Ricarica per mostrare i nuovi percorsi
+            messagebox.showinfo("Successo", f"Profilo '{profile_name}' applicato.", parent=self)
+
+    def _save_profile(self):
+        if not self._commit_current_subject():
+            return
+
+        current_profile = self.profile_combo.get()
+        new_profile = simpledialog.askstring("Salva Profilo", "Salva i percorsi attuali come:", initialvalue=current_profile, parent=self)
+
+        if new_profile and new_profile.strip():
+            self.settings_manager.save_current_paths_as_profile(new_profile.strip())
+            self._refresh_combobox()
+            self.profile_combo.set(new_profile.strip())
+            messagebox.showinfo("Successo", f"Profilo '{new_profile.strip()}' salvato.", parent=self)
+
+    def _commit_current_subject(self) -> bool:
+        """Salva le impostazioni della materia correntemente selezionata nel dizionario in memoria del manager."""
         subject = self.subject_combo.get()
-        if subject:
-            data_to_save = {key: var.get() for key, var in self.subject_vars.items()}
-            try:
-                if data_to_save["exam_date"]: datetime.datetime.strptime(data_to_save["exam_date"], '%d/%m/%Y')
-            except ValueError:
-                return messagebox.showerror("Errore Formato", "Formato data non valido per la materia. Usare GG/MM/AAAA.", parent=self)
-            self.settings_manager.set_subject_data(subject, data_to_save)
+        if not subject:
+            return True
+
+        data_to_save = {key: var.get() for key, var in self.subject_vars.items()}
+        try:
+            if data_to_save["exam_date"]:
+                datetime.datetime.strptime(data_to_save["exam_date"], '%d/%m/%Y')
+        except ValueError:
+            messagebox.showerror("Errore Formato", "Formato data non valido per la materia. Usare GG/MM/AAAA.", parent=self)
+            return False
+
+        self.settings_manager.set_subject_data(subject, data_to_save)
+        return True
+
+    def save_and_close(self):
+        if not self._commit_current_subject():
+            return
 
         # Save global settings
         try:
