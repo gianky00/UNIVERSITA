@@ -17,10 +17,14 @@ class SettingsManager:
         """Restituisce la struttura delle impostazioni di default."""
         return {
             "global_settings": {
+                # Giorni su cui calcolare il tasso di ritenzione
                 "retention_period_days": 7,
+                # Intervalli SRS di default in minuti
                 "srs_intervals": {"again": 10, "hard": 120, "good": 1440, "easy": 4320},
+                # Numero di nuove carte da presentare in una sessione SRS
                 "new_cards_per_day": 20
             },
+            # Materie di esempio
             "ELETTROTECNICA": {"txt_path": "", "img_path": "", "exam_date": "17/10/2025", "status": "In Corso", "interval_modifier": 1.0},
             "FONDAMENTI DI INFORMATICA": {"txt_path": "", "img_path": "", "exam_date": "22/10/2025", "status": "In Corso", "interval_modifier": 1.0}
         }

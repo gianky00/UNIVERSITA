@@ -1,0 +1,325 @@
+{
+  "02. Un file .class:": {
+    "question": {
+      "number": "02",
+      "text": "02. Un file .class:",
+      "options": [
+        "esclude le classi di un programma in codice Java",
+        "include le classi di un programma in codice Java",
+        "\u00e8 un file binario il risultato della compilazione",
+        "\u00e8 il risultato della scrittura del codice di una classe in Java"
+      ],
+      "image_path": null,
+      "correct_answer": "\u00e8 un file binario il risultato della compilazione"
+    },
+    "srs_level": 2,
+    "next_review_date": "2025-09-23",
+    "lapses": 0
+  },
+  "08. Quale fra le seguenti frasi \u00e8 falsa se riferita all'operatore assegnamento?": {
+    "question": {
+      "number": "08",
+      "text": "08. Quale fra le seguenti frasi \u00e8 falsa se riferita all'operatore assegnamento?",
+      "options": [
+        "E' un operatore binario",
+        "A sinistra dell'assegnamento pu\u00f2 esserci soltanto una variabile",
+        "\"boolean b = 4 <3\" da errore di \"incompatible types\" in fase di compilazione",
+        "La parte destra dell'assegnamento deve essere dello stesso tipo della parte sinistra"
+      ],
+      "image_path": null,
+      "correct_answer": "\"boolean b = 4 <3\" da errore di \"incompatible types\" in fase di compilazione"
+    },
+    "srs_level": 2,
+    "next_review_date": "2025-09-23",
+    "lapses": 0
+  },
+  "08. L'istruzione \"byte[] i = {2, 3, 6, 100, 230, 340};\" cosa provoca se compilata?": {
+    "question": {
+      "number": "08",
+      "text": "08. L'istruzione \"byte[] i = {2, 3, 6, 100, 230, 340};\" cosa provoca se compilata?",
+      "options": [
+        "Crea un array di byte di 6 elementi con i valori specificati tra graffe",
+        "Crea un array di byte di lunghezza fissa",
+        "Genera un errore in fase di compilazione",
+        "Crea un array vuoto di byte di 6 elementi"
+      ],
+      "image_path": null,
+      "correct_answer": "Genera un errore in fase di compilazione"
+    },
+    "srs_level": 2,
+    "next_review_date": "2025-09-22",
+    "lapses": 0
+  },
+  "01. A che serve l'Interprete dei comandi?": {
+    "question": {
+      "number": "01",
+      "text": "01. A che serve l'Interprete dei comandi?",
+      "options": [
+        "verifica che i comandi eseguiti non abbiano generato errori",
+        "verifica che i dati e i comandi immessi dall'utente siano sicuri",
+        "verifica che i comandi invocati dall'utente operino sui dati corretti",
+        "verifica che i comandi invocati dall'utente siano sicuri"
+      ],
+      "image_path": null,
+      "correct_answer": "verifica che i comandi invocati dall'utente siano sicuri"
+    },
+    "srs_level": 2,
+    "next_review_date": "2025-09-22",
+    "lapses": 0
+  },
+  "01. Cosa \u00e8 sbagliato dire riferendosi alla struttura di un programma Assembler x86?": {
+    "question": {
+      "number": "01",
+      "text": "01. Cosa \u00e8 sbagliato dire riferendosi alla struttura di un programma Assembler x86?",
+      "options": [
+        "ha sicuramente una intestazione",
+        "pu\u00f2 contenere un segmento stack",
+        "possiamo trovarci i segmenti intestazione, dati, stack e programma",
+        "possiamo trovarci i segmenti dati, stack e codice"
+      ],
+      "image_path": null,
+      "correct_answer": "ha sicuramente una intestazione"
+    },
+    "srs_level": 2,
+    "next_review_date": "2025-09-23",
+    "lapses": 0
+  },
+  "08. A che cosa NON serve la redirezione di input e output di Unix?": {
+    "question": {
+      "number": "08",
+      "text": "08. A che cosa NON serve la redirezione di input e output di Unix?",
+      "options": [
+        "a salvare ci\u00f2 che viene scritto da un comando su un file",
+        "ad usare il contenuto di un file come input di un comando",
+        "a migliorare la velocit\u00e0 di esecuzione di un comando",
+        "a salvare su un file il flusso dati proveniente da un dispositivo"
+      ],
+      "image_path": null,
+      "correct_answer": "a migliorare la velocit\u00e0 di esecuzione di un comando"
+    },
+    "srs_level": 2,
+    "next_review_date": "2025-09-23",
+    "lapses": 0
+  },
+  "08. Qual \u00e8 la frase errata riferita al concetto di dato di un calcolatore?": {
+    "question": {
+      "number": "08",
+      "text": "08. Qual \u00e8 la frase errata riferita al concetto di dato di un calcolatore?",
+      "options": [
+        "Un dato \u00e8 rappresentato come sequenza di bit",
+        "Un dato \u00e8 una informazione elementare",
+        "Un dato \u00e8 un valore numerico",
+        "Un dato non pu\u00f2 essere un valore vero/falso"
+      ],
+      "image_path": null,
+      "correct_answer": "Un dato non pu\u00f2 essere un valore vero/falso"
+    },
+    "srs_level": 2,
+    "next_review_date": "2025-09-24",
+    "lapses": 1
+  },
+  "02. Qual \u00e8 la caratteristica errata riferita alla programmazione imperativa?": {
+    "question": {
+      "number": "02",
+      "text": "02. Qual \u00e8 la caratteristica errata riferita alla programmazione imperativa?",
+      "options": [
+        "permette di decidere cosa fare nel codice in dipendenza di certe condizioni",
+        "permette di progettare la soluzione a un problema in termini di ci\u00f2 che si vuole ottenere",
+        "permette la definizione di algoritmi tramite passi ben definiti",
+        "permette una gestione diretta delle risorse hardware della macchina"
+      ],
+      "image_path": null,
+      "correct_answer": "permette di progettare la soluzione a un problema in termini di ci\u00f2 che si vuole ottenere"
+    },
+    "srs_level": 3,
+    "next_review_date": "2025-10-02",
+    "lapses": 0
+  },
+  "02. Che cos'\u00e8 la programmazione?": {
+    "question": {
+      "number": "02",
+      "text": "02. Che cos'\u00e8 la programmazione?",
+      "options": [
+        "La programmazione \u00e8 una pianificazione numerica",
+        "La programmazione permette di eseguire una sequenza di istruzioni",
+        "La programmazione permette di guidare l'utente finale verso la soluzione da lui cercata",
+        "La programmazione permette di preparare una sequenza di istruzioni"
+      ],
+      "image_path": null,
+      "correct_answer": "La programmazione permette di preparare una sequenza di istruzioni"
+    },
+    "srs_level": 2,
+    "next_review_date": "2025-09-23",
+    "lapses": 0
+  },
+  "08. Quale fra questi operatori logici calcola la disgiunzione?": {
+    "question": {
+      "number": "08",
+      "text": "08. Quale fra questi operatori logici calcola la disgiunzione?",
+      "options": [
+        "OR",
+        "XOR",
+        "AND short circuit",
+        "NOT"
+      ],
+      "image_path": null,
+      "correct_answer": "OR"
+    },
+    "srs_level": 2,
+    "next_review_date": "2025-09-23",
+    "lapses": 0
+  },
+  "10. Quali fra le seguenti operazioni effettuate durante il ciclo fetch-decode-execute \u00e8 sicuramente errata?": {
+    "question": {
+      "number": "10",
+      "text": "10. Quali fra le seguenti operazioni effettuate durante il ciclo fetch-decode-execute \u00e8 sicuramente errata?",
+      "options": [
+        "Elaborare operazioni aritmetiche il pi\u00f9 velocemente possibile",
+        "Incrementare l'Instruction Register e copiare le istruzioni nel Program Counter",
+        "Incrementare il Program Counter e copiare le istruzioni nell'Instruction Register",
+        "Copiare valori dalla memoria ai registri e viceversa"
+      ],
+      "image_path": null,
+      "correct_answer": "Incrementare l'Instruction Register e copiare le istruzioni nel Program Counter"
+    },
+    "srs_level": 2,
+    "next_review_date": "2025-09-23",
+    "lapses": 0
+  },
+  "05. Quale fra le seguenti propriet\u00e0 \u00e8 falsa se applicata agli Algoritmi?": {
+    "question": {
+      "number": "05",
+      "text": "05. Quale fra le seguenti propriet\u00e0 \u00e8 falsa se applicata agli Algoritmi?",
+      "options": [
+        "un algoritmo \u00e8 valido quando i passi di cui si compone sono finiti",
+        "un algoritmo \u00e8 atomico perch\u00e8 i passi che lo costituiscono devono essere elementari",
+        "un algoritmo \u00e8 non allocabile se la memoria che deve contenerlo \u00e8 piena",
+        "un algoritmo \u00e8 non ambiguo quando i passi di cui si compone sono univoci"
+      ],
+      "image_path": null,
+      "correct_answer": "un algoritmo \u00e8 non allocabile se la memoria che deve contenerlo \u00e8 piena"
+    },
+    "srs_level": 2,
+    "next_review_date": "2025-09-23",
+    "lapses": 0
+  },
+  "06. Quali tipi di variabili esistono in Java?": {
+    "question": {
+      "number": "06",
+      "text": "06. Quali tipi di variabili esistono in Java?",
+      "options": [
+        "i tipi possono essere definiti dal programmatore",
+        "esistono solo i tipi primitivi",
+        "esistono solo i tipi definiti dal programmatore",
+        "i tipi sono stati definiti dai progettisti del linguaggio"
+      ],
+      "image_path": null,
+      "correct_answer": "i tipi possono essere definiti dal programmatore"
+    },
+    "srs_level": 2,
+    "next_review_date": "2025-09-23",
+    "lapses": 0
+  },
+  "08. Quante volte viene eseguito il seguente ciclo : \"for (i=0; i<100; i++) { continue; }\"?": {
+    "question": {
+      "number": "08",
+      "text": "08. Quante volte viene eseguito il seguente ciclo : \"for (i=0; i<100; i++) { continue; }\"?",
+      "options": [
+        "Viene eseguito 0 volte",
+        "Viene eseguito 100 volte",
+        "Viene eseguito 1 volta",
+        "Viene eseguito 99 volte"
+      ],
+      "image_path": null,
+      "correct_answer": "Viene eseguito 100 volte"
+    },
+    "srs_level": 2,
+    "next_review_date": "2025-09-23",
+    "lapses": 0
+  },
+  "05. Che cos'\u00e8 la Macchina di Von Neumann?": {
+    "question": {
+      "number": "05",
+      "text": "05. Che cos'\u00e8 la Macchina di Von Neumann?",
+      "options": [
+        "Una architettura software per lo scambio di dati",
+        "Un modello semplificato di calcolatore",
+        "Una architettura software per il coordinamento dei componenti",
+        "Una macchina generale in cui dati e programmi risiedono in memorie separate"
+      ],
+      "image_path": null,
+      "correct_answer": "Un modello semplificato di calcolatore"
+    },
+    "srs_level": 2,
+    "next_review_date": "2025-09-23",
+    "lapses": 0
+  },
+  "04. Un indice di un array:": {
+    "question": {
+      "number": "04",
+      "text": "04. Un indice di un array:",
+      "options": [
+        "Serve ad indicare un array",
+        "Serve a scorrere gli elementi dell'array",
+        "Serve a trovare la lunghezza dell'array",
+        "Identifica un array"
+      ],
+      "image_path": null,
+      "correct_answer": "Serve a scorrere gli elementi dell'array"
+    },
+    "srs_level": 2,
+    "next_review_date": "2025-09-24",
+    "lapses": 1
+  },
+  "04. Cosa \u00e8 falso se riferito un operatore unario?": {
+    "question": {
+      "number": "04",
+      "text": "04. Cosa \u00e8 falso se riferito un operatore unario?",
+      "options": [
+        "L'operatore not \u00e8 un operatore unario",
+        "L'operatore di autoincremento \u00e8 un operatore unario",
+        "Non opera su coppie di operandi",
+        "Restituisce uno"
+      ],
+      "image_path": null,
+      "correct_answer": null
+    },
+    "srs_level": 2,
+    "next_review_date": "2025-09-24",
+    "lapses": 1
+  },
+  "02. Quale fra le seguenti affermazioni \u00e8 falsa se riferita al linguaggio Java?": {
+    "question": {
+      "number": "02",
+      "text": "02. Quale fra le seguenti affermazioni \u00e8 falsa se riferita al linguaggio Java?",
+      "options": [
+        "Il tipo string non \u00e8 un tipo base",
+        "Il dominio del tipo int contiene il dominio del tipo byte",
+        "Il tipo String \u00e8 un tipo base",
+        "Il tipo di una variabile non \u00e8 immutabile"
+      ],
+      "image_path": null,
+      "correct_answer": "Il tipo di una variabile non \u00e8 immutabile"
+    },
+    "srs_level": 2,
+    "next_review_date": "2025-09-23",
+    "lapses": 0
+  },
+  "01. Quale frase \u00e8 vera se riferita all'istruzione switch-case?": {
+    "question": {
+      "number": "01",
+      "text": "01. Quale frase \u00e8 vera se riferita all'istruzione switch-case?",
+      "options": [
+        "l'espressione dello switch pu\u00f2 essere un numero o una stringa",
+        "lo switch contiene sempre un blocco di codice",
+        "tutti i rami case terminano con una istruzione break",
+        "i tipi ammessi per l'espressione dello switch sono solo int e byte"
+      ],
+      "image_path": null,
+      "correct_answer": "l'espressione dello switch pu\u00f2 essere un numero o una stringa"
+    },
+    "srs_level": 2,
+    "next_review_date": "2025-09-22",
+    "lapses": 0
+  }
+}
