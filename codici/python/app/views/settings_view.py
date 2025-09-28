@@ -87,14 +87,18 @@ class SettingsView(Toplevel):
         srs_frame.pack(fill='x', expand=True)
         srs_labels = {"srs_again": "Di Nuovo:", "srs_hard": "Difficile:", "srs_good": "Buono:", "srs_easy": "Facile:"}
         for i, (key, label) in enumerate(srs_labels.items()):
+            # Etichetta per l'impostazione (es. "Di Nuovo:")
             ttk.Label(srs_frame, text=label).grid(row=i, column=0, padx=5, pady=5, sticky='w')
+            # Campo di inserimento per il valore dell'intervallo
             ttk.Entry(srs_frame, textvariable=self.global_vars[key], width=10).grid(row=i, column=1, padx=5, pady=5, sticky='w')
 
         # Other settings
         other_frame = ttk.LabelFrame(self.generali_tab, text="Altre Impostazioni", padding=10)
         other_frame.pack(fill='x', expand=True, pady=(10,0))
+        # Impostazione per il periodo di ritenzione
         ttk.Label(other_frame, text="Periodo Ritenzione (giorni):").grid(row=0, column=0, padx=5, pady=5, sticky='w')
         ttk.Entry(other_frame, textvariable=self.global_vars["retention_period_days"], width=10).grid(row=0, column=1, padx=5, pady=5, sticky='w')
+        # Impostazione per il numero di nuove carte per sessione
         ttk.Label(other_frame, text="Nuove Carte per Sessione:").grid(row=1, column=0, padx=5, pady=5, sticky='w')
         ttk.Entry(other_frame, textvariable=self.global_vars["new_cards_per_day"], width=10).grid(row=1, column=1, padx=5, pady=5, sticky='w')
 

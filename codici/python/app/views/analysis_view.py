@@ -1,13 +1,14 @@
 import tkinter as tk
 from tkinter import ttk
 from typing import Dict, Any
+from app.views.dialogs import Tooltip
 
 class AnalysisView(tk.Toplevel):
     """Una finestra per visualizzare le statistiche di performance complessive."""
     def __init__(self, parent: tk.Tk, stats: Dict[str, Any]):
         super().__init__(parent)
         self.title("Analisi Performance")
-        self.geometry("450x350")
+        self.geometry("600x550") # Increased size
         self.transient(parent)
         self.grab_set()
 
@@ -26,26 +27,66 @@ class AnalysisView(tk.Toplevel):
         style.configure("StatValue.TLabel", font=("Helvetica", 10, "bold"), foreground="#333333", background=BG_COLOR)
 
     def _create_widgets(self, stats: Dict[str, Any]):
-        main_frame = ttk.LabelFrame(self, text="Statistiche Complessive", padding=20)
-        main_frame.pack(expand=True, fill="both", padx=10, pady=10)
+        # --- Main container ---
+        container = ttk.Frame(self, padding=10, style="TFrame")
+        container.pack(expand=True, fill="both")
 
+        # --- General Stats Frame ---
+        main_frame = ttk.LabelFrame(container, text="Statistiche Complessive")
+        main_frame.pack(fill="x", padx=10, pady=(5, 10))
         main_frame.columnconfigure(1, weight=1)
 
-        stat_labels = {
-            "Serie di studio più lunga:": f"{stats.get('longest_streak', 0)} giorni",
-            "Totale ripassi effettuati:": f"{stats.get('total_reviews', 0)}",
-            "Tasso di ritenzione generale:": f"{stats.get('overall_retention', 0.0):.1f}%",
-            "Materia più studiata:": f"{stats.get('most_studied', 'N/D')}"
-        }
+        # General Stats content
+        ttk.Label(main_frame, text="Serie di studio più lunga:", style="Stat.TLabel").grid(row=0, column=0, sticky="w", pady=2, padx=5)
+        ttk.Label(main_frame, text=f"{stats.get('longest_streak', 0)} giorni", style="StatValue.TLabel").grid(row=0, column=1, sticky="e", pady=2, padx=10)
 
-        row = 0
-        for label, value in stat_labels.items():
-            ttk.Label(main_frame, text=label, style="Stat.TLabel").grid(row=row, column=0, sticky="w", pady=5)
-            ttk.Label(main_frame, text=value, style="StatValue.TLabel").grid(row=row, column=1, sticky="e", pady=5, padx=10)
-            row += 1
+        ttk.Label(main_frame, text="Totale ripassi effettuati:", style="Stat.TLabel").grid(row=1, column=0, sticky="w", pady=2, padx=5)
+        ttk.Label(main_frame, text=f"{stats.get('total_reviews', 0)}", style="StatValue.TLabel").grid(row=1, column=1, sticky="e", pady=2, padx=10)
 
-        ttk.Separator(main_frame, orient='horizontal').grid(row=row, column=0, columnspan=2, sticky='ew', pady=15)
-        row += 1
+        retention_frame = ttk.Frame(main_frame, style="TFrame")
+        retention_frame.grid(row=2, column=0, sticky="w", padx=5)
+        ttk.Label(retention_frame, text="Tasso di ritenzione generale:", style="Stat.TLabel").pack(side='left')
+        help_icon = ttk.Label(retention_frame, text="?", font=('Helvetica', 9, 'bold'), cursor="question_arrow", style="Stat.TLabel")
+        help_icon.pack(side='left', padx=5)
+        Tooltip(help_icon, "Indica la percentuale di risposte 'Buono' o 'Facile' per le carte ripassate negli ultimi X giorni, come impostato nelle Impostazioni Generali.")
+        ttk.Label(main_frame, text=f"{stats.get('overall_retention', 0.0):.1f}%", style="StatValue.TLabel").grid(row=2, column=1, sticky="e", pady=2, padx=10)
 
-        close_button = ttk.Button(main_frame, text="Chiudi", command=self.destroy, style="Accent.TButton")
-        close_button.grid(row=row, column=0, columnspan=2, sticky="ew", ipady=5)
+        ttk.Label(main_frame, text="Materia più studiata:", style="Stat.TLabel").grid(row=3, column=0, sticky="w", pady=(2,5), padx=5)
+        ttk.Label(main_frame, text=f"{stats.get('most_studied', 'N/D')}", style="StatValue.TLabel").grid(row=3, column=1, sticky="e", pady=(2,5), padx=10)
+
+        # --- Subject Details Frame ---
+        details_frame = ttk.LabelFrame(container, text="Dettaglio per Materia")
+        details_frame.pack(expand=True, fill="both", padx=10)
+
+        columns = ("subject", "cards", "retention", "status")
+        tree = ttk.Treeview(details_frame, columns=columns, show="headings")
+        tree.heading("subject", text="Materia")
+        tree.heading("cards", text="Nr. Carte")
+        tree.heading("retention", text="Tasso Ritenzione")
+        tree.heading("status", text="Stato")
+
+        tree.column("subject", width=250, anchor='w')
+        tree.column("cards", width=80, anchor='center')
+        tree.column("retention", width=110, anchor='center')
+        tree.column("status", width=100, anchor='center')
+
+        scrollbar = ttk.Scrollbar(details_frame, orient="vertical", command=tree.yview)
+        tree.configure(yscrollcommand=scrollbar.set)
+
+        # Populate tree
+        subject_details = stats.get('subject_details', {})
+        for subject, data in sorted(subject_details.items()):
+            retention_str = f"{data.get('retention_rate', 0.0):.1f}%" if data.get('retention_rate') is not None else "N/D"
+            tree.insert("", "end", values=(
+                subject,
+                data.get('card_count', 0),
+                retention_str,
+                data.get('status', 'In Corso')
+            ))
+
+        scrollbar.pack(side="right", fill="y")
+        tree.pack(side="left", expand=True, fill="both")
+
+        # --- Close Button ---
+        close_button = ttk.Button(container, text="Chiudi", command=self.destroy, style="Accent.TButton")
+        close_button.pack(side='bottom', fill='x', padx=10, pady=(10,0), ipady=5)
