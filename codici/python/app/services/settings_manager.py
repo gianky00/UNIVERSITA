@@ -109,6 +109,14 @@ class SettingsManager:
         self.set_active_profile(profile_name)
         self.save()
 
+    def remove_path_profile(self, profile_name: str):
+        """Rimuove un profilo di percorso."""
+        if "path_profiles" in self.settings and profile_name in self.settings["path_profiles"]:
+            del self.settings["path_profiles"][profile_name]
+            if self.get_active_profile() == profile_name:
+                self.set_active_profile("")
+            self.save()
+
     def get_subject_data(self, subject: str) -> Dict[str, Any]:
         return self.settings.get(subject, {})
 
