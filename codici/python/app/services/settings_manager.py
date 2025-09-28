@@ -22,8 +22,26 @@ class SettingsManager:
                 "active_profile": ""
             },
             "path_profiles": {
-                "PC_COEMI": {},
-                "PC_GIANKY": {}
+                "PC_COEMI": {
+                    "ELETTROTECNICA": {
+                        "txt_path": "C:/Users/Coemi/Desktop/Elettrotecnica/domande.txt",
+                        "img_path": "C:/Users/Coemi/Desktop/Elettrotecnica/immagini"
+                    },
+                    "FONDAMENTI DI INFORMATICA": {
+                        "txt_path": "C:/Users/Coemi/Desktop/Informatica/domande.txt",
+                        "img_path": "C:/Users/Coemi/Desktop/Informatica/immagini"
+                    }
+                },
+                "PC_GIANKY": {
+                    "ELETTROTECNICA": {
+                        "txt_path": "/home/gianky/Documents/Uni/Elettrotecnica/quiz.txt",
+                        "img_path": "/home/gianky/Documents/Uni/Elettrotecnica/images"
+                    },
+                    "FONDAMENTI DI INFORMATICA": {
+                        "txt_path": "/home/gianky/Documents/Uni/Informatica/quiz.txt",
+                        "img_path": "/home/gianky/Documents/Uni/Informatica/images"
+                    }
+                }
             },
             "ELETTROTECNICA": {"txt_path": "", "img_path": "", "exam_date": "17/10/2025", "status": "In Corso", "interval_modifier": 1.0},
             "FONDAMENTI DI INFORMATICA": {"txt_path": "", "img_path": "", "exam_date": "22/10/2025", "status": "In Corso", "interval_modifier": 1.0}

@@ -53,7 +53,7 @@ class SettingsView(Toplevel):
 
         profile_btn_frame = ttk.Frame(profile_frame)
         profile_btn_frame.grid(row=0, column=2, padx=5)
-        ttk.Button(profile_btn_frame, text="Crea", command=self._create_profile).pack(side='left', padx=2)
+        ttk.Button(profile_btn_frame, text="Salva Profilo", command=self._save_profile).pack(side='left', padx=2)
         ttk.Button(profile_btn_frame, text="Rimuovi", command=self._remove_profile).pack(side='left', padx=2)
 
         # Subject selection
@@ -132,7 +132,6 @@ class SettingsView(Toplevel):
         self.settings_manager.save_global_settings(new_settings)
 
     def _refresh_combobox(self):
-        # Refresh subjects
         subjects = self.settings_manager.get_subjects()
         self.subject_combo['values'] = subjects
         if subjects:
@@ -140,7 +139,6 @@ class SettingsView(Toplevel):
         else:
             self.subject_combo.set('')
 
-        # Refresh profiles
         profiles = self.settings_manager.get_path_profiles()
         self.profile_combo['values'] = profiles
         active_profile = self.settings_manager.get_active_profile()
@@ -161,8 +159,7 @@ class SettingsView(Toplevel):
     def _remove_subject(self):
         subject = self.subject_combo.get()
         if not subject:
-            messagebox.showwarning("Attenzione", "Nessuna materia selezionata.", parent=self)
-            return
+            return messagebox.showwarning("Attenzione", "Nessuna materia selezionata.", parent=self)
         if messagebox.askyesno("Conferma", f"Vuoi rimuovere '{subject}' e tutti i suoi dati di studio?", parent=self):
             self.settings_manager.remove_subject(subject)
             self._refresh_combobox()
@@ -175,8 +172,7 @@ class SettingsView(Toplevel):
 
     def select_path(self, path_type: str):
         if not self.subject_combo.get():
-            messagebox.showwarning("Attenzione", "Seleziona prima una materia.", parent=self)
-            return
+            return messagebox.showwarning("Attenzione", "Seleziona prima una materia.", parent=self)
         if path_type == "txt_path":
             path = filedialog.askopenfilename(title="Seleziona file .txt", filetypes=[("Text Files", "*.txt")])
         else:
@@ -194,23 +190,19 @@ class SettingsView(Toplevel):
             self.update_display_for_subject()
             messagebox.showinfo("Successo", f"Profilo '{profile_name}' applicato.", parent=self)
         else:
-            # Se l'utente annulla, reimposta il combobox sul profilo attivo
             self.profile_combo.set(self.settings_manager.get_active_profile())
 
-    def _create_profile(self):
-        # Salva i dati della materia corrente prima di creare il profilo
+    def _save_profile(self):
         if not self._save_current_subject_data():
             return
 
-        new_profile_name = simpledialog.askstring("Crea Profilo", "Nome del nuovo profilo:", parent=self)
-        if new_profile_name and new_profile_name.strip():
-            if new_profile_name in self.settings_manager.get_path_profiles():
-                messagebox.showwarning("Attenzione", f"Il profilo '{new_profile_name}' esiste già.", parent=self)
-            else:
-                self.settings_manager.save_current_paths_as_profile(new_profile_name)
-                self._refresh_combobox()
-                self.profile_combo.set(new_profile_name)
-                messagebox.showinfo("Successo", f"Profilo '{new_profile_name}' creato.", parent=self)
+        profile_name_to_save = simpledialog.askstring("Salva Profilo", "Salva i percorsi correnti come:", initialvalue=self.profile_combo.get(), parent=self)
+
+        if profile_name_to_save and profile_name_to_save.strip():
+            self.settings_manager.save_current_paths_as_profile(profile_name_to_save.strip())
+            self._refresh_combobox()
+            self.profile_combo.set(profile_name_to_save.strip())
+            messagebox.showinfo("Successo", f"Profilo '{profile_name_to_save.strip()}' salvato.", parent=self)
 
     def _remove_profile(self):
         profile_name = self.profile_combo.get()
@@ -223,34 +215,29 @@ class SettingsView(Toplevel):
             messagebox.showinfo("Successo", f"Profilo '{profile_name}' rimosso.", parent=self)
 
     def _save_current_subject_data(self) -> bool:
-        """Salva i dati della materia attualmente visualizzata nel manager. Restituisce True in caso di successo."""
         subject = self.subject_combo.get()
-        if subject:
-            data_to_save = {key: var.get() for key, var in self.subject_vars.items()}
-            try:
-                if data_to_save["exam_date"]:
-                    datetime.datetime.strptime(data_to_save["exam_date"], '%d/%m/%Y')
-            except ValueError:
-                messagebox.showerror("Errore Formato", f"Formato data non valido per la materia '{subject}'. Usare GG/MM/AAAA.", parent=self)
-                return False
-            self.settings_manager.set_subject_data(subject, data_to_save)
+        if not subject:
+            return True
+
+        data_to_save = {key: var.get() for key, var in self.subject_vars.items()}
+        try:
+            if data_to_save["exam_date"]:
+                datetime.datetime.strptime(data_to_save["exam_date"], '%d/%m/%Y')
+        except ValueError:
+            messagebox.showerror("Errore Formato", f"Formato data non valido per la materia '{subject}'. Usare GG/MM/AAAA.", parent=self)
+            return False
+
+        self.settings_manager.set_subject_data(subject, data_to_save)
         return True
 
     def save_and_close(self):
-        # Salva i dati della materia corrente
         if not self._save_current_subject_data():
             return
 
-        # Aggiorna il profilo attivo con i percorsi correnti di tutte le materie
-        active_profile = self.settings_manager.get_active_profile()
-        if active_profile:
-            self.settings_manager.update_profile_with_current_paths(active_profile)
-
-        # Salva le impostazioni globali
         try:
             self._save_global_settings()
         except tk.TclError as e:
-            messagebox.showerror("Errore Input", f"Valore non valido nelle impostazioni generali. Assicurati che tutti i campi siano numeri interi.\n\nDettaglio: {e}", parent=self)
+            messagebox.showerror("Errore Input", f"Valore non valido nelle impostazioni generali. Assicurati che tutti i campi siano numeri interi.\n\n Dettaglio: {e}", parent=self)
             return
 
         self.settings_manager.save()
