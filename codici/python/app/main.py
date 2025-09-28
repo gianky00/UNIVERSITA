@@ -12,12 +12,13 @@ from app.views.main_view import MainView
 
 class App:
     def __init__(self):
-        # 1. Initialize core logic components
+        # 1. Initialize core logic components, starting with the new ConfigManager
         config_manager = ConfigManager()
         settings_manager = SettingsManager(config_manager)
 
         # 2. Create the main window (View)
         # The view is created first, but it's just a UI shell at this point.
+        # The controller is passed in as a lambda to avoid circular dependencies
         main_window = MainView(
             start_callback=lambda mode: controller.start(mode),
             settings_callback=lambda: controller.open_settings(),
@@ -29,7 +30,7 @@ class App:
             }
         )
 
-        # 3. Create the Controller, linking the View and logic together
+        # 3. Create the Controller, linking the View and all managers together
         controller = QuizController(main_window, settings_manager, config_manager)
 
         # 4. Perform initial checks and start the main loop

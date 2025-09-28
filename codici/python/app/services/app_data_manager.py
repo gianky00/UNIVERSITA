@@ -14,16 +14,30 @@ class AppDataManager:
         self.filepath = self.data_path / "app_data.json"
         self.data = self._load_data()
 
+    def _get_default_data(self) -> Dict[str, Any]:
+        """Restituisce la struttura dati di default."""
+        return {
+            "user_stats": {"current_streak": 0, "last_study_date": None, "longest_streak": 0},
+            "review_log": [],
+            "retention_trend": []
+        }
+
     def _load_data(self) -> Dict[str, Any]:
-        """Carica i dati dal file JSON."""
+        """Carica i dati dal percorso dati corrente o crea un file di default."""
         try:
-            with open(self.filepath, 'r', encoding='utf-8') as f:
-                return json.load(f)
+            self.data_path.mkdir(parents=True, exist_ok=True)
+            if self.filepath.exists():
+                return json.loads(self.filepath.read_text(encoding='utf-8'))
+            else:
+                default_data = self._get_default_data()
+                self.filepath.write_text(json.dumps(default_data, indent=2, ensure_ascii=False), encoding='utf-8')
+                return default_data
         except (FileNotFoundError, json.JSONDecodeError):
-            return {"user_stats": {"current_streak": 0, "last_study_date": None}, "review_log": []}
+            return self._get_default_data()
 
     def _save_data(self):
-        """Salva i dati correnti nel file JSON."""
+        """Salva i dati correnti nel percorso dati corrente."""
+        self.data_path.mkdir(parents=True, exist_ok=True)
         with open(self.filepath, 'w', encoding='utf-8') as f:
             json.dump(self.data, f, indent=2, ensure_ascii=False)
 
@@ -34,6 +48,8 @@ class AppDataManager:
             "subject": subject,
             "is_correct": is_correct
         }
+        if "review_log" not in self.data:
+            self.data["review_log"] = []
         self.data["review_log"].append(review_entry)
         self._update_study_streak()
         self._recalibrate_interval_modifier(subject)
@@ -41,7 +57,7 @@ class AppDataManager:
 
     def _update_study_streak(self):
         """Aggiorna la serie di studio (streak) e la serie più lunga."""
-        stats = self.data["user_stats"]
+        stats = self.data.setdefault("user_stats", self._get_default_data()["user_stats"])
         today = datetime.date.today()
         last_study_str = stats.get("last_study_date")
         current_streak = stats.get("current_streak", 0)
@@ -53,9 +69,9 @@ class AppDataManager:
             if delta.days == 1:
                 current_streak += 1
             elif delta.days > 1:
-                current_streak = 1  # Reset to 1 for today's study
+                current_streak = 1
         else:
-            current_streak = 1  # Primo studio in assoluto
+            current_streak = 1
 
         stats["current_streak"] = current_streak
         stats["longest_streak"] = max(current_streak, longest_streak)
@@ -63,12 +79,10 @@ class AppDataManager:
 
     def _recalibrate_interval_modifier(self, subject: str):
         """Ricalibra il modificatore dell'intervallo per una materia in base alla performance recente."""
-        subject_reviews = [r for r in self.data.get("review_log", []) if r["subject"] == subject]
+        review_log = self.data.get("review_log", [])
+        subject_reviews = [r for r in review_log if r["subject"] == subject]
 
-        # Considera solo le ultime 50 recensioni per la ricalibrazione
         recent_reviews = subject_reviews[-50:]
-
-        # Richiede un numero minimo di recensioni per evitare aggiustamenti prematuri
         if len(recent_reviews) < 20:
             return
 
@@ -80,63 +94,42 @@ class AppDataManager:
             return
 
         modifier = subject_data.get("interval_modifier", 1.0)
-
-        if retention_rate > 0.9: # Performance alta, aumenta l'intervallo
+        if retention_rate > 0.9:
             modifier *= 1.05
-        elif retention_rate < 0.8: # Performance bassa, riduci l'intervallo
+        elif retention_rate < 0.8:
             modifier *= 0.95
 
-        # Limita il modificatore tra 0.7 e 1.5 per evitare valori estremi
         subject_data["interval_modifier"] = max(0.7, min(1.5, modifier))
-
         self.settings_manager.set_subject_data(subject, subject_data)
-        self.settings_manager.save() # Salva immediatamente la modifica
+        self.settings_manager.save()
 
     def get_overall_stats(self) -> Dict[str, Any]:
-        """Calcola e restituisce un dizionario di statistiche complessive, inclusi i dettagli per materia."""
+        """Calcola e restituisce un dizionario di statistiche complessive."""
         review_log = self.get_review_log()
         user_stats = self.get_user_stats()
 
         total_reviews = len(review_log)
+        if total_reviews == 0:
+            return {
+                "total_reviews": 0, "overall_retention": 0.0,
+                "longest_streak": user_stats.get("longest_streak", 0),
+                "most_studied": "N/D"
+            }
+
+        correct_reviews = sum(1 for r in review_log if r["is_correct"])
+        overall_retention = (correct_reviews / total_reviews) * 100
 
         subject_counts = {}
         for r in review_log:
             subject_counts[r["subject"]] = subject_counts.get(r["subject"], 0) + 1
+
         most_studied = max(subject_counts, key=subject_counts.get) if subject_counts else "N/D"
-
-        # --- Dettagli per Materia ---
-        subject_details = {}
-        all_subjects = self.settings_manager.get_subjects()
-        global_settings = self.settings_manager.get_global_settings()
-        retention_days = global_settings.get("retention_period_days", 7)
-        cutoff_date = datetime.datetime.now() - datetime.timedelta(days=retention_days)
-
-        for subject in all_subjects:
-            subject_data = self.settings_manager.get_subject_data(subject)
-
-            # Calcolo ritenzione per la materia (basato sul periodo di ritenzione)
-            recent_subject_reviews = [
-                r for r in review_log
-                if r["subject"] == subject and datetime.datetime.fromisoformat(r["timestamp"]) >= cutoff_date
-            ]
-
-            retention_rate = None
-            if recent_subject_reviews:
-                correct_count = sum(1 for r in recent_subject_reviews if r["is_correct"])
-                retention_rate = (correct_count / len(recent_subject_reviews)) * 100
-
-            subject_details[subject] = {
-                "status": subject_data.get("status", "N/D"),
-                "retention_rate": retention_rate,
-                "txt_path": subject_data.get("txt_path", ""), # Passa il percorso al controller
-            }
 
         return {
             "total_reviews": total_reviews,
-            "overall_retention": self.get_retention_rate(), # Usa il metodo corretto
+            "overall_retention": overall_retention,
             "longest_streak": user_stats.get("longest_streak", 0),
-            "most_studied": most_studied,
-            "subject_details": subject_details
+            "most_studied": most_studied
         }
 
     def get_review_log(self) -> List[Dict[str, Any]]:
@@ -176,3 +169,9 @@ class AppDataManager:
 
         correct_reviews = sum(1 for review in relevant_reviews if review["is_correct"])
         return (correct_reviews / len(relevant_reviews)) * 100
+
+    def reload_data(self):
+        """Ricarica i dati dal percorso dati corrente."""
+        self.data_path = self.config_manager.get_data_path()
+        self.filepath = self.data_path / "app_data.json"
+        self.data = self._load_data()
