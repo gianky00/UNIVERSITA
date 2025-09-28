@@ -54,7 +54,7 @@ class SettingsView(Toplevel):
 
         profile_btn_frame = ttk.Frame(profile_frame)
         profile_btn_frame.grid(row=0, column=2, padx=5)
-        ttk.Button(profile_btn_frame, text="Salva/Aggiorna", command=self._save_profile).pack(side='left', padx=2)
+        ttk.Button(profile_btn_frame, text="Crea", command=self._create_profile).pack(side='left', padx=2)
         ttk.Button(profile_btn_frame, text="Rimuovi", command=self._remove_profile).pack(side='left', padx=2)
 
         # Subject selection
@@ -93,6 +93,15 @@ class SettingsView(Toplevel):
             "srs_good": tk.IntVar(value=1440), "srs_easy": tk.IntVar(value=4320)
         }
 
+        help_texts = {
+            "srs_again": "L'intervallo (in minuti) per rivedere una carta che hai valutato 'Di Nuovo'.",
+            "srs_hard": "L'intervallo (in minuti) per rivedere una carta che hai valutato 'Difficile'.",
+            "srs_good": "L'intervallo (in minuti) per rivedere una carta che hai valutato 'Buono'.",
+            "srs_easy": "L'intervallo (in minuti) per rivedere una carta che hai valutato 'Facile'.",
+            "retention_period_days": "Il numero di giorni per cui calcolare e visualizzare la cronologia della ritenzione nella scheda di analisi.",
+            "new_cards_per_day": "Il numero massimo di nuove carte da studiare in ogni sessione di pratica."
+        }
+
         # SRS intervals
         srs_frame = ttk.LabelFrame(self.generali_tab, text="Intervalli di Ripetizione (in minuti)", padding=10)
         srs_frame.pack(fill='x', expand=True)
@@ -100,14 +109,26 @@ class SettingsView(Toplevel):
         for i, (key, label) in enumerate(srs_labels.items()):
             ttk.Label(srs_frame, text=label).grid(row=i, column=0, padx=5, pady=5, sticky='w')
             ttk.Entry(srs_frame, textvariable=self.global_vars[key], width=10).grid(row=i, column=1, padx=5, pady=5, sticky='w')
+            help_btn = ttk.Button(srs_frame, text="?", width=2, command=lambda k=key, l=label: self._show_help(f"Aiuto: {l.strip(':')}", help_texts[k]))
+            help_btn.grid(row=i, column=2, padx=5, pady=5)
 
         # Other settings
         other_frame = ttk.LabelFrame(self.generali_tab, text="Altre Impostazioni", padding=10)
         other_frame.pack(fill='x', expand=True, pady=(10,0))
+
         ttk.Label(other_frame, text="Periodo Ritenzione (giorni):").grid(row=0, column=0, padx=5, pady=5, sticky='w')
         ttk.Entry(other_frame, textvariable=self.global_vars["retention_period_days"], width=10).grid(row=0, column=1, padx=5, pady=5, sticky='w')
+        help_btn_retention = ttk.Button(other_frame, text="?", width=2, command=lambda: self._show_help("Aiuto: Periodo Ritenzione", help_texts["retention_period_days"]))
+        help_btn_retention.grid(row=0, column=2, padx=5, pady=5)
+
         ttk.Label(other_frame, text="Nuove Carte per Sessione:").grid(row=1, column=0, padx=5, pady=5, sticky='w')
         ttk.Entry(other_frame, textvariable=self.global_vars["new_cards_per_day"], width=10).grid(row=1, column=1, padx=5, pady=5, sticky='w')
+        help_btn_new = ttk.Button(other_frame, text="?", width=2, command=lambda: self._show_help("Aiuto: Nuove Carte", help_texts["new_cards_per_day"]))
+        help_btn_new.grid(row=1, column=2, padx=5, pady=5)
+
+    def _show_help(self, title: str, message: str):
+        """Mostra un popup con un messaggio di aiuto."""
+        messagebox.showinfo(title, message, parent=self)
 
     def _load_global_settings(self):
         settings = self.settings_manager.get_global_settings()
@@ -220,18 +241,20 @@ class SettingsView(Toplevel):
         self.settings_manager.apply_path_profile(profile_name)
         self.update_display_for_subject(self.current_subject)
 
-    def _save_profile(self):
+    def _create_profile(self):
         if not self._commit_subject_from_ui(self.current_subject):
             return
 
-        current_profile = self.profile_combo.get()
-        new_profile = simpledialog.askstring("Salva Profilo", "Salva i percorsi attuali come:", initialvalue=current_profile if current_profile else "", parent=self)
+        new_profile = simpledialog.askstring("Crea Profilo", "Nome del nuovo profilo:", parent=self)
 
         if new_profile and new_profile.strip():
-            self.settings_manager.save_current_paths_as_profile(new_profile.strip())
-            self._refresh_combobox()
-            self.profile_combo.set(new_profile.strip())
-            messagebox.showinfo("Successo", f"Profilo '{new_profile.strip()}' salvato.", parent=self)
+            if new_profile in self.settings_manager.get_path_profiles():
+                messagebox.showwarning("Attenzione", f"Il profilo '{new_profile}' esiste già.", parent=self)
+            else:
+                self.settings_manager.save_current_paths_as_profile(new_profile.strip())
+                self._refresh_combobox()
+                self.profile_combo.set(new_profile.strip())
+                messagebox.showinfo("Successo", f"Profilo '{new_profile.strip()}' creato.", parent=self)
 
     def _remove_profile(self):
         profile_name = self.profile_combo.get()
@@ -263,6 +286,11 @@ class SettingsView(Toplevel):
     def save_and_close(self):
         if not self._commit_subject_from_ui(self.current_subject):
             return
+
+        # Aggiorna il profilo attivo con i percorsi correnti
+        active_profile = self.settings_manager.get_active_profile()
+        if active_profile:
+            self.settings_manager.update_profile_with_current_paths(active_profile)
 
         try:
             self._save_global_settings()
