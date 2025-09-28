@@ -8,7 +8,7 @@ class AnalysisView(tk.Toplevel):
     def __init__(self, parent: tk.Tk, stats: Dict[str, Any]):
         super().__init__(parent)
         self.title("Analisi Performance")
-        self.geometry("600x550") # Increased size
+        self.geometry("800x700") # Increased size for leeches
         self.transient(parent)
         self.grab_set()
 
@@ -56,7 +56,7 @@ class AnalysisView(tk.Toplevel):
 
         # --- Subject Details Frame ---
         details_frame = ttk.LabelFrame(container, text="Dettaglio per Materia")
-        details_frame.pack(expand=True, fill="both", padx=10)
+        details_frame.pack(expand=True, fill="both", padx=10, pady=(0, 10))
 
         columns = ("subject", "cards", "retention", "status")
         tree = ttk.Treeview(details_frame, columns=columns, show="headings")
@@ -73,19 +73,34 @@ class AnalysisView(tk.Toplevel):
         scrollbar = ttk.Scrollbar(details_frame, orient="vertical", command=tree.yview)
         tree.configure(yscrollcommand=scrollbar.set)
 
-        # Populate tree
         subject_details = stats.get('subject_details', {})
         for subject, data in sorted(subject_details.items()):
             retention_str = f"{data.get('retention_rate', 0.0):.1f}%" if data.get('retention_rate') is not None else "N/D"
-            tree.insert("", "end", values=(
-                subject,
-                data.get('card_count', 0),
-                retention_str,
-                data.get('status', 'In Corso')
-            ))
+            tree.insert("", "end", values=(subject, data.get('card_count', 0), retention_str, data.get('status', 'In Corso')))
 
         scrollbar.pack(side="right", fill="y")
         tree.pack(side="left", expand=True, fill="both")
+
+        # --- Leech Questions Frame ---
+        leech_frame = ttk.LabelFrame(container, text="Domande Ostiche (Leeches)")
+        leech_frame.pack(expand=True, fill='both', padx=10)
+
+        leech_columns = ("subject", "question")
+        leech_tree = ttk.Treeview(leech_frame, columns=leech_columns, show="headings")
+        leech_tree.heading("subject", text="Materia")
+        leech_tree.heading("question", text="Testo Domanda")
+        leech_tree.column("subject", width=200, anchor='w')
+        leech_tree.column("question", width=550, anchor='w')
+
+        leech_scrollbar = ttk.Scrollbar(leech_frame, orient="vertical", command=leech_tree.yview)
+        leech_tree.configure(yscrollcommand=leech_scrollbar.set)
+
+        leech_questions = stats.get('leech_questions', [])
+        for leech in sorted(leech_questions, key=lambda x: x['subject']):
+            leech_tree.insert("", "end", values=(leech['subject'], leech['question_text']))
+
+        leech_scrollbar.pack(side="right", fill="y")
+        leech_tree.pack(side="left", expand=True, fill="both")
 
         # --- Close Button ---
         close_button = ttk.Button(container, text="Chiudi", command=self.destroy, style="Accent.TButton")
