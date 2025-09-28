@@ -170,22 +170,51 @@ class SettingsView(Toplevel):
     def select_path(self, path_type: str):
         if not self.subject_combo.get():
             return messagebox.showwarning("Attenzione", "Seleziona prima una materia.", parent=self)
+
+        initial_dir = self.config_manager.get_data_path()
+
         if path_type == "txt_path":
-            path = filedialog.askopenfilename(title="Seleziona file .txt", filetypes=[("Text Files", "*.txt")])
+            path = filedialog.askopenfilename(
+                title="Seleziona file .txt",
+                filetypes=[("Text Files", "*.txt")],
+                initialdir=initial_dir
+            )
         else:
-            path = filedialog.askdirectory(title="Seleziona cartella immagini")
+            path = filedialog.askdirectory(
+                title="Seleziona cartella immagini",
+                initialdir=initial_dir
+            )
+
         if path:
+            # Mostra sempre il percorso assoluto nell'interfaccia utente.
+            # La conversione in relativo avviene solo al salvataggio.
             self.subject_vars[path_type].set(path)
 
     def save_and_close(self):
         subject = self.subject_combo.get()
         if subject:
             data_to_save = {key: var.get() for key, var in self.subject_vars.items()}
+
+            # Assicura che i percorsi siano relativi se possibile
+            data_path = self.config_manager.get_data_path()
+            for key in ["txt_path", "img_path"]:
+                path_str = data_to_save.get(key)
+                if path_str:
+                    try:
+                        path_obj = Path(path_str)
+                        if path_obj.is_absolute():
+                            relative_path = path_obj.relative_to(data_path)
+                            data_to_save[key] = str(relative_path)
+                    except ValueError:
+                        # Se non è possibile creare un percorso relativo, lo si lascia assoluto
+                        pass
+
             try:
                 if data_to_save["exam_date"]:
                     datetime.datetime.strptime(data_to_save["exam_date"], '%d/%m/%Y')
             except ValueError:
                 return messagebox.showerror("Errore Formato", "Formato data non valido. Usare GG/MM/AAAA.", parent=self)
+
             self.settings_manager.set_subject_data(subject, data_to_save)
 
         try:

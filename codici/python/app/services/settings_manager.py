@@ -54,6 +54,12 @@ class SettingsManager:
         self.settings["global_settings"] = new_settings
         self.save()
 
+    def get_absolute_path(self, path_str: str) -> str:
+        """Converte un percorso (potenzialmente relativo) in un percorso assoluto basato sulla data_path."""
+        if not path_str or Path(path_str).is_absolute():
+            return path_str
+        return str(self.data_path / path_str)
+
     def get_subjects(self, status_filter: Optional[str] = None) -> List[str]:
         subjects = [subj for subj in self.settings.keys() if subj != "global_settings"]
         if not status_filter:
@@ -61,7 +67,12 @@ class SettingsManager:
         return [subj for subj in subjects if self.settings[subj].get("status") == status_filter]
 
     def get_subject_data(self, subject: str) -> Dict[str, Any]:
-        return self.settings.get(subject, {})
+        data = self.settings.get(subject, {})
+        if data:
+            # Converte i percorsi relativi in assoluti prima di restituirli
+            data['txt_path'] = self.get_absolute_path(data.get('txt_path', ''))
+            data['img_path'] = self.get_absolute_path(data.get('img_path', ''))
+        return data
 
     def set_subject_data(self, subject: str, data: Dict[str, Any]):
         if subject in self.settings and subject != "global_settings":
