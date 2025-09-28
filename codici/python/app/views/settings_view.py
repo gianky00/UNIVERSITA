@@ -14,7 +14,6 @@ class SettingsView(Toplevel):
         self.geometry("800x520")
         self.transient(parent)
         self.grab_set()
-        self.current_subject = ""
 
         # Main frame
         main_frame = ttk.Frame(self, padding=10)
@@ -64,7 +63,7 @@ class SettingsView(Toplevel):
         ttk.Label(subject_frame, text="Materia:", font=('Helvetica', 10, 'bold')).grid(row=0, column=0, sticky='w', pady=5, padx=5)
         self.subject_combo = ttk.Combobox(subject_frame, values=self.settings_manager.get_subjects(), state="readonly")
         self.subject_combo.grid(row=0, column=1, sticky='ew', pady=5, padx=5)
-        self.subject_combo.bind("<<ComboboxSelected>>", self._on_subject_change)
+        self.subject_combo.bind("<<ComboboxSelected>>", self.update_display_for_subject)
         btn_frame = ttk.Frame(subject_frame)
         btn_frame.grid(row=0, column=2, padx=5)
         ttk.Button(btn_frame, text="Aggiungi...", command=self._add_subject).pack(side='left', padx=2)
@@ -93,15 +92,6 @@ class SettingsView(Toplevel):
             "srs_good": tk.IntVar(value=1440), "srs_easy": tk.IntVar(value=4320)
         }
 
-        help_texts = {
-            "srs_again": "L'intervallo (in minuti) per rivedere una carta che hai valutato 'Di Nuovo'.",
-            "srs_hard": "L'intervallo (in minuti) per rivedere una carta che hai valutato 'Difficile'.",
-            "srs_good": "L'intervallo (in minuti) per rivedere una carta che hai valutato 'Buono'.",
-            "srs_easy": "L'intervallo (in minuti) per rivedere una carta che hai valutato 'Facile'.",
-            "retention_period_days": "Il numero di giorni per cui calcolare e visualizzare la cronologia della ritenzione nella scheda di analisi.",
-            "new_cards_per_day": "Il numero massimo di nuove carte da studiare in ogni sessione di pratica."
-        }
-
         # SRS intervals
         srs_frame = ttk.LabelFrame(self.generali_tab, text="Intervalli di Ripetizione (in minuti)", padding=10)
         srs_frame.pack(fill='x', expand=True)
@@ -109,26 +99,14 @@ class SettingsView(Toplevel):
         for i, (key, label) in enumerate(srs_labels.items()):
             ttk.Label(srs_frame, text=label).grid(row=i, column=0, padx=5, pady=5, sticky='w')
             ttk.Entry(srs_frame, textvariable=self.global_vars[key], width=10).grid(row=i, column=1, padx=5, pady=5, sticky='w')
-            help_btn = ttk.Button(srs_frame, text="?", width=2, command=lambda k=key, l=label: self._show_help(f"Aiuto: {l.strip(':')}", help_texts[k]))
-            help_btn.grid(row=i, column=2, padx=5, pady=5)
 
         # Other settings
         other_frame = ttk.LabelFrame(self.generali_tab, text="Altre Impostazioni", padding=10)
         other_frame.pack(fill='x', expand=True, pady=(10,0))
-
         ttk.Label(other_frame, text="Periodo Ritenzione (giorni):").grid(row=0, column=0, padx=5, pady=5, sticky='w')
         ttk.Entry(other_frame, textvariable=self.global_vars["retention_period_days"], width=10).grid(row=0, column=1, padx=5, pady=5, sticky='w')
-        help_btn_retention = ttk.Button(other_frame, text="?", width=2, command=lambda: self._show_help("Aiuto: Periodo Ritenzione", help_texts["retention_period_days"]))
-        help_btn_retention.grid(row=0, column=2, padx=5, pady=5)
-
         ttk.Label(other_frame, text="Nuove Carte per Sessione:").grid(row=1, column=0, padx=5, pady=5, sticky='w')
         ttk.Entry(other_frame, textvariable=self.global_vars["new_cards_per_day"], width=10).grid(row=1, column=1, padx=5, pady=5, sticky='w')
-        help_btn_new = ttk.Button(other_frame, text="?", width=2, command=lambda: self._show_help("Aiuto: Nuove Carte", help_texts["new_cards_per_day"]))
-        help_btn_new.grid(row=1, column=2, padx=5, pady=5)
-
-    def _show_help(self, title: str, message: str):
-        """Mostra un popup con un messaggio di aiuto."""
-        messagebox.showinfo(title, message, parent=self)
 
     def _load_global_settings(self):
         settings = self.settings_manager.get_global_settings()
@@ -158,9 +136,7 @@ class SettingsView(Toplevel):
         subjects = self.settings_manager.get_subjects()
         self.subject_combo['values'] = subjects
         if subjects:
-            current_subject = self.subject_combo.get()
-            if not current_subject or current_subject not in subjects:
-                self.subject_combo.current(0)
+            self.subject_combo.current(0)
         else:
             self.subject_combo.set('')
 
@@ -170,49 +146,29 @@ class SettingsView(Toplevel):
         active_profile = self.settings_manager.get_active_profile()
         if active_profile in profiles:
             self.profile_combo.set(active_profile)
-        elif profiles:
-            self.profile_combo.set('') # Lascia vuoto se non c'è un profilo attivo
         else:
             self.profile_combo.set('')
 
-        self.update_display_for_subject(self.subject_combo.get())
+        self.update_display_for_subject()
 
     def _add_subject(self):
-        # Salva la materia corrente prima di aggiungerne una nuova
-        if self.current_subject and not self._commit_subject_from_ui(self.current_subject):
-            return
-
         new_subject = simpledialog.askstring("Aggiungi Materia", "Nome nuova materia:", parent=self)
         if new_subject and new_subject.strip():
             self.settings_manager.add_subject(new_subject.strip().upper())
             self._refresh_combobox()
             self.subject_combo.set(new_subject.strip().upper())
-            self._on_subject_change() # Carica la nuova materia
 
     def _remove_subject(self):
-        subject_to_remove = self.subject_combo.get()
-        if not subject_to_remove:
+        subject = self.subject_combo.get()
+        if not subject:
             messagebox.showwarning("Attenzione", "Nessuna materia selezionata.", parent=self)
             return
-
-        if messagebox.askyesno("Conferma", f"Vuoi rimuovere '{subject_to_remove}' e tutti i suoi dati di studio?", parent=self):
-            self.settings_manager.remove_subject(subject_to_remove)
-            self.current_subject = "" # Resetta la materia corrente
+        if messagebox.askyesno("Conferma", f"Vuoi rimuovere '{subject}' e tutti i suoi dati di studio?", parent=self):
+            self.settings_manager.remove_subject(subject)
             self._refresh_combobox()
 
-    def _on_subject_change(self, event=None):
-        """Gestisce il cambio di materia, salvando quella precedente prima di caricarne una nuova."""
-        if self.current_subject and self.current_subject != self.subject_combo.get():
-            if not self._commit_subject_from_ui(self.current_subject):
-                self.subject_combo.set(self.current_subject)
-                return
-
-        new_subject = self.subject_combo.get()
-        self.update_display_for_subject(new_subject)
-
-    def update_display_for_subject(self, subject: str):
-        """Aggiorna i campi della UI con i dati di una specifica materia."""
-        self.current_subject = subject
+    def update_display_for_subject(self, event=None):
+        subject = self.subject_combo.get()
         data = self.settings_manager.get_subject_data(subject) if subject else {}
         for key, var in self.subject_vars.items():
             var.set(data.get(key, ''))
@@ -229,69 +185,68 @@ class SettingsView(Toplevel):
             self.subject_vars[path_type].set(path)
 
     def _apply_profile_on_select(self, event=None):
-        """Applica il profilo selezionato e aggiorna la UI."""
         profile_name = self.profile_combo.get()
         if not profile_name:
             return
 
-        if not self._commit_subject_from_ui(self.current_subject):
+        if messagebox.askyesno("Conferma", f"Vuoi applicare il profilo '{profile_name}'?\nQuesto sovrascriverà i percorsi per tutte le materie.", parent=self):
+            self.settings_manager.apply_path_profile(profile_name)
+            self.update_display_for_subject()
+            messagebox.showinfo("Successo", f"Profilo '{profile_name}' applicato.", parent=self)
+        else:
+            # Se l'utente annulla, reimposta il combobox sul profilo attivo
             self.profile_combo.set(self.settings_manager.get_active_profile())
-            return
-
-        self.settings_manager.apply_path_profile(profile_name)
-        self.update_display_for_subject(self.current_subject)
 
     def _create_profile(self):
-        if not self._commit_subject_from_ui(self.current_subject):
+        # Salva i dati della materia corrente prima di creare il profilo
+        if not self._save_current_subject_data():
             return
 
-        new_profile = simpledialog.askstring("Crea Profilo", "Nome del nuovo profilo:", parent=self)
-
-        if new_profile and new_profile.strip():
-            if new_profile in self.settings_manager.get_path_profiles():
-                messagebox.showwarning("Attenzione", f"Il profilo '{new_profile}' esiste già.", parent=self)
+        new_profile_name = simpledialog.askstring("Crea Profilo", "Nome del nuovo profilo:", parent=self)
+        if new_profile_name and new_profile_name.strip():
+            if new_profile_name in self.settings_manager.get_path_profiles():
+                messagebox.showwarning("Attenzione", f"Il profilo '{new_profile_name}' esiste già.", parent=self)
             else:
-                self.settings_manager.save_current_paths_as_profile(new_profile.strip())
+                self.settings_manager.save_current_paths_as_profile(new_profile_name)
                 self._refresh_combobox()
-                self.profile_combo.set(new_profile.strip())
-                messagebox.showinfo("Successo", f"Profilo '{new_profile.strip()}' creato.", parent=self)
+                self.profile_combo.set(new_profile_name)
+                messagebox.showinfo("Successo", f"Profilo '{new_profile_name}' creato.", parent=self)
 
     def _remove_profile(self):
         profile_name = self.profile_combo.get()
         if not profile_name:
             messagebox.showwarning("Attenzione", "Nessun profilo selezionato.", parent=self)
             return
-
         if messagebox.askyesno("Conferma", f"Vuoi davvero rimuovere il profilo '{profile_name}'?", parent=self):
             self.settings_manager.remove_path_profile(profile_name)
             self._refresh_combobox()
             messagebox.showinfo("Successo", f"Profilo '{profile_name}' rimosso.", parent=self)
 
-    def _commit_subject_from_ui(self, subject: str) -> bool:
-        """Salva le impostazioni della materia specificata, prendendo i dati dalla UI."""
-        if not subject:
-            return True
-
-        data_to_save = {key: var.get() for key, var in self.subject_vars.items()}
-        try:
-            if data_to_save["exam_date"]:
-                datetime.datetime.strptime(data_to_save["exam_date"], '%d/%m/%Y')
-        except ValueError:
-            messagebox.showerror("Errore Formato", f"Formato data non valido per la materia '{subject}'. Usare GG/MM/AAAA.", parent=self)
-            return False
-
-        self.settings_manager.set_subject_data(subject, data_to_save)
+    def _save_current_subject_data(self) -> bool:
+        """Salva i dati della materia attualmente visualizzata nel manager. Restituisce True in caso di successo."""
+        subject = self.subject_combo.get()
+        if subject:
+            data_to_save = {key: var.get() for key, var in self.subject_vars.items()}
+            try:
+                if data_to_save["exam_date"]:
+                    datetime.datetime.strptime(data_to_save["exam_date"], '%d/%m/%Y')
+            except ValueError:
+                messagebox.showerror("Errore Formato", f"Formato data non valido per la materia '{subject}'. Usare GG/MM/AAAA.", parent=self)
+                return False
+            self.settings_manager.set_subject_data(subject, data_to_save)
         return True
 
     def save_and_close(self):
-        if not self._commit_subject_from_ui(self.current_subject):
+        # Salva i dati della materia corrente
+        if not self._save_current_subject_data():
             return
 
-        # Aggiorna il profilo attivo con i percorsi correnti
+        # Aggiorna il profilo attivo con i percorsi correnti di tutte le materie
         active_profile = self.settings_manager.get_active_profile()
         if active_profile:
             self.settings_manager.update_profile_with_current_paths(active_profile)
 
+        # Salva le impostazioni globali
         try:
             self._save_global_settings()
         except tk.TclError as e:
