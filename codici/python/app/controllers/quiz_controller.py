@@ -84,21 +84,29 @@ class QuizController:
     def open_analysis(self):
         stats = self.app_data_manager.get_overall_stats()
 
-        # Arricchisce le statistiche con il conteggio delle carte, che richiede il parsing dei file
+        # Arricchisce le statistiche con il conteggio delle carte
         if "subject_details" in stats:
             for subject, details in stats["subject_details"].items():
                 txt_path_str = details.get("txt_path")
                 card_count = 0
-                if txt_path_str:
-                    txt_path = Path(txt_path_str)
-                    if txt_path.exists():
-                        try:
-                            # Usa il parser per contare le domande
-                            questions = TextFileParser(txt_path).parse()
-                            card_count = len(questions)
-                        except Exception as e:
-                            print(f"Impossibile analizzare {txt_path} per il conteggio delle carte: {e}")
+                if txt_path_str and Path(txt_path_str).exists():
+                    try:
+                        questions = TextFileParser(Path(txt_path_str)).parse()
+                        card_count = len(questions)
+                    except Exception as e:
+                        print(f"Impossibile analizzare {txt_path_str} per il conteggio: {e}")
                 details["card_count"] = card_count
+
+        # Recupera le domande "Leech" da ogni materia
+        all_leeches = []
+        all_subjects = self.settings_manager.get_subjects()
+        for subject in all_subjects:
+            srs_manager = SRSManager(subject, None, 1.0, self.app_data_manager, self.settings_manager, self.config_manager)
+            leech_questions = srs_manager.get_leech_questions()
+            for q in leech_questions:
+                all_leeches.append({"subject": subject, "question_text": q.text})
+
+        stats["leech_questions"] = all_leeches
 
         AnalysisView(self.root, stats)
 
