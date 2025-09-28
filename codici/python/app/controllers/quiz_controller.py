@@ -43,13 +43,13 @@ class QuizController:
         self.practice_view: Optional[PracticeView] = None
         self.results_view: Optional[ResultsView] = None
         self.question_start_time = 0.0
-        self.question_start_time = 0.0
         self.srs_session_results: List[bool] = []
 
     def update_dashboard_and_srs_status(self):
         """Aggiorna la dashboard con statistiche fresche e lo stato dei ripassi."""
         subjects = self.settings_manager.get_subjects(status_filter="In Corso")
         total_due = 0
+        total_leech = 0
         next_exam_date = None
         next_exam_subj = ""
 
@@ -64,6 +64,7 @@ class QuizController:
                 pass
             srs_manager = SRSManager(subject, None, 1.0, self.app_data_manager, self.settings_manager, self.config_manager)
             total_due += len(srs_manager.get_due_questions())
+            total_leech += len(srs_manager.get_leech_questions())
 
         suggestion = f"Prossimo esame: {next_exam_subj}." if next_exam_subj else "Nessun esame imminente. Ottimo per un ripasso generale!"
         if total_due > 0:
@@ -71,6 +72,7 @@ class QuizController:
 
         stats = {
             "review_count": total_due,
+            "leech_count": total_leech,
             "streak": self.app_data_manager.get_current_streak(),
             "retention_rate": self.app_data_manager.get_retention_rate(),
             "suggestion": suggestion
@@ -78,28 +80,42 @@ class QuizController:
         self.root.update_dashboard(stats)
 
     def open_settings(self):
-        SettingsView(self.root, self.settings_manager, self.config_manager)
+        settings_view = SettingsView(self.root, self.settings_manager, self.config_manager)
+        self.root.wait_window(settings_view)
+
+        # Ricarica i dati per riflettere un eventuale cambio di percorso
+        self.settings_manager.reload_settings()
+        self.app_data_manager.reload_data()
         self.update_dashboard_and_srs_status()
 
     def open_analysis(self):
+        # Prima, ottieni le statistiche di base dal gestore dati
         stats = self.app_data_manager.get_overall_stats()
 
-        # Arricchisce le statistiche con il conteggio delle carte
-        if "subject_details" in stats:
-            for subject, details in stats["subject_details"].items():
-                txt_path_str = details.get("txt_path")
-                card_count = 0
-                if txt_path_str and Path(txt_path_str).exists():
-                    try:
-                        questions = TextFileParser(Path(txt_path_str)).parse()
-                        card_count = len(questions)
-                    except Exception as e:
-                        print(f"Impossibile analizzare {txt_path_str} per il conteggio: {e}")
-                details["card_count"] = card_count
+        # Ora, arricchisci queste statistiche con dati che richiedono la logica del controller
 
-        # Recupera le domande "Leech" da ogni materia
-        all_leeches = []
+        # 1. Aggiungi il conteggio delle carte per ogni materia
+        if "subject_details" not in stats:
+            stats["subject_details"] = {}
+
         all_subjects = self.settings_manager.get_subjects()
+        for subject in all_subjects:
+            if subject not in stats["subject_details"]:
+                stats["subject_details"][subject] = {}
+
+            details = stats["subject_details"][subject]
+            txt_path_str = self.settings_manager.get_subject_data(subject).get("txt_path")
+            card_count = 0
+            if txt_path_str and Path(txt_path_str).exists():
+                try:
+                    questions = TextFileParser(Path(txt_path_str)).parse()
+                    card_count = len(questions)
+                except Exception as e:
+                    print(f"Impossibile analizzare {txt_path_str} per il conteggio: {e}")
+            details["card_count"] = card_count
+
+        # 2. Recupera le domande "Leech" da ogni materia
+        all_leeches = []
         for subject in all_subjects:
             srs_manager = SRSManager(subject, None, 1.0, self.app_data_manager, self.settings_manager, self.config_manager)
             leech_questions = srs_manager.get_leech_questions()
@@ -158,7 +174,7 @@ class QuizController:
         modifier = data.get("interval_modifier", 1.0)
         self.srs_manager = SRSManager(self.current_subject, exam_date, modifier, self.app_data_manager, self.settings_manager, self.config_manager)
 
-        cache_path = Path(f"{data.get('txt_path')}.cache.json")
+        cache_path = Path(txt_path).with_suffix('.txt.cache.json')
 
         try:
             if cache_path.exists() and cache_path.stat().st_mtime > txt_path.stat().st_mtime:
@@ -180,20 +196,29 @@ class QuizController:
 
     def _finalize_start(self):
         self.active_questions = []
-        if self.current_mode == 'review':
+        if self.current_mode == 'review' or self.current_mode == 'leech':
             if not self.srs_manager: return
             self.srs_session_results = []
-            self.active_questions = self.srs_manager.get_due_questions()
-            if not self.active_questions:
-                leech_questions = self.srs_manager.get_leech_questions()
-                if leech_questions:
-                    msg = "Nessuna domanda da ripassare oggi.\n\nTuttavia, hai difficoltà persistenti con queste domande (leeches). Considera di studiarle da una fonte diversa:\n\n"
-                    for q in leech_questions[:5]: msg += f"- {q.text[:80]}...\n"
-                    messagebox.showwarning("Domande Ostiche Rilevate", msg)
-                else: messagebox.showinfo("Studio SRS", f"Nessuna domanda da ripassare per {self.current_subject}.\nOttimo lavoro!")
-                return
+
+            if self.current_mode == 'review':
+                self.active_questions = self.srs_manager.get_due_questions()
+                if not self.active_questions:
+                    leech_questions = self.srs_manager.get_leech_questions()
+                    if leech_questions:
+                        msg = "Nessuna domanda da ripassare oggi.\n\nTuttavia, hai difficoltà persistenti con queste domande (leeches). Considera di studiarle in una sessione dedicata.\n\n"
+                        for q in leech_questions[:5]: msg += f"- {q.text[:80]}...\n"
+                        messagebox.showwarning("Domande Ostiche Rilevate", msg)
+                    else:
+                        messagebox.showinfo("Studio SRS", f"Nessuna domanda da ripassare per {self.current_subject}.\nOttimo lavoro!")
+                    return
+            else: # leech mode
+                self.active_questions = self.srs_manager.get_leech_questions()
+                if not self.active_questions:
+                    messagebox.showinfo("Nessuna Domanda Ostica", f"Non ci sono domande ostiche per {self.current_subject}.\nContinua così!", parent=self.root)
+                    return
+
             random.shuffle(self.active_questions)
-        else:
+        else: # exam or practice
             if not self.all_questions:
                 messagebox.showwarning("Attenzione", "Nessuna domanda trovata. Controlla il file .txt e il segnalibro.")
                 return
@@ -217,8 +242,9 @@ class QuizController:
         messagebox.showwarning("Input non valido", "Il numero deve essere un multiplo di 24."); return 0, 0
 
     def _start_quiz_ui(self, timer_duration: int = 0):
-        self.root.withdraw(); self.current_question_index = 0
-        self.practice_view = PracticeView(self.root, self.on_practice_close, self.current_mode, self.display_current_question)
+        self.root.withdraw()
+        self.current_question_index = 0
+        self.practice_view = PracticeView(self.root, self.on_practice_close, self.current_mode, lambda: self.display_current_question())
         self.practice_view.set_callbacks(self.prev_question, self.next_question, self.submit_or_show_answer, self.rate_srs_question)
         self.practice_view.setup_for_mode()
         if self.current_mode == 'exam':
@@ -228,7 +254,9 @@ class QuizController:
         self.display_current_question()
 
     def _start_timer(self, duration_minutes: int):
-        self.end_time = datetime.datetime.now() + datetime.timedelta(minutes=duration_minutes); self._update_timer_display()
+        self.end_time = datetime.datetime.now() + datetime.timedelta(minutes=duration_minutes)
+        self._update_timer_display()
+
     def _update_timer_display(self):
         if not self.practice_view or not self.practice_view.winfo_exists(): return
         remaining = self.end_time - datetime.datetime.now()
@@ -237,9 +265,12 @@ class QuizController:
             messagebox.showinfo("Tempo Scaduto", "Il tempo è terminato. La prova sarà verificata.")
             self.submit_or_show_answer(auto_submit=True)
         else:
-            self.practice_view.update_timer(f"Tempo Rimanente: {str(remaining).split('.')[0]}"); self.timer_id = self.root.after(1000, self._update_timer_display)
+            self.practice_view.update_timer(f"Tempo Rimanente: {str(remaining).split('.')[0]}")
+            self.timer_id = self.root.after(1000, self._update_timer_display)
+
     def _stop_timer(self):
         if self.timer_id: self.root.after_cancel(self.timer_id); self.timer_id = None
+
     def _image_loader_worker(self):
         if not self.image_base_path: return
         questions_to_load = self.active_questions if self.active_questions else self.all_questions
@@ -247,8 +278,13 @@ class QuizController:
             if q.image_path:
                 full_path = self.image_base_path / q.image_path
                 if full_path not in self.image_cache and full_path.exists():
-                    try: img = Image.open(full_path); img.load(); self.image_cache[full_path] = img
-                    except Exception as e: print(f"Errore caricamento immagine {full_path}: {e}")
+                    try:
+                        img = Image.open(full_path)
+                        img.load()
+                        self.image_cache[full_path] = img
+                    except Exception as e:
+                        print(f"Errore caricamento immagine {full_path}: {e}")
+
     def get_resized_image(self) -> Optional[ImageTk.PhotoImage]:
         if not self.practice_view or not self.practice_view.winfo_exists() or not self.active_questions: return None
         q = self.active_questions[self.current_question_index]
@@ -256,54 +292,56 @@ class QuizController:
         pil_image = self.image_cache.get(self.image_base_path / q.image_path)
         if not pil_image: return None
         try:
-            max_h = self.practice_view.winfo_height() * 0.4; max_w = self.practice_view.winfo_width() * 0.8
+            max_h = self.practice_view.winfo_height() * 0.4
+            max_w = self.practice_view.winfo_width() * 0.8
             if max_h < 100 or max_w < 100: return None
-            img_copy = pil_image.copy(); w, h = img_copy.size; ratio = min(max_w / w, max_h / h)
-            if ratio < 1: img_copy = img_copy.resize((int(w * ratio), int(h * ratio)), Image.Resampling.LANCZOS)
+            img_copy = pil_image.copy()
+            w, h = img_copy.size
+            ratio = min(max_w / w, max_h / h)
+            if ratio < 1:
+                img_copy = img_copy.resize((int(w * ratio), int(h * ratio)), Image.Resampling.LANCZOS)
             return ImageTk.PhotoImage(img_copy)
-        except Exception: return None
+        except Exception:
+            return None
 
     def display_current_question(self):
         if not self.practice_view or not self.practice_view.winfo_exists() or not self.active_questions: return
         q = self.active_questions[self.current_question_index]
-        status = f"Domanda {self.current_question_index + 1} di {len(self.active_questions)}"; image = self.get_resized_image()
+        status = f"Domanda {self.current_question_index + 1} di {len(self.active_questions)}"
+        image = self.get_resized_image()
         self.practice_view.display_question(q, status, image)
         self.practice_view.update_navigation_buttons(self.current_question_index > 0, self.current_question_index < len(self.active_questions) - 1)
-        if self.current_mode == 'exam': self.practice_view.update_navigation_panel(self.active_questions, self.current_question_index)
-        # La riga seguente è stata rimossa per prevenire il bug del refresh UI.
-        # Lo stato dei pulsanti SRS viene ora gestito esplicitamente nei metodi di navigazione.
-        # self.practice_view.switch_to_srs_feedback(False)
+        if self.current_mode == 'exam':
+            self.practice_view.update_navigation_panel(self.active_questions, self.current_question_index)
         if self.current_mode != 'review':
-            for opt_radio in self.practice_view.option_widgets: opt_radio['radio'].config(command=self.on_answer_selected)
+            for opt_radio in self.practice_view.option_widgets:
+                opt_radio['radio'].config(command=self.on_answer_selected)
         self.question_start_time = time.monotonic()
 
     def on_answer_selected(self):
         q = self.active_questions[self.current_question_index]
         q.time_taken = time.monotonic() - self.question_start_time
-
         selected_answer = q.user_answer.get()
-        if not selected_answer:
-            return
-
+        if not selected_answer: return
         is_correct = (selected_answer == q.correct_answer)
-
-        # Trova l'indice dell'opzione selezionata per il feedback visivo
         try:
             option_index = q.options.index(selected_answer)
             if self.practice_view:
                 self.practice_view.flash_answer_feedback(option_index, is_correct)
         except (ValueError, IndexError):
-            pass # L'opzione selezionata non è stata trovata, non dare feedback
+            pass
 
     def jump_to_question(self, index: int):
         self.current_question_index = index
-        if self.practice_view: self.practice_view.switch_to_srs_feedback(False)
+        if self.practice_view:
+            self.practice_view.switch_to_srs_feedback(False)
         self.display_current_question()
 
     def next_question(self):
         if self.current_question_index < len(self.active_questions) - 1:
             self.current_question_index += 1
-            if self.practice_view: self.practice_view.switch_to_srs_feedback(False)
+            if self.practice_view:
+                self.practice_view.switch_to_srs_feedback(False)
             self.display_current_question()
         elif self.current_mode == 'review':
             self.on_practice_close(show_final_message=True)
@@ -311,43 +349,43 @@ class QuizController:
     def prev_question(self):
         if self.current_question_index > 0:
             self.current_question_index -= 1
-            if self.practice_view: self.practice_view.switch_to_srs_feedback(False)
+            if self.practice_view:
+                self.practice_view.switch_to_srs_feedback(False)
             self.display_current_question()
 
     def submit_or_show_answer(self, auto_submit: bool = False):
         if self.current_mode == 'review':
             q = self.active_questions[self.current_question_index]
-            self.practice_view.show_correct_answer(q.correct_answer); self.practice_view.switch_to_srs_feedback(True)
+            self.practice_view.show_correct_answer(q.correct_answer)
+            self.practice_view.switch_to_srs_feedback(True)
         else:
-            if not auto_submit and not messagebox.askyesno("Conferma", "Sei sicuro di voler terminare?"): return
+            if not auto_submit and not messagebox.askyesno("Conferma", "Sei sicuro di voler terminare?"):
+                return
             self._stop_timer()
-
             incorrect_answers = [q for q in self.active_questions if q.user_answer.get() != q.correct_answer]
-
             newly_leeches = []
             if self.srs_manager:
                 for q in incorrect_answers:
-                    if self.srs_manager.add_or_update_from_exam(q): newly_leeches.append(q)
-
+                    if self.srs_manager.add_or_update_from_exam(q):
+                        newly_leeches.append(q)
             if not incorrect_answers:
                 messagebox.showinfo("Risultato", "Congratulazioni! Sessione completata senza errori.")
                 return self.on_practice_close()
-
             title, summary = "Riepilogo Sessione", ""
             if self.current_mode == 'exam':
-                total = len(self.active_questions); correct_count = total - len(incorrect_answers)
+                total = len(self.active_questions)
+                correct_count = total - len(incorrect_answers)
                 passing_score = (total / 24) * 18
                 title = "Esame Superato" if correct_count >= passing_score else "Esame NON Superato"
                 summary = f"Punteggio: {correct_count}/{total} (Soglia superamento: {passing_score:.1f})"
-
             if newly_leeches:
                 leech_text = "\n\nATTENZIONE: Le seguenti domande si sono rivelate ostiche. Studiale con più attenzione:\n"
-                for q in newly_leeches: leech_text += f"- {q.text[:80]}...\n"
+                for q in newly_leeches:
+                    leech_text += f"- {q.text[:80]}...\n"
                 summary += leech_text
-
             incorrect_display_data = [{"q_number": q.number, "q_text": q.text, "user_answer": q.user_answer.get() or "Nessuna risposta", "correct_answer": q.correct_answer, "options": q.options} for q in incorrect_answers]
-
-            if self.practice_view: self.practice_view.withdraw()
+            if self.practice_view:
+                self.practice_view.withdraw()
             self.results_view = ResultsView(self.root, incorrect_display_data, self.on_results_close, title, summary)
 
     def rate_srs_question(self, rating: str):
@@ -360,18 +398,27 @@ class QuizController:
 
     def on_practice_close(self, show_final_message: bool = False):
         self._stop_timer()
-        if self.practice_view: self.practice_view.destroy(); self.practice_view = None
+        if self.practice_view:
+            self.practice_view.destroy()
+            self.practice_view = None
         if show_final_message and self.srs_manager:
             leech_questions = self.srs_manager.get_leech_questions()
-            # La logica di ritenzione è ora gestita globalmente tramite AppDataManager
             if leech_questions:
                 msg = "Sessione di ripasso completata!\n\nATTENZIONE: Hai difficoltà persistenti con queste domande (leeches). Considera di studiarle da una fonte diversa:\n\n"
-                for q in leech_questions[:5]: msg += f"- {q.text[:80]}...\n"
+                for q in leech_questions[:5]:
+                    msg += f"- {q.text[:80]}...\n"
                 messagebox.showwarning("Domande Ostiche Rilevate", msg)
-            else: messagebox.showinfo("Fine Sessione", "Hai completato tutte le domande da ripassare per oggi!")
-        self.root.deiconify(); self.update_dashboard_and_srs_status()
+            else:
+                messagebox.showinfo("Fine Sessione", "Hai completato tutte le domande da ripassare per oggi!")
+        self.root.deiconify()
+        self.update_dashboard_and_srs_status()
 
     def on_results_close(self):
-        if self.results_view: self.results_view.destroy(); self.results_view = None
-        if self.practice_view: self.practice_view.destroy(); self.practice_view = None # Clean up practice view as well
-        self.root.deiconify(); self.update_dashboard_and_srs_status()
+        if self.results_view:
+            self.results_view.destroy()
+            self.results_view = None
+        if self.practice_view:
+            self.practice_view.destroy()
+            self.practice_view = None
+        self.root.deiconify()
+        self.update_dashboard_and_srs_status()

@@ -4,14 +4,14 @@ from PIL import ImageGrab
 import os
 import time
 import ctypes
+from pathlib import Path
 
 class SnippingTool(Toplevel):
     def __init__(self, parent, state):
         super().__init__(parent)
         self.state = state
-        self.withdraw() # Hide window until we are ready
+        self.withdraw()
 
-        # Make this a transient window that stays on top
         self.transient(parent)
         self.attributes("-alpha", 0.3)
         self.attributes("-fullscreen", True)
@@ -28,8 +28,8 @@ class SnippingTool(Toplevel):
         self.canvas.bind("<B1-Motion>", self.on_mouse_drag)
         self.canvas.bind("<ButtonRelease-1>", self.on_button_release)
 
-        self.deiconify() # Show window
-        self.grab_set() # Grab all events
+        self.deiconify()
+        self.grab_set()
         self.focus_set()
 
     def on_button_press(self, event):
@@ -59,11 +59,9 @@ class SnippingTool(Toplevel):
             return
 
         try:
-            # Short delay to ensure the snipping overlay is gone
             self.withdraw()
             time.sleep(0.1)
             img = ImageGrab.grab(bbox=(x1, y1, x2, y2), all_screens=True)
-
             filepath = os.path.join(self.state['output_folder'], f"{self.state['shot_count']:03d}.png")
             img.save(filepath)
             print(f"Ritaglio salvato: {filepath}")
@@ -73,8 +71,6 @@ class SnippingTool(Toplevel):
         finally:
             self.destroy()
 
-from pathlib import Path
-
 def main(parent, data_path: Path):
     """Launches the image snipping tool."""
     try:
@@ -82,35 +78,27 @@ def main(parent, data_path: Path):
     except Exception:
         print("Impossibile impostare la modalità DPI-Aware.")
 
-    # Use the configured data path directly
     output_folder = data_path / "immagini_ritagliate"
     output_folder.mkdir(parents=True, exist_ok=True)
 
     shot_count = 1
-    while os.path.exists(os.path.join(output_folder, f"{shot_count:03d}.png")):
+    while (output_folder / f"{shot_count:03d}.png").exists():
         shot_count += 1
 
     app_state = {
-        "output_folder": output_folder,
+        "output_folder": str(output_folder),
         "shot_count": shot_count
     }
 
     messagebox.showinfo("Avvio Strumento Ritaglio", f"I ritagli verranno salvati in:\n'{app_state['output_folder']}'\n\nTrascina per selezionare l'area.", parent=parent)
-
-    # The snipping tool is now a Toplevel window
     SnippingTool(parent, app_state)
 
 if __name__ == '__main__':
     root = tk.Tk()
     root.title("Main App")
-
-    # Hide the root window, as the tool is the main interaction
     root.withdraw()
 
-    # For standalone execution, use a default path relative to this script
-    # This assumes a certain project structure for testing purposes
     default_data_path = Path(__file__).resolve().parent.parent.parent / "json"
     main(root, default_data_path)
 
-    # We can destroy the root window after the tool is used
     root.destroy()

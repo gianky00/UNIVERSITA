@@ -1,7 +1,6 @@
 import json
 from pathlib import Path
 from typing import List, Dict, Optional, Any
-import shutil
 
 from app.services.config_manager import ConfigManager
 
@@ -17,20 +16,19 @@ class SettingsManager:
         """Restituisce la struttura delle impostazioni di default."""
         return {
             "global_settings": {
-                # Giorni su cui calcolare il tasso di ritenzione
                 "retention_period_days": 7,
-                # Intervalli SRS di default in minuti
                 "srs_intervals": {"again": 10, "hard": 120, "good": 1440, "easy": 4320},
-                # Numero di nuove carte da presentare in una sessione SRS
                 "new_cards_per_day": 20
             },
-            # Materie di esempio
             "ELETTROTECNICA": {"txt_path": "", "img_path": "", "exam_date": "17/10/2025", "status": "In Corso", "interval_modifier": 1.0},
             "FONDAMENTI DI INFORMATICA": {"txt_path": "", "img_path": "", "exam_date": "22/10/2025", "status": "In Corso", "interval_modifier": 1.0}
         }
 
     def _load(self) -> Dict:
+        """Carica le impostazioni dal percorso dati corrente."""
         try:
+            # Assicura che la cartella esista prima di tentare di leggere
+            self.data_path.mkdir(parents=True, exist_ok=True)
             settings = json.loads(self.filepath.read_text(encoding='utf-8'))
             if "global_settings" not in settings:
                 settings["global_settings"] = self._get_default_settings()["global_settings"]
@@ -39,39 +37,15 @@ class SettingsManager:
                     data.setdefault("interval_modifier", 1.0)
             return settings
         except (FileNotFoundError, json.JSONDecodeError):
-            return self._get_default_settings()
+            # Se il file non esiste nel percorso dati, ne crea uno nuovo
+            default_settings = self._get_default_settings()
+            self.filepath.write_text(json.dumps(default_settings, indent=2, ensure_ascii=False), encoding='utf-8')
+            return default_settings
 
     def save(self):
+        """Salva le impostazioni nel percorso dati corrente."""
         self.data_path.mkdir(parents=True, exist_ok=True)
         self.filepath.write_text(json.dumps(self.settings, indent=2, ensure_ascii=False), encoding='utf-8')
-
-    def move_data_directory(self, new_path: Path) -> (bool, str):
-        """Sposta tutti i file di dati dalla vecchia alla nuova posizione."""
-        old_path = self.data_path
-        if old_path == new_path:
-            return True, "Il percorso è già quello attuale."
-
-        try:
-            new_path.mkdir(parents=True, exist_ok=True)
-            files_to_move = [f for f in old_path.glob('*.json') if f.is_file()]
-            for file in files_to_move:
-                shutil.move(str(file), str(new_path / file.name))
-
-            self.config_manager.set_data_path(str(new_path))
-            self.data_path = new_path
-            self.filepath = self.data_path / "quiz_settings.json"
-
-            return True, f"Dati spostati con successo in:\n{new_path}"
-
-        except Exception as e:
-            # Rollback in caso di errore
-            try:
-                files_to_move_back = [f for f in new_path.glob('*.json') if f.is_file()]
-                for file in files_to_move_back:
-                    shutil.move(str(file), str(old_path / file.name))
-            except Exception as rollback_e:
-                return False, f"Errore critico durante lo spostamento: {e}\n\nErrore anche nel ripristino: {rollback_e}"
-            return False, f"Errore durante lo spostamento dei dati: {e}"
 
     def get_global_settings(self) -> Dict[str, Any]:
         return self.settings.get("global_settings", self._get_default_settings()["global_settings"])
@@ -105,11 +79,19 @@ class SettingsManager:
 
             # Gestione file associati con il nuovo percorso dati
             srs_file = self.data_path / f"{subject.replace(' ', '_').lower()}_srs_deck.json"
-            if srs_file.exists(): srs_file.unlink()
+            if srs_file.exists():
+                srs_file.unlink()
 
             # Il file di cache è relativo al file .txt, quindi questo non cambia
             txt_path_str = subject_data.get("txt_path")
             if txt_path_str:
-                cache_file = Path(f"{txt_path_str}.cache.json")
-                if cache_file.exists(): cache_file.unlink()
+                cache_file = Path(txt_path_str).with_suffix('.txt.cache.json')
+                if cache_file.exists():
+                    cache_file.unlink()
             self.save()
+
+    def reload_settings(self):
+        """Ricarica le impostazioni dal percorso dati corrente. Utile dopo aver cambiato cartella."""
+        self.data_path = self.config_manager.get_data_path()
+        self.filepath = self.data_path / "quiz_settings.json"
+        self.settings = self._load()

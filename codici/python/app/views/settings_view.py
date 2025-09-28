@@ -2,8 +2,8 @@ import tkinter as tk
 from tkinter import ttk, filedialog, messagebox, Toplevel, simpledialog
 import datetime
 from typing import Dict
-
 from pathlib import Path
+
 from app.services.settings_manager import SettingsManager
 from app.services.config_manager import ConfigManager
 from app.services.text_processing import TextFileParser
@@ -19,25 +19,20 @@ class SettingsView(Toplevel):
         self.transient(parent)
         self.grab_set()
 
-        # Main frame
         main_frame = ttk.Frame(self, padding=10)
         main_frame.pack(expand=True, fill="both")
 
-        # Notebook for tabs
         self.notebook = ttk.Notebook(main_frame)
         self.notebook.pack(expand=True, fill="both", pady=5)
 
-        # --- Tab 1: Materie ---
         self.materie_tab = ttk.Frame(self.notebook, padding=10)
         self.notebook.add(self.materie_tab, text="Gestione Materie")
         self.create_materie_tab()
 
-        # --- Tab 2: Impostazioni Generali ---
         self.generali_tab = ttk.Frame(self.notebook, padding=10)
         self.notebook.add(self.generali_tab, text="Impostazioni Generali")
         self.create_generali_tab()
 
-        # --- Save Button ---
         ttk.Button(main_frame, text="Salva e Chiudi", command=self.save_and_close, style="Accent.TButton").pack(side='bottom', fill='x', ipady=5, pady=(10,0))
 
         self._refresh_combobox()
@@ -46,7 +41,6 @@ class SettingsView(Toplevel):
     def create_materie_tab(self):
         self.subject_vars = {"txt_path": tk.StringVar(), "img_path": tk.StringVar(), "exam_date": tk.StringVar(), "status": tk.StringVar()}
 
-        # Subject selection
         subject_frame = ttk.LabelFrame(self.materie_tab, text="Selezione Materia", padding=10)
         subject_frame.pack(fill='x', expand=True)
         subject_frame.columnconfigure(1, weight=1)
@@ -59,7 +53,6 @@ class SettingsView(Toplevel):
         ttk.Button(btn_frame, text="Aggiungi...", command=self._add_subject).pack(side='left', padx=2)
         ttk.Button(btn_frame, text="Rimuovi", command=self._remove_subject).pack(side='left', padx=2)
 
-        # Subject details
         details_frame = ttk.LabelFrame(self.materie_tab, text="Dettagli Materia Selezionata", padding=10)
         details_frame.pack(fill='x', expand=True, pady=(10,0))
         details_frame.columnconfigure(1, weight=1)
@@ -76,51 +69,38 @@ class SettingsView(Toplevel):
 
     def create_generali_tab(self):
         self.global_vars = {
-            "retention_period_days": tk.IntVar(value=7),
-            "new_cards_per_day": tk.IntVar(value=20),
+            "retention_period_days": tk.IntVar(value=7), "new_cards_per_day": tk.IntVar(value=20),
             "srs_again": tk.IntVar(value=10), "srs_hard": tk.IntVar(value=120),
             "srs_good": tk.IntVar(value=1440), "srs_easy": tk.IntVar(value=4320)
         }
 
-        # SRS intervals
         srs_frame = ttk.LabelFrame(self.generali_tab, text="Intervalli di Ripetizione (in minuti)", padding=10)
         srs_frame.pack(fill='x', expand=True)
         srs_labels = {"srs_again": "Di Nuovo:", "srs_hard": "Difficile:", "srs_good": "Buono:", "srs_easy": "Facile:"}
         for i, (key, label) in enumerate(srs_labels.items()):
-            # Etichetta per l'impostazione (es. "Di Nuovo:")
             ttk.Label(srs_frame, text=label).grid(row=i, column=0, padx=5, pady=5, sticky='w')
-            # Campo di inserimento per il valore dell'intervallo
             ttk.Entry(srs_frame, textvariable=self.global_vars[key], width=10).grid(row=i, column=1, padx=5, pady=5, sticky='w')
 
-        # Other settings
         other_frame = ttk.LabelFrame(self.generali_tab, text="Altre Impostazioni", padding=10)
         other_frame.pack(fill='x', expand=True, pady=(10,0))
-        # Impostazione per il periodo di ritenzione
         ttk.Label(other_frame, text="Periodo Ritenzione (giorni):").grid(row=0, column=0, padx=5, pady=5, sticky='w')
         ttk.Entry(other_frame, textvariable=self.global_vars["retention_period_days"], width=10).grid(row=0, column=1, padx=5, pady=5, sticky='w')
-        # Impostazione per il numero di nuove carte per sessione
         ttk.Label(other_frame, text="Nuove Carte per Sessione:").grid(row=1, column=0, padx=5, pady=5, sticky='w')
         ttk.Entry(other_frame, textvariable=self.global_vars["new_cards_per_day"], width=10).grid(row=1, column=1, padx=5, pady=5, sticky='w')
 
-        # --- Data Sync ---
         sync_frame = ttk.LabelFrame(self.generali_tab, text="Sincronizzazione Dati (Google Drive, etc.)", padding=10)
         sync_frame.pack(fill='x', expand=True, pady=(10,0))
         sync_frame.columnconfigure(0, weight=1)
-
         self.data_path_var = tk.StringVar()
-
         path_entry = ttk.Entry(sync_frame, textvariable=self.data_path_var, state="readonly")
         path_entry.grid(row=0, column=0, sticky='ew', padx=5, pady=5)
-
         path_button = ttk.Button(sync_frame, text="Cambia Cartella Dati...", command=self._select_data_directory)
         path_button.grid(row=0, column=1, padx=5, pady=5)
-
         path_help = ttk.Label(sync_frame, text="?", font=('Helvetica', 9, 'bold'), cursor="question_arrow")
         path_help.grid(row=0, column=2, padx=(5,0), sticky='w')
-        Tooltip(path_help, "Seleziona la cartella (es. la tua cartella Google Drive) dove salvare tutti i dati dell'app (progressi, materie, etc.) per la sincronizzazione tra dispositivi.")
+        Tooltip(path_help, "Seleziona la cartella dove salvare i dati. Per la sincronizzazione, scegli la tua cartella Google Drive/Dropbox. ATTENZIONE: Dovrai spostare manualmente i file esistenti e riavviare l'app.")
 
     def _load_global_settings(self):
-        # Load general settings
         settings = self.settings_manager.get_global_settings()
         self.global_vars["retention_period_days"].set(settings.get("retention_period_days", 7))
         self.global_vars["new_cards_per_day"].set(settings.get("new_cards_per_day", 20))
@@ -129,40 +109,21 @@ class SettingsView(Toplevel):
         self.global_vars["srs_hard"].set(srs_intervals.get("hard", 120))
         self.global_vars["srs_good"].set(srs_intervals.get("good", 1440))
         self.global_vars["srs_easy"].set(srs_intervals.get("easy", 4320))
-
-        # Load data path
         self.data_path_var.set(str(self.config_manager.get_data_path()))
 
     def _select_data_directory(self):
-        new_path_str = filedialog.askdirectory(
-            title="Seleziona la nuova cartella per i dati dell'applicazione",
-            mustexist=True,
-            parent=self
-        )
+        new_path_str = filedialog.askdirectory(title="Seleziona la nuova cartella per i dati", mustexist=True, parent=self)
         if not new_path_str:
             return
 
         new_path = Path(new_path_str)
-        current_path = self.config_manager.get_data_path()
-
-        if new_path == current_path:
-            messagebox.showinfo("Nessuna Modifica", "Il percorso selezionato è già quello in uso.", parent=self)
+        if new_path == self.config_manager.get_data_path():
             return
 
-        if any(new_path.iterdir()):
-             if not messagebox.askyesno("Attenzione", "La cartella selezionata non è vuota. I file di dati esistenti verranno spostati qui. Continuare?", parent=self):
-                return
-
-        success, message = self.settings_manager.move_data_directory(new_path)
-
-        if success:
-            messagebox.showinfo("Successo", message, parent=self)
-            self.data_path_var.set(str(new_path))
-            # Riavvia l'app per applicare le modifiche
-            if messagebox.askyesno("Riavvio Richiesto", "Per applicare le modifiche, è necessario riavviare l'applicazione. Vuoi chiudere ora?", parent=self):
-                self.winfo_toplevel().destroy()
-        else:
-            messagebox.showerror("Errore", message, parent=self)
+        self.config_manager.set_data_path(new_path_str)
+        self.data_path_var.set(new_path_str)
+        messagebox.showinfo("Riavvio Richiesto", f"Il percorso dei dati è stato impostato su:\n{new_path_str}\n\nPer favore, sposta manualmente i tuoi file .json in questa nuova cartella e riavvia l'applicazione per rendere effettive le modifiche.", parent=self)
+        self.destroy()
 
     def _save_global_settings(self):
         new_settings = {
@@ -178,10 +139,11 @@ class SettingsView(Toplevel):
         self.settings_manager.save_global_settings(new_settings)
 
     def _refresh_combobox(self):
-        subjects = self.settings_manager.get_subjects()
-        self.subject_combo['values'] = subjects
-        if subjects: self.subject_combo.current(0)
-        else: self.subject_combo.set('')
+        self.subject_combo['values'] = self.settings_manager.get_subjects()
+        if self.settings_manager.get_subjects():
+            self.subject_combo.current(0)
+        else:
+            self.subject_combo.set('')
         self.update_display_for_subject()
 
     def _add_subject(self):
@@ -193,7 +155,8 @@ class SettingsView(Toplevel):
 
     def _remove_subject(self):
         subject = self.subject_combo.get()
-        if not subject: return messagebox.showwarning("Attenzione", "Nessuna materia selezionata.", parent=self)
+        if not subject:
+            return messagebox.showwarning("Attenzione", "Nessuna materia selezionata.", parent=self)
         if messagebox.askyesno("Conferma", f"Vuoi rimuovere '{subject}' e tutti i suoi dati di studio?", parent=self):
             self.settings_manager.remove_subject(subject)
             self._refresh_combobox()
@@ -205,27 +168,30 @@ class SettingsView(Toplevel):
             var.set(data.get(key, ''))
 
     def select_path(self, path_type: str):
-        if not self.subject_combo.get(): return messagebox.showwarning("Attenzione", "Seleziona prima una materia.", parent=self)
-        if path_type == "txt_path": path = filedialog.askopenfilename(title="Seleziona file .txt", filetypes=[("Text Files", "*.txt")])
-        else: path = filedialog.askdirectory(title="Seleziona cartella immagini")
-        if path: self.subject_vars[path_type].set(path)
+        if not self.subject_combo.get():
+            return messagebox.showwarning("Attenzione", "Seleziona prima una materia.", parent=self)
+        if path_type == "txt_path":
+            path = filedialog.askopenfilename(title="Seleziona file .txt", filetypes=[("Text Files", "*.txt")])
+        else:
+            path = filedialog.askdirectory(title="Seleziona cartella immagini")
+        if path:
+            self.subject_vars[path_type].set(path)
 
     def save_and_close(self):
-        # Save subject-specific settings
         subject = self.subject_combo.get()
         if subject:
             data_to_save = {key: var.get() for key, var in self.subject_vars.items()}
             try:
-                if data_to_save["exam_date"]: datetime.datetime.strptime(data_to_save["exam_date"], '%d/%m/%Y')
+                if data_to_save["exam_date"]:
+                    datetime.datetime.strptime(data_to_save["exam_date"], '%d/%m/%Y')
             except ValueError:
-                return messagebox.showerror("Errore Formato", "Formato data non valido per la materia. Usare GG/MM/AAAA.", parent=self)
+                return messagebox.showerror("Errore Formato", "Formato data non valido. Usare GG/MM/AAAA.", parent=self)
             self.settings_manager.set_subject_data(subject, data_to_save)
 
-        # Save global settings
         try:
             self._save_global_settings()
         except tk.TclError as e:
-            return messagebox.showerror("Errore Input", f"Valore non valido nelle impostazioni generali. Assicurati che tutti i campi siano numeri interi.\n\n Dettaglio: {e}", parent=self)
+            return messagebox.showerror("Errore Input", f"Valore non valido nelle impostazioni generali. Assicurati che tutti i campi siano numeri interi.\n\nDettaglio: {e}", parent=self)
 
         self.settings_manager.save()
         self.destroy()
