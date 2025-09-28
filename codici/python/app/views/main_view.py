@@ -79,10 +79,13 @@ class MainView(ThemedTk):
         actions_frame.pack(fill="both", expand=True)
 
         self.review_button = ttk.Button(actions_frame, text="Studio SRS", command=lambda: self.start_callback('review'), style="Accent.TButton", state='disabled')
-        self.review_button.pack(expand=True, fill="both", ipady=15, padx=10, pady=10)
+        self.review_button.pack(expand=True, fill="both", ipady=10, padx=10, pady=(10, 5))
+
+        self.leech_button = ttk.Button(actions_frame, text="Studio Domande Ostiche", command=lambda: self.start_callback('leech'), state='disabled')
+        self.leech_button.pack(expand=True, fill="both", ipady=10, padx=10, pady=5)
 
         self.exam_button = ttk.Button(actions_frame, text="Modalità Esame", command=lambda: self.start_callback('exam'))
-        self.exam_button.pack(expand=True, fill="both", ipady=15, padx=10, pady=5)
+        self.exam_button.pack(expand=True, fill="both", ipady=10, padx=10, pady=5)
 
         self.practice_button = ttk.Button(actions_frame, text="Esercitazione Libera", command=lambda: self.start_callback('practice'))
         self.practice_button.pack(expand=True, fill="both", ipady=15, padx=10, pady=10)
@@ -98,12 +101,19 @@ class MainView(ThemedTk):
 
     def update_dashboard(self, stats: Dict[str, any]):
         """Aggiorna i widget della dashboard con le nuove statistiche."""
-        # Aggiorna il pulsante di ripasso
+        # Aggiorna il pulsante di ripasso SRS
         review_count = stats.get("review_count", 0)
         if review_count > 0:
             self.review_button.config(text=f"Studio SRS ({review_count})", state='normal')
         else:
             self.review_button.config(text="Studio SRS", state='disabled')
+
+        # Aggiorna il pulsante delle domande ostiche (leech)
+        leech_count = stats.get("leech_count", 0)
+        if leech_count > 0:
+            self.leech_button.config(text=f"Studio Domande Ostiche ({leech_count})", state='normal')
+        else:
+            self.leech_button.config(text="Studio Domande Ostiche", state='disabled')
 
         # Aggiorna le statistiche
         streak = stats.get("streak", 0)

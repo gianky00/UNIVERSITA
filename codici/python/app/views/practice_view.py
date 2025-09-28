@@ -14,21 +14,16 @@ class PracticeView(Toplevel):
         self.protocol("WM_DELETE_WINDOW", self.on_close); self.title(f"Modalità: {mode.capitalize()}"); self.state('zoomed')
         self.img_ref, self._after_id = None, None; self.nav_buttons: List[ttk.Button] = []
         self._setup_styles(); self._setup_ui()
+        self._setup_key_bindings() # Centralized key bindings
         self.bind("<Configure>", self._on_resize)
-        self.bind("<KeyPress-Left>", self._handle_key_press); self.bind("<KeyPress-Right>", self._handle_key_press)
-        if self.mode != 'review':
-            self.bind("<KeyPress-1>", lambda e: self.select_option_by_key('1')); self.bind("<KeyPress-2>", lambda e: self.select_option_by_key('2'))
-            self.bind("<KeyPress-3>", lambda e: self.select_option_by_key('3'))
         self.focus_set()
 
     def on_close(self):
-        # Unbind events only from this window instance upon closing.
+        # Unbind all configured events to prevent memory leaks
         self.unbind("<KeyPress-Left>")
         self.unbind("<KeyPress-Right>")
-        if self.mode != 'review':
-            self.unbind("<KeyPress-1>")
-            self.unbind("<KeyPress-2>")
-            self.unbind("<KeyPress-3>")
+        for i in range(1, 10):
+            self.unbind(f"<KeyPress-{i}>")
         self.close_controller_callback()
 
     def _setup_styles(self):
@@ -100,10 +95,29 @@ class PracticeView(Toplevel):
             "medio": ttk.Button(self.feedback_frame, text="Medio (3)"), "facile": ttk.Button(self.feedback_frame, text="Facile (4)"),
         }
         for i, (rating, button) in enumerate(self.srs_rate_buttons.items()):
-            button.grid(row=0, column=i, sticky='ew', padx=5, ipady=8); self.bind(f"<KeyPress-{i+1}>", lambda e, r=rating: self._rate_by_key(r))
+            button.grid(row=0, column=i, sticky='ew', padx=5, ipady=8)
 
-    def _rate_by_key(self, rating: str):
-        if self.feedback_frame.winfo_ismapped(): self.srs_rate_buttons[rating].invoke()
+    def _setup_key_bindings(self):
+        """Centralizza l'associazione degli eventi da tastiera."""
+        self.bind("<KeyPress-Left>", self._handle_key_press)
+        self.bind("<KeyPress-Right>", self._handle_key_press)
+        # Associa i tasti numerici da 1 a 9 per gestire sia la selezione che la valutazione
+        for i in range(1, 10):
+            self.bind(f"<KeyPress-{i}>", lambda e, num=i: self._handle_numeric_key(str(num)))
+
+    def _handle_numeric_key(self, key: str):
+        """Gestisce la pressione di un tasto numerico, decidendo se valutare o selezionare."""
+        # Se la sezione di feedback SRS è visibile, usa i numeri per valutare
+        if self.feedback_frame.winfo_ismapped():
+            rating_map = {"1": "non_la_sapevo", "2": "difficile", "3": "medio", "4": "facile"}
+            if key in rating_map:
+                # Controlla se il pulsante esiste ed è visibile prima di invocarlo
+                if rating_map[key] in self.srs_rate_buttons and self.srs_rate_buttons[rating_map[key]].winfo_ismapped():
+                    self.srs_rate_buttons[rating_map[key]].invoke()
+        # Altrimenti, se la sezione di navigazione è visibile, usa i numeri per selezionare una risposta
+        elif self.nav_frame.winfo_ismapped() and self.mode != 'review':
+            self.select_option_by_key(key)
+
     def set_callbacks(self, prev_cb, next_cb, submit_cb, rate_cb):
         self.prev_button.config(command=prev_cb); self.next_button.config(command=next_cb); self.submit_button.config(command=submit_cb)
         for rating, button in self.srs_rate_buttons.items(): button.config(command=lambda r=rating: rate_cb(r))

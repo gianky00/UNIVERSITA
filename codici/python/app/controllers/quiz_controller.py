@@ -49,6 +49,7 @@ class QuizController:
         """Aggiorna la dashboard con statistiche fresche e lo stato dei ripassi."""
         subjects = self.settings_manager.get_subjects(status_filter="In Corso")
         total_due = 0
+        total_leech = 0
         next_exam_date = None
         next_exam_subj = ""
 
@@ -63,6 +64,7 @@ class QuizController:
                 pass
             srs_manager = SRSManager(subject, None, 1.0, self.app_data_manager, self.settings_manager, self.config_manager)
             total_due += len(srs_manager.get_due_questions())
+            total_leech += len(srs_manager.get_leech_questions())
 
         suggestion = f"Prossimo esame: {next_exam_subj}." if next_exam_subj else "Nessun esame imminente. Ottimo per un ripasso generale!"
         if total_due > 0:
@@ -70,6 +72,7 @@ class QuizController:
 
         stats = {
             "review_count": total_due,
+            "leech_count": total_leech,
             "streak": self.app_data_manager.get_current_streak(),
             "retention_rate": self.app_data_manager.get_retention_rate(),
             "suggestion": suggestion
@@ -86,7 +89,41 @@ class QuizController:
         self.update_dashboard_and_srs_status()
 
     def open_analysis(self):
+        # Prima, ottieni le statistiche di base dal gestore dati
         stats = self.app_data_manager.get_overall_stats()
+
+        # Ora, arricchisci queste statistiche con dati che richiedono la logica del controller
+
+        # 1. Aggiungi il conteggio delle carte per ogni materia
+        if "subject_details" not in stats:
+            stats["subject_details"] = {}
+
+        all_subjects = self.settings_manager.get_subjects()
+        for subject in all_subjects:
+            if subject not in stats["subject_details"]:
+                stats["subject_details"][subject] = {}
+
+            details = stats["subject_details"][subject]
+            txt_path_str = self.settings_manager.get_subject_data(subject).get("txt_path")
+            card_count = 0
+            if txt_path_str and Path(txt_path_str).exists():
+                try:
+                    questions = TextFileParser(Path(txt_path_str)).parse()
+                    card_count = len(questions)
+                except Exception as e:
+                    print(f"Impossibile analizzare {txt_path_str} per il conteggio: {e}")
+            details["card_count"] = card_count
+
+        # 2. Recupera le domande "Leech" da ogni materia
+        all_leeches = []
+        for subject in all_subjects:
+            srs_manager = SRSManager(subject, None, 1.0, self.app_data_manager, self.settings_manager, self.config_manager)
+            leech_questions = srs_manager.get_leech_questions()
+            for q in leech_questions:
+                all_leeches.append({"subject": subject, "question_text": q.text})
+
+        stats["leech_questions"] = all_leeches
+
         AnalysisView(self.root, stats)
 
     # --- Tool Launchers ---
@@ -159,20 +196,29 @@ class QuizController:
 
     def _finalize_start(self):
         self.active_questions = []
-        if self.current_mode == 'review':
+        if self.current_mode == 'review' or self.current_mode == 'leech':
             if not self.srs_manager: return
             self.srs_session_results = []
-            self.active_questions = self.srs_manager.get_due_questions()
-            if not self.active_questions:
-                leech_questions = self.srs_manager.get_leech_questions()
-                if leech_questions:
-                    msg = "Nessuna domanda da ripassare oggi.\n\nTuttavia, hai difficoltà persistenti con queste domande (leeches). Considera di studiarle da una fonte diversa:\n\n"
-                    for q in leech_questions[:5]: msg += f"- {q.text[:80]}...\n"
-                    messagebox.showwarning("Domande Ostiche Rilevate", msg)
-                else: messagebox.showinfo("Studio SRS", f"Nessuna domanda da ripassare per {self.current_subject}.\nOttimo lavoro!")
-                return
+
+            if self.current_mode == 'review':
+                self.active_questions = self.srs_manager.get_due_questions()
+                if not self.active_questions:
+                    leech_questions = self.srs_manager.get_leech_questions()
+                    if leech_questions:
+                        msg = "Nessuna domanda da ripassare oggi.\n\nTuttavia, hai difficoltà persistenti con queste domande (leeches). Considera di studiarle in una sessione dedicata.\n\n"
+                        for q in leech_questions[:5]: msg += f"- {q.text[:80]}...\n"
+                        messagebox.showwarning("Domande Ostiche Rilevate", msg)
+                    else:
+                        messagebox.showinfo("Studio SRS", f"Nessuna domanda da ripassare per {self.current_subject}.\nOttimo lavoro!")
+                    return
+            else: # leech mode
+                self.active_questions = self.srs_manager.get_leech_questions()
+                if not self.active_questions:
+                    messagebox.showinfo("Nessuna Domanda Ostica", f"Non ci sono domande ostiche per {self.current_subject}.\nContinua così!", parent=self.root)
+                    return
+
             random.shuffle(self.active_questions)
-        else:
+        else: # exam or practice
             if not self.all_questions:
                 messagebox.showwarning("Attenzione", "Nessuna domanda trovata. Controlla il file .txt e il segnalibro.")
                 return

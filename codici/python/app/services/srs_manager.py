@@ -88,6 +88,9 @@ class SRSManager:
         }
         interval_key = rating_map.get(rating, "good")
 
+        # Aggiorna la cronologia della carta
+        item.history[interval_key] = item.history.get(interval_key, 0) + 1
+
         if not is_correct:
             item.lapses += 1
 
