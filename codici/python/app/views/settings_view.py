@@ -53,7 +53,7 @@ class SettingsView(Toplevel):
 
         profile_btn_frame = ttk.Frame(profile_frame)
         profile_btn_frame.grid(row=0, column=2, padx=5)
-        ttk.Button(profile_btn_frame, text="Salva Profilo", command=self._save_profile).pack(side='left', padx=2)
+        ttk.Button(profile_btn_frame, text="Crea/Aggiorna", command=self._save_profile).pack(side='left', padx=2)
         ttk.Button(profile_btn_frame, text="Rimuovi", command=self._remove_profile).pack(side='left', padx=2)
 
         # Subject selection
@@ -233,6 +233,11 @@ class SettingsView(Toplevel):
     def save_and_close(self):
         if not self._save_current_subject_data():
             return
+
+        # Aggiorna il profilo attivo con i percorsi correnti
+        active_profile = self.settings_manager.get_active_profile()
+        if active_profile:
+            self.settings_manager.update_profile_with_current_paths(active_profile)
 
         try:
             self._save_global_settings()

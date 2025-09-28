@@ -108,6 +108,20 @@ class SettingsManager:
         self.set_active_profile(profile_name)
         self.save()
 
+    def update_profile_with_current_paths(self, profile_name: str):
+        """Aggiorna un profilo esistente con i percorsi correnti di tutte le materie."""
+        if not profile_name or profile_name not in self.settings.get("path_profiles", {}):
+            return
+
+        current_paths = {}
+        for subject in self.get_subjects():
+            current_paths[subject] = {
+                "txt_path": self.settings[subject].get("txt_path", ""),
+                "img_path": self.settings[subject].get("img_path", "")
+            }
+
+        self.settings["path_profiles"][profile_name] = current_paths
+
     def save_current_paths_as_profile(self, profile_name: str):
         """Salva i percorsi attuali delle materie come un nuovo profilo di percorso."""
         if not profile_name.strip():
