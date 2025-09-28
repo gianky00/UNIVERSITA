@@ -1,17 +1,17 @@
 {
   "global_settings": {
     "retention_period_days": 7,
+    "new_cards_per_day": 20,
     "srs_intervals": {
       "again": 10,
       "hard": 120,
       "good": 1440,
       "easy": 4320
-    },
-    "new_cards_per_day": 20
+    }
   },
   "ELETTROTECNICA": {
-    "txt_path": "G:/Il mio Drive/UNIVERSITA_ AGGIORNATA/Elettrotecnica/domande chiuse ELETTROTECNICA.txt",
-    "img_path": "G:/Il mio Drive/UNIVERSITA_ AGGIORNATA/Elettrotecnica/immagini_estratte_domande_chiuse",
+    "txt_path": "C:/Users/gianc/Desktop/UNIVERSITA'/materie/Elettrotecnica/domande chiuse ELETTROTECNICA.txt",
+    "img_path": "G:/Il mio Drive",
     "exam_date": "17/10/2025",
     "max_lesson": 1,
     "status": "In Corso",
@@ -128,5 +128,35 @@
     "status": "In Corso",
     "retention_history": [],
     "interval_modifier": 1.0
+  },
+  "path_profiles": {
+    "PC_COEMI": {
+      "ELETTROTECNICA": {
+        "txt_path": "C:/Users/gianc/Desktop/UNIVERSITA'/materie/Elettrotecnica/domande chiuse ELETTROTECNICA.txt",
+        "img_path": "G:/Il mio Drive"
+      },
+      "FONDAMENTI DI INFORMATICA": {
+        "txt_path": "G:/Il mio Drive/UNIVERSITA_ AGGIORNATA/Fondamenti di informatica/domande chiuse FONDAMENTI DI INFORMATICA.txt",
+        "img_path": "G:/Il mio Drive/UNIVERSITA_ AGGIORNATA/Elettrotecnica/immagini_estratte_domande_chiuse"
+      },
+      "INGLESE": {
+        "txt_path": "G:/Il mio Drive/UNIVERSITA_ AGGIORNATA/Inglese/LINGUA INGLESE A/domande chiuse LINGUA INGLESE A.txt",
+        "img_path": "G:/Il mio Drive/UNIVERSITA_ AGGIORNATA/Elettrotecnica/immagini_estratte_domande_chiuse"
+      }
+    },
+    "PC_GIANKY": {
+      "ELETTROTECNICA": {
+        "txt_path": "C:/Users/gianc/Desktop/UNIVERSITA'/materie/Elettrotecnica/domande chiuse ELETTROTECNICA.txt",
+        "img_path": "C:/Users/gianc/Desktop/UNIVERSITA'/materie/Elettrotecnica/immagini_estratte_domande_chiuse"
+      },
+      "FONDAMENTI DI INFORMATICA": {
+        "txt_path": "G:/Il mio Drive/UNIVERSITA_ AGGIORNATA/Fondamenti di informatica/domande chiuse FONDAMENTI DI INFORMATICA.txt",
+        "img_path": "G:/Il mio Drive/UNIVERSITA_ AGGIORNATA/Elettrotecnica/immagini_estratte_domande_chiuse"
+      },
+      "INGLESE": {
+        "txt_path": "G:/Il mio Drive/UNIVERSITA_ AGGIORNATA/Inglese/LINGUA INGLESE A/domande chiuse LINGUA INGLESE A.txt",
+        "img_path": "G:/Il mio Drive/UNIVERSITA_ AGGIORNATA/Elettrotecnica/immagini_estratte_domande_chiuse"
+      }
+    }
   }
 }
