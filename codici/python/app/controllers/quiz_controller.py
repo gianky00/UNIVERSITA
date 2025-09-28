@@ -81,6 +81,23 @@ class QuizController:
 
     def open_analysis(self):
         stats = self.app_data_manager.get_overall_stats()
+
+        # Arricchisce le statistiche con il conteggio delle carte, che richiede il parsing dei file
+        if "subject_details" in stats:
+            for subject, details in stats["subject_details"].items():
+                txt_path_str = details.get("txt_path")
+                card_count = 0
+                if txt_path_str:
+                    txt_path = Path(txt_path_str)
+                    if txt_path.exists():
+                        try:
+                            # Usa il parser per contare le domande
+                            questions = TextFileParser(txt_path).parse()
+                            card_count = len(questions)
+                        except Exception as e:
+                            print(f"Impossibile analizzare {txt_path} per il conteggio delle carte: {e}")
+                details["card_count"] = card_count
+
         AnalysisView(self.root, stats)
 
     # --- Tool Launchers ---
