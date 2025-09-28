@@ -12,6 +12,7 @@ from PIL import Image, ImageTk
 
 from app.models.question_model import Question
 from app.services.settings_manager import SettingsManager
+from app.services.config_manager import ConfigManager
 from app.services.srs_manager import SRSManager
 from app.services.app_data_manager import AppDataManager
 from app.services.text_processing import TextFileParser, SimilarityAnalyser
@@ -25,10 +26,11 @@ from tools import image_snipper, text_formatter, pdf_merger
 
 
 class QuizController:
-    def __init__(self, root: MainView, settings_manager: SettingsManager):
+    def __init__(self, root: MainView, settings_manager: SettingsManager, config_manager: ConfigManager):
         self.root = root
         self.settings_manager = settings_manager
-        self.app_data_manager = AppDataManager(self.settings_manager)
+        self.config_manager = config_manager
+        self.app_data_manager = AppDataManager(self.settings_manager, self.config_manager)
         self.srs_manager: Optional[SRSManager] = None
         self.current_subject = ""
         self.all_questions: List[Question] = []
@@ -60,7 +62,7 @@ class QuizController:
                     next_exam_subj = subject
             except (ValueError, TypeError):
                 pass
-            srs_manager = SRSManager(subject, None, 1.0, self.app_data_manager, self.settings_manager)
+            srs_manager = SRSManager(subject, None, 1.0, self.app_data_manager, self.settings_manager, self.config_manager)
             total_due += len(srs_manager.get_due_questions())
 
         suggestion = f"Prossimo esame: {next_exam_subj}." if next_exam_subj else "Nessun esame imminente. Ottimo per un ripasso generale!"
@@ -76,7 +78,7 @@ class QuizController:
         self.root.update_dashboard(stats)
 
     def open_settings(self):
-        SettingsView(self.root, self.settings_manager)
+        SettingsView(self.root, self.settings_manager, self.config_manager)
         self.update_dashboard_and_srs_status()
 
     def open_analysis(self):
@@ -85,13 +87,13 @@ class QuizController:
 
     # --- Tool Launchers ---
     def launch_pdf_merger(self):
-        pdf_merger.main(self.root)
+        pdf_merger.main(self.root, self.config_manager.get_data_path())
 
     def launch_text_formatter(self):
         text_formatter.main(self.root)
 
     def launch_image_snipper(self):
-        image_snipper.main(self.root)
+        image_snipper.main(self.root, self.config_manager.get_data_path())
 
     def start(self, mode: str):
         self.current_mode = mode
@@ -129,7 +131,7 @@ class QuizController:
         try: exam_date = datetime.datetime.strptime(data.get("exam_date", ""), '%d/%m/%Y').date()
         except ValueError: pass
         modifier = data.get("interval_modifier", 1.0)
-        self.srs_manager = SRSManager(self.current_subject, exam_date, modifier, self.app_data_manager, self.settings_manager)
+        self.srs_manager = SRSManager(self.current_subject, exam_date, modifier, self.app_data_manager, self.settings_manager, self.config_manager)
 
         cache_path = Path(f"{data.get('txt_path')}.cache.json")
 

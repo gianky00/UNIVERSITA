@@ -4,14 +4,14 @@ from typing import Dict, Any, List
 from pathlib import Path
 
 from app.services.settings_manager import SettingsManager
-
-# Costruisce un percorso assoluto alla directory 'json'
-JSON_DIR = Path(__file__).resolve().parent.parent.parent.parent / "json"
+from app.services.config_manager import ConfigManager
 
 class AppDataManager:
-    def __init__(self, settings_manager: SettingsManager):
-        self.filepath = JSON_DIR / "app_data.json"
+    def __init__(self, settings_manager: SettingsManager, config_manager: ConfigManager):
         self.settings_manager = settings_manager
+        self.config_manager = config_manager
+        self.data_path = self.config_manager.get_data_path()
+        self.filepath = self.data_path / "app_data.json"
         self.data = self._load_data()
 
     def _load_data(self) -> Dict[str, Any]:

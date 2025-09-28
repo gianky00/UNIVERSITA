@@ -2,10 +2,12 @@ import os
 import tkinter as tk
 from tkinter import filedialog, messagebox
 from PyPDF2 import PdfMerger
+from pathlib import Path
 
 class PdfMergerApp(tk.Toplevel):
-    def __init__(self, parent):
+    def __init__(self, parent, data_path: Path):
         super().__init__(parent)
+        self.data_path = data_path
         self.title("Unificatore PDF per Materie")
         self.geometry("450x300")
         self.transient(parent)
@@ -67,7 +69,7 @@ class PdfMergerApp(tk.Toplevel):
         tipo_menu.pack(fill="x", pady=(0, 20))
 
         # Pulsante per avviare il processo
-        unisci_button = tk.Button(main_frame, text="Seleziona Cartella e Crea PDF", command=self.crea_pdf_unito)
+        unisci_button = tk.Button(main_frame, text="Unisci PDF", command=self.crea_pdf_unito)
         unisci_button.pack(pady=10, ipady=5)
 
     def aggiorna_materie(self, *args):
@@ -83,31 +85,35 @@ class PdfMergerApp(tk.Toplevel):
             self.materia_selezionata.set(materie[0])
 
     def crea_pdf_unito(self):
-        if not self.anno_selezionato.get() or not self.materia_selezionata.get() or not self.tipo_selezionato.get():
+        anno = self.anno_selezionato.get()
+        materia = self.materia_selezionata.get()
+        tipo = self.tipo_selezionato.get()
+
+        if not all([anno, materia, tipo]):
             messagebox.showwarning("Selezione mancante", "Per favore, seleziona Anno, Materia e Tipo di documento.", parent=self)
             return
 
-        percorso_cartella = filedialog.askdirectory(title="Seleziona la cartella con i PDF da unire", parent=self)
-        if not percorso_cartella:
-            return
+        materia_formattata = materia.replace(' ', '_').replace('/', '-')
+
+        # Costruisce il percorso basandosi sulla cartella dati configurata
+        percorso_cartella = self.data_path / "pdf" / anno / materia_formattata / tipo
+        percorso_cartella.mkdir(parents=True, exist_ok=True)
 
         try:
-            file_pdf = [f for f in os.listdir(percorso_cartella) if f.endswith('.pdf')]
+            # Cerca solo i file che non sono già un file unito
+            file_pdf = [f for f in os.listdir(percorso_cartella) if f.endswith('.pdf') and not f.startswith(f"{tipo}_Complete_")]
             if not file_pdf:
-                messagebox.showinfo("Nessun PDF trovato", "Nella cartella selezionata non sono presenti file PDF.", parent=self)
+                messagebox.showinfo("Nessun PDF trovato", f"Nessun file PDF da unire trovato in:\n\n{percorso_cartella}\n\nAssicurati di aver inserito i file in questa cartella.", parent=self)
                 return
             file_pdf.sort()
 
-            tipo = self.tipo_selezionato.get()
-            materia = self.materia_selezionata.get()
-            materia_formattata = materia.replace(' ', '_')
             nome_file_output = f"{tipo}_Complete_{materia_formattata}.pdf"
-            percorso_salvataggio = os.path.join(percorso_cartella, nome_file_output)
+            percorso_salvataggio = percorso_cartella / nome_file_output
 
             merger = PdfMerger()
             for pdf in file_pdf:
-                percorso_completo = os.path.join(percorso_cartella, pdf)
-                merger.append(percorso_completo)
+                percorso_completo = percorso_cartella / pdf
+                merger.append(str(percorso_completo))
 
             with open(percorso_salvataggio, "wb") as file_unito:
                 merger.write(file_unito)
@@ -121,7 +127,7 @@ class PdfMergerApp(tk.Toplevel):
 
             if conferma:
                 for pdf in file_pdf:
-                    os.remove(os.path.join(percorso_cartella, pdf))
+                    os.remove(percorso_cartella / pdf)
                 messagebox.showinfo("File eliminati", "I file PDF originali sono stati eliminati.", parent=self)
             else:
                  messagebox.showinfo("Operazione completata", "I file originali non sono stati eliminati.", parent=self)
@@ -129,9 +135,9 @@ class PdfMergerApp(tk.Toplevel):
         except Exception as e:
             messagebox.showerror("Errore", f"Si è verificato un errore: {e}", parent=self)
 
-def main(parent):
+def main(parent, data_path: Path):
     """Initializes the PDF Merger application window as a Toplevel window."""
-    app = PdfMergerApp(parent)
+    app = PdfMergerApp(parent, data_path)
     app.focus_set()
 
 if __name__ == "__main__":
@@ -140,7 +146,9 @@ if __name__ == "__main__":
     root.title("Main App")
 
     def launch_tool():
-        main(root)
+        # For standalone execution, use a default path
+        default_data_path = Path(__file__).resolve().parent.parent.parent / "json"
+        main(root, default_data_path)
 
     tk.Button(root, text="Launch PDF Merger", command=launch_tool).pack(padx=50, pady=50)
     root.mainloop()

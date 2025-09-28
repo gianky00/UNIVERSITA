@@ -7,12 +7,14 @@ sys.path.append(str(Path(__file__).parent.parent))
 
 from app.controllers.quiz_controller import QuizController
 from app.services.settings_manager import SettingsManager
+from app.services.config_manager import ConfigManager
 from app.views.main_view import MainView
 
 class App:
     def __init__(self):
         # 1. Initialize core logic components
-        settings_manager = SettingsManager()
+        config_manager = ConfigManager()
+        settings_manager = SettingsManager(config_manager)
 
         # 2. Create the main window (View)
         # The view is created first, but it's just a UI shell at this point.
@@ -28,7 +30,7 @@ class App:
         )
 
         # 3. Create the Controller, linking the View and logic together
-        controller = QuizController(main_window, settings_manager)
+        controller = QuizController(main_window, settings_manager, config_manager)
 
         # 4. Perform initial checks and start the main loop
         main_window.after(100, controller.update_dashboard_and_srs_status)

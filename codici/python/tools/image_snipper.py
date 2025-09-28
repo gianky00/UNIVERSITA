@@ -73,19 +73,18 @@ class SnippingTool(Toplevel):
         finally:
             self.destroy()
 
-def main(parent):
+from pathlib import Path
+
+def main(parent, data_path: Path):
     """Launches the image snipping tool."""
     try:
         ctypes.windll.shcore.SetProcessDpiAwareness(1)
     except Exception:
         print("Impossibile impostare la modalità DPI-Aware.")
 
-    base_directory = filedialog.askdirectory(title="Seleziona la cartella di base per le immagini", parent=parent)
-    if not base_directory: return
-
-    # Simplified logic: always save to a standard subfolder
-    output_folder = os.path.join(base_directory, "immagini_ritagliate")
-    os.makedirs(output_folder, exist_ok=True)
+    # Use the configured data path directly
+    output_folder = data_path / "immagini_ritagliate"
+    output_folder.mkdir(parents=True, exist_ok=True)
 
     shot_count = 1
     while os.path.exists(os.path.join(output_folder, f"{shot_count:03d}.png")):
@@ -108,8 +107,10 @@ if __name__ == '__main__':
     # Hide the root window, as the tool is the main interaction
     root.withdraw()
 
-    # The main function now requires a parent
-    main(root)
+    # For standalone execution, use a default path relative to this script
+    # This assumes a certain project structure for testing purposes
+    default_data_path = Path(__file__).resolve().parent.parent.parent / "json"
+    main(root, default_data_path)
 
     # We can destroy the root window after the tool is used
     root.destroy()

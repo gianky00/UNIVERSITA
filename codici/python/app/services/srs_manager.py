@@ -8,18 +8,17 @@ from app.models.question_model import Question
 from app.models.srs_model import SRSItem
 from app.services.app_data_manager import AppDataManager
 from app.services.settings_manager import SettingsManager
-
-# Costruisce un percorso assoluto alla directory 'json'
-JSON_DIR = Path(__file__).resolve().parent.parent.parent.parent / "json"
+from app.services.config_manager import ConfigManager
 
 class SRSManager:
     """Gestisce la logica del deck di studio SRS, con calibrazione dinamica e analisi di interferenza."""
     MAX_INTERVAL = 30  # Intervallo massimo di ripasso in giorni, per sicurezza
     LEECH_THRESHOLD = 6
 
-    def __init__(self, subject: str, exam_date: Optional[datetime.date], interval_modifier: float, app_data_manager: AppDataManager, settings_manager: SettingsManager):
+    def __init__(self, subject: str, exam_date: Optional[datetime.date], interval_modifier: float, app_data_manager: AppDataManager, settings_manager: SettingsManager, config_manager: ConfigManager):
         self.subject = subject
-        self.filepath = JSON_DIR / f"{self.subject.replace(' ', '_').lower()}_srs_deck.json"
+        self.data_path = config_manager.get_data_path()
+        self.filepath = self.data_path / f"{self.subject.replace(' ', '_').lower()}_srs_deck.json"
         self.deck: Dict[str, SRSItem] = self._load()
         self.exam_date = exam_date
         self.interval_modifier = interval_modifier
