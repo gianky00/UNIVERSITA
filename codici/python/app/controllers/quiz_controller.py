@@ -80,13 +80,24 @@ class QuizController:
         self.root.update_dashboard(stats)
 
     def open_settings(self):
+        initial_profile = self.config_manager.get_active_profile()
+        initial_path = self.config_manager.get_data_path()
+
         settings_view = SettingsView(self.root, self.settings_manager, self.config_manager)
         self.root.wait_window(settings_view)
 
-        # Ricarica i dati per riflettere un eventuale cambio di percorso
+        # Dopo la chiusura, ricarica sempre i dati per riflettere qualsiasi cambiamento
         self.settings_manager.reload_settings()
         self.app_data_manager.reload_data()
         self.update_dashboard_and_srs_status()
+
+        final_profile = self.config_manager.get_active_profile()
+        final_path = self.config_manager.get_data_path()
+
+        if initial_profile != final_profile:
+            messagebox.showinfo("Profilo Cambiato", f"Il profilo è stato cambiato in '{final_profile}'.\nI dati sono stati ricaricati.", parent=self.root)
+        elif initial_path != final_path:
+            messagebox.showinfo("Percorso Dati Aggiornato", f"Il percorso dati per '{final_profile}' è stato aggiornato.\nI dati sono stati ricaricati.", parent=self.root)
 
     def open_analysis(self):
         # Prima, ottieni le statistiche di base dal gestore dati
