@@ -403,7 +403,10 @@ class QuizController:
         q = self.active_questions[self.current_question_index]
         self.srs_session_results.append(rating != "non_la_sapevo")
         if self.srs_manager:
-            if self.srs_manager.update_after_review(q, rating, q.time_taken):
+            # Aggiorna la domanda e controlla se è diventata una leech
+            is_leech = self.srs_manager.update_after_review(q, rating, q.time_taken)
+            # Mostra l'avviso solo se la domanda è una leech E l'utente ha appena risposto "non la sapevo"
+            if is_leech and rating == "non_la_sapevo":
                 messagebox.showwarning("Attenzione: Domanda Ostica!", f"Continui ad avere difficoltà con questa domanda. Prova a studiarla da una fonte diversa.\n\n- {q.text[:100]}...")
         self.next_question()
 
